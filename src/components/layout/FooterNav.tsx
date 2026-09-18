@@ -10,16 +10,18 @@ interface FooterNavItem {
   label: FooterNavLabel;
 }
 
+// Ordem de leitura natural no DOM (e no mobile). No desktop o alinhamento é à
+// direita e a ordem é invertida visualmente via `sm:flex-row-reverse`.
 const rows: readonly (readonly FooterNavItem[])[] = [
   [
-    { to: "/gamedev", label: "gamedev" },
-    { to: "/about", label: "about" },
     { to: "/", label: "home" },
+    { to: "/about", label: "about" },
+    { to: "/gamedev", label: "gamedev" },
   ],
   [
-    { to: "/blog", label: "blog" },
-    { to: "/certificates", label: "certificates" },
     { to: "/projects", label: "projects" },
+    { to: "/certificates", label: "certificates" },
+    { to: "/blog", label: "blog" },
   ],
 ];
 
@@ -28,13 +30,16 @@ export function FooterNav() {
 
   return (
     <nav aria-labelledby="footer-nav-title">
-      <h2 id="footer-nav-title" className="text-text mb-2 text-right text-sm">
+      <h2
+        id="footer-nav-title"
+        className="text-text mb-2 text-sm sm:text-right"
+      >
         {footer.nav.title}
       </h2>
       {rows.map((row) => (
         <ul
           key={row[0]?.to}
-          className="flex flex-wrap items-center justify-end gap-x-4 gap-y-1"
+          className="flex flex-wrap items-center gap-x-4 gap-y-1 sm:flex-row-reverse"
         >
           {row.map((item) => (
             <li key={item.to}>

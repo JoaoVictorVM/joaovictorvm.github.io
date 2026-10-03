@@ -58,6 +58,7 @@ export function PreferenceProvider({
       language,
       theme,
       setLanguage,
+      setTheme,
       toggleLanguage,
       toggleTheme,
     }),

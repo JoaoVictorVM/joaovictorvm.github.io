@@ -5,6 +5,7 @@ export interface PreferenceContextValue {
   language: Language;
   theme: ThemeMode;
   setLanguage: (language: Language) => void;
+  setTheme: (theme: ThemeMode) => void;
   toggleLanguage: () => void;
   toggleTheme: () => void;
 }

@@ -12,6 +12,10 @@
   --duration-theme: 250ms;
 
   --type-char: 35ms;
+  --role-type-char: 70ms;
+  --erase-char: 20ms;
+  --duration-role-hold: 2500ms;
+  --duration-caret: 1s;
   --stagger: 120ms;
   --duration-page: 300ms;
 

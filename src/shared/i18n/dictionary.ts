@@ -2,27 +2,20 @@ import type { Language } from "@/types/preferences";
 
 const pt = {
   skipToContent: "Pular para o conteúdo",
-  header: {
-    identity: {
-      name: "João Victor Ventura Martins",
-      roles: ["Engenheiro de Software", "Estudante de Cibersegurança"],
-      homeLabel: "João Victor Ventura Martins — início",
-    },
-    preferences: {
-      label: "Preferências",
-      language: {
-        label: "Idioma",
-        names: {
-          pt: "Português",
-          en: "English",
-        },
+  preferences: {
+    label: "Preferências",
+    language: {
+      label: "Idioma",
+      names: {
+        pt: "Português",
+        en: "English",
       },
-      theme: {
-        label: "Tema",
-        names: {
-          light: "Claro",
-          dark: "Escuro",
-        },
+    },
+    theme: {
+      label: "Tema",
+      names: {
+        light: "Claro",
+        dark: "Escuro",
       },
     },
   },
@@ -134,6 +127,7 @@ const pt = {
   home: {
     intro: {
       name: "João Victor Ventura Martins",
+      roles: ["Engenheiro de Software", "Estudante de Cibersegurança"],
       lead: "Software Engineer com foco em Go e React, desenvolvendo aplicações com ênfase em arquitetura, performance, escalabilidade, manutenibilidade e organização de código.",
       summary:
         "Sinta-se a vontade para conhecer mais sobre minha trajetória, o que venho estudando e os projetos em que estou trabalhando.",
@@ -211,27 +205,20 @@ export type Dictionary = typeof pt;
 
 const en: Dictionary = {
   skipToContent: "Skip to content",
-  header: {
-    identity: {
-      name: "João Victor Ventura Martins",
-      roles: ["Software Engineer", "Cybersecurity Student"],
-      homeLabel: "João Victor Ventura Martins — home",
-    },
-    preferences: {
-      label: "Preferences",
-      language: {
-        label: "Language",
-        names: {
-          pt: "Português",
-          en: "English",
-        },
+  preferences: {
+    label: "Preferences",
+    language: {
+      label: "Language",
+      names: {
+        pt: "Português",
+        en: "English",
       },
-      theme: {
-        label: "Theme",
-        names: {
-          light: "Light",
-          dark: "Dark",
-        },
+    },
+    theme: {
+      label: "Theme",
+      names: {
+        light: "Light",
+        dark: "Dark",
       },
     },
   },
@@ -343,6 +330,7 @@ const en: Dictionary = {
   home: {
     intro: {
       name: "João Victor Ventura Martins",
+      roles: ["Software Engineer", "Cybersecurity Student"],
       lead: "Software Engineer focused on Go for backend and React for frontend, building applications with an emphasis on architecture, performance, scalability, maintainability and clean code organization.",
       summary:
         "Feel free to explore my journey, what I am currently studying, and the projects I am working on.",

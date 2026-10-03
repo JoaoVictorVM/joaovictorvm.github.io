@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
+import { IdentityHeading } from "@/features/home/components/IdentityHeading";
 import { useI18n } from "@/shared/hooks/useI18n";
 import { asset } from "@/shared/lib/asset";
 import { useReveal } from "@/shared/hooks/useReveal";
@@ -17,8 +18,8 @@ export function IntroSection() {
       id="inicio"
       className={cn("section-fade pt-16", isVisible && "visible")}
     >
-      <Container className="text-text space-y-8">
-        <h1 className="sr-only">{intro.name}</h1>
+      <Container className="text-text">
+        <IdentityHeading isVisible={isVisible} />
 
         <div
           className={cn(

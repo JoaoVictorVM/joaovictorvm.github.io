@@ -18,7 +18,7 @@ const languages: Language[] = ["pt", "en"];
 
 export function LanguageOptions() {
   const { language, setLanguage } = usePreference();
-  const t = useI18n().header.preferences.language;
+  const t = useI18n().preferences.language;
 
   return (
     <PreferenceGroup

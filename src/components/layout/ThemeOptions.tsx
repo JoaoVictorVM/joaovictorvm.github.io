@@ -14,7 +14,7 @@ const themes: ThemeMode[] = ["light", "dark"];
 
 export function ThemeOptions() {
   const { theme, setTheme } = usePreference();
-  const t = useI18n().header.preferences.theme;
+  const t = useI18n().preferences.theme;
 
   return (
     <PreferenceGroup label={t.label} value={theme} onValueChange={setTheme}>

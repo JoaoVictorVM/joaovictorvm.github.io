@@ -51,15 +51,7 @@ export function CertificateList() {
                     {group.institution}
                   </p>
                 )}
-                <div
-                  onMouseEnter={() => {
-                    setHoveredId(certificate.id);
-                  }}
-                  onMouseLeave={() => {
-                    setHoveredId(null);
-                  }}
-                  className="grid-certificate text-detail hover:text-text/80 grid items-center gap-3 px-2 py-4 transition-colors md:px-0"
-                >
+                <div className="grid-certificate text-detail grid items-center gap-3 px-2 md:px-0">
                   <span
                     className={cn(
                       "hidden text-sm md:block",
@@ -70,17 +62,29 @@ export function CertificateList() {
                   >
                     {group.institution}
                   </span>
-                  <span
-                    className={cn(
-                      "project-title col-span-2 text-sm font-normal transition-colors duration-150 sm:col-span-1",
-                      isDimmed ? "text-detail" : "text-text",
-                    )}
+                  {/* Só a faixa do título até a data aciona o destaque; a coluna da
+                      instituição fica de fora. */}
+                  <div
+                    onMouseEnter={() => {
+                      setHoveredId(certificate.id);
+                    }}
+                    onMouseLeave={() => {
+                      setHoveredId(null);
+                    }}
+                    className="hover:text-text/80 col-span-2 grid grid-cols-subgrid items-center gap-3 py-4 transition-colors"
                   >
-                    {certificate.title[language]}
-                  </span>
-                  <span className="project-date text-detail hidden text-right text-sm sm:block">
-                    {certificate.date[language]}
-                  </span>
+                    <span
+                      className={cn(
+                        "project-title col-span-2 text-sm font-normal transition-colors duration-150 sm:col-span-1",
+                        isDimmed ? "text-detail" : "text-text",
+                      )}
+                    >
+                      {certificate.title[language]}
+                    </span>
+                    <span className="project-date text-detail hidden text-right text-sm sm:block">
+                      {certificate.date[language]}
+                    </span>
+                  </div>
                 </div>
                 {!isLast && <div className="project-line ml-6 md:ml-35" />}
               </div>

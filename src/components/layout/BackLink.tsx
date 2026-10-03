@@ -18,7 +18,7 @@ export function BackLink({ label, to = "/", className }: BackLinkProps) {
       <Link
         to={to}
         className={cn(
-          "text-detail hover:text-text mb-4 block text-sm font-normal italic transition-colors md:sticky md:top-24 md:mb-0",
+          "text-detail hover:text-text mb-4 block text-sm font-normal italic transition-colors md:sticky md:top-16 md:mb-0",
           className,
         )}
       >

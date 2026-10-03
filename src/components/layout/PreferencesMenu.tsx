@@ -32,7 +32,7 @@ export function PreferencesMenu() {
     <DropdownMenu.Root open={isOpen} onOpenChange={setIsOpen} modal={false}>
       <DropdownMenu.Trigger
         ref={ref}
-        aria-label={t.header.preferences.label}
+        aria-label={t.preferences.label}
         {...handlers}
         onPointerDown={(event) => {
           // Impede o Radix de abrir no pointerdown: quem decide entre toque

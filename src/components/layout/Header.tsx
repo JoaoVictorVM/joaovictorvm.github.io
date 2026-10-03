@@ -1,7 +1,5 @@
 import { Brand } from "@/components/layout/Brand";
 import { Container } from "@/components/layout/Container";
-import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
-import { ThemeSwitcher } from "@/components/layout/ThemeSwitcher";
 
 export function Header() {
   return (
@@ -9,10 +7,8 @@ export function Header() {
       <Container>
         <div className="text-text flex items-center justify-between gap-4 py-4 text-xs">
           <Brand />
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher />
-            <ThemeSwitcher />
-          </div>
+          {/* Reserva o espaço do menu de preferências, que flutua por cima (PreferencesDock). */}
+          <div aria-hidden className="size-9 shrink-0" />
         </div>
       </Container>
     </header>

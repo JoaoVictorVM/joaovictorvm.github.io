@@ -8,17 +8,21 @@ const pt = {
       roles: ["Engenheiro de Software", "Estudante de Cibersegurança"],
       homeLabel: "João Victor Ventura Martins — início",
     },
-    theme: {
-      toLight: "Ativar modo claro",
-      toDark: "Ativar modo escuro",
-    },
-    language: {
-      label: "Idioma",
-      pt: "Mudar para português",
-      en: "Mudar para inglês",
-      names: {
-        pt: "Português",
-        en: "English",
+    preferences: {
+      label: "Preferências",
+      language: {
+        label: "Idioma",
+        names: {
+          pt: "Português",
+          en: "English",
+        },
+      },
+      theme: {
+        label: "Tema",
+        names: {
+          light: "Claro",
+          dark: "Escuro",
+        },
       },
     },
   },
@@ -209,17 +213,21 @@ const en: Dictionary = {
       roles: ["Software Engineer", "Cybersecurity Student"],
       homeLabel: "João Victor Ventura Martins — home",
     },
-    theme: {
-      toLight: "Switch to light mode",
-      toDark: "Switch to dark mode",
-    },
-    language: {
-      label: "Language",
-      pt: "Switch to Portuguese",
-      en: "Switch to English",
-      names: {
-        pt: "Português",
-        en: "English",
+    preferences: {
+      label: "Preferences",
+      language: {
+        label: "Language",
+        names: {
+          pt: "Português",
+          en: "English",
+        },
+      },
+      theme: {
+        label: "Theme",
+        names: {
+          light: "Light",
+          dark: "Dark",
+        },
       },
     },
   },

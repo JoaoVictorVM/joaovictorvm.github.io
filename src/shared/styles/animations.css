@@ -199,18 +199,10 @@
   }
 }
 
-.theme-icon-enter {
-  animation: themeIconIn var(--duration-fast) var(--ease-reveal);
-}
-@keyframes themeIconIn {
-  from {
-    opacity: 0;
-    transform: rotate(-90deg) scale(0.6);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(0) scale(1);
-  }
+/* Capturado à parte na transição de rota, para o botão flutuante não sumir e
+   reaparecer junto com a página. */
+.preferences-trigger {
+  view-transition-name: preferences-trigger;
 }
 
 ::view-transition-old(root) {
@@ -248,7 +240,6 @@
   .text-appear,
   .fast-fade-up,
   .header-enter,
-  .theme-icon-enter,
   .content-reveal.visible,
   .accordion-content[data-state="open"] .accordion-reveal {
     transform: none !important;

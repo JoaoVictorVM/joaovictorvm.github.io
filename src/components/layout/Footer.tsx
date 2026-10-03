@@ -25,6 +25,12 @@ export function Footer() {
               <br />
               {year}
             </p>
+            <Link
+              to="/privacy"
+              className="text-detail hover:text-text mt-2 inline-block transition-colors"
+            >
+              {footer.privacy}
+            </Link>
           </div>
           <FooterNav />
         </div>

@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Container } from "@/components/layout/Container";
 import { LinkCard } from "@/features/links/components/LinkCard";
 import { links } from "@/features/links/data/links";
@@ -36,6 +37,16 @@ export function LinkTree() {
             <LinkCard key={item.title.pt} item={item} />
           ))}
         </div>
+        {/* Esta página não tem rodapé: é o acesso à política e à troca da escolha de cookies. */}
+        <Link
+          to="/privacy"
+          className={cn(
+            "fast-fade-up text-detail hover:text-text self-center text-xs transition-colors delay-350",
+            isVisible && "visible",
+          )}
+        >
+          {t.links.privacy}
+        </Link>
       </Container>
     </section>
   );

@@ -23,7 +23,7 @@ body {
 }
 
 @utility grid-certificate {
-  grid-template-columns: calc(var(--spacing) * 35) 1fr auto;
+  grid-template-columns: calc(var(--spacing) * 35) 1fr;
 }
 
 /* Tipografia do corpo dos posts: as mesmas classes usadas no restante do site,

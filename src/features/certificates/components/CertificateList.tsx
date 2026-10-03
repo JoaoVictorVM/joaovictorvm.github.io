@@ -1,9 +1,14 @@
 import { useState, type CSSProperties } from "react";
+import * as Accordion from "@radix-ui/react-accordion";
 import { usePreference } from "@/shared/hooks/usePreference";
+import { useI18n } from "@/shared/hooks/useI18n";
+import { CertificateGroup } from "@/features/certificates/components/CertificateGroup";
+import { CertificateRow } from "@/features/certificates/components/CertificateRow";
 import { groupCertificates } from "@/features/certificates/data/certificates";
 import { cn } from "@/shared/lib/cn";
 
 const certificateGroups = groupCertificates();
+const allGroupIds = certificateGroups.map((group) => group.institutionId);
 
 const TYPE_CHAR = 35;
 const CASCADE_OVERLAP = 0.55;
@@ -11,7 +16,22 @@ const CASCADE_GAP = 80;
 
 export function CertificateList() {
   const { language } = usePreference();
+  const { count } = useI18n().certificates;
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [openIds, setOpenIds] = useState<string[]>(allGroupIds);
+  // Grupos já recolhidos ao menos uma vez: ao reabrir, os certificados entram
+  // com um fade rápido em vez de esperar de novo a cascata de digitação.
+  const [collapsedIds, setCollapsedIds] = useState<ReadonlySet<string>>(
+    () => new Set(),
+  );
+
+  function changeOpenIds(nextIds: string[]) {
+    const closedIds = openIds.filter((id) => !nextIds.includes(id));
+    if (closedIds.length > 0) {
+      setCollapsedIds((current) => new Set([...current, ...closedIds]));
+    }
+    setOpenIds(nextIds);
+  }
 
   const seqDelayById = new Map<string, number>();
   let cascadeDelay = 0;
@@ -25,69 +45,63 @@ export function CertificateList() {
   }
 
   return (
-    <div>
-      {certificateGroups.map((group) => (
-        <div key={group.institution} className="mt-4 md:mt-0">
-          {group.certificates.map((certificate, index) => {
-            const isFirst = index === 0;
-            const isLast = index === group.certificates.length - 1;
-            const isDimmed = hoveredId !== null && hoveredId !== certificate.id;
+    <Accordion.Root
+      type="multiple"
+      value={openIds}
+      onValueChange={changeOpenIds}
+    >
+      {certificateGroups.map((group) => {
+        const total = group.certificates.length;
+        const isInstant = collapsedIds.has(group.institutionId);
+        const firstId = group.certificates[0]?.id ?? "";
 
-            return (
-              <div
-                key={certificate.id}
-                style={
-                  {
-                    "--seq-delay": `${String(seqDelayById.get(certificate.id) ?? 0)}ms`,
-                    "--title-chars": certificate.title[language].length,
-                    "--date-chars": certificate.date[language].length,
-                    "--inst-chars": group.institution.length,
-                  } as CSSProperties
-                }
-              >
-                {isFirst && <div className="group-line" />}
-                {isFirst && (
-                  <p className="project-institution text-detail mb-3 pl-2 text-sm md:hidden">
-                    {group.institution}
-                  </p>
-                )}
+        return (
+          <CertificateGroup
+            key={group.institutionId}
+            value={group.institutionId}
+            institution={group.institution}
+            summary={`${String(total)} ${total === 1 ? count.one : count.other}`}
+            isOpen={openIds.includes(group.institutionId)}
+            revealDelay={seqDelayById.get(firstId) ?? 0}
+            onExpand={() => {
+              changeOpenIds([...openIds, group.institutionId]);
+            }}
+          >
+            {group.certificates.map((certificate, index) => {
+              const title = certificate.title[language];
+              const date = certificate.date[language];
+
+              return (
                 <div
-                  onMouseEnter={() => {
-                    setHoveredId(certificate.id);
-                  }}
-                  onMouseLeave={() => {
-                    setHoveredId(null);
-                  }}
-                  className="grid-certificate text-detail hover:text-text/80 grid items-center gap-3 px-2 py-4 transition-colors md:px-0"
+                  key={certificate.id}
+                  className={cn(isInstant && "accordion-reveal")}
+                  style={
+                    {
+                      "--seq-delay": `${String(isInstant ? 0 : (seqDelayById.get(certificate.id) ?? 0))}ms`,
+                      "--title-chars": isInstant ? 0 : title.length,
+                      "--date-chars": isInstant ? 0 : date.length,
+                    } as CSSProperties
+                  }
                 >
-                  <span
-                    className={cn(
-                      "hidden text-sm md:block",
-                      isFirst
-                        ? "project-institution text-detail opacity-100"
-                        : "opacity-0",
-                    )}
-                  >
-                    {group.institution}
-                  </span>
-                  <span
-                    className={cn(
-                      "project-title col-span-2 text-sm font-normal transition-colors duration-150 sm:col-span-1",
-                      isDimmed ? "text-detail" : "text-text",
-                    )}
-                  >
-                    {certificate.title[language]}
-                  </span>
-                  <span className="project-date text-detail hidden text-right text-sm sm:block">
-                    {certificate.date[language]}
-                  </span>
+                  <CertificateRow
+                    title={title}
+                    date={date}
+                    isDimmed={
+                      hoveredId !== null && hoveredId !== certificate.id
+                    }
+                    onHoverChange={(isHovered) => {
+                      setHoveredId(isHovered ? certificate.id : null);
+                    }}
+                  />
+                  {index < total - 1 && (
+                    <div className="project-line ml-6 md:ml-0" />
+                  )}
                 </div>
-                {!isLast && <div className="project-line ml-6 md:ml-35" />}
-              </div>
-            );
-          })}
-        </div>
-      ))}
-    </div>
+              );
+            })}
+          </CertificateGroup>
+        );
+      })}
+    </Accordion.Root>
   );
 }

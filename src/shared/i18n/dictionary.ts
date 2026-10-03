@@ -2,13 +2,6 @@ import type { Language } from "@/types/preferences";
 
 const pt = {
   skipToContent: "Pular para o conteúdo",
-  header: {
-    identity: {
-      name: "João Victor Ventura Martins",
-      roles: ["Engenheiro de Software", "Estudante de Cibersegurança"],
-      homeLabel: "João Victor Ventura Martins — início",
-    },
-  },
   preferences: {
     label: "Preferências",
     language: {
@@ -212,13 +205,6 @@ export type Dictionary = typeof pt;
 
 const en: Dictionary = {
   skipToContent: "Skip to content",
-  header: {
-    identity: {
-      name: "João Victor Ventura Martins",
-      roles: ["Software Engineer", "Cybersecurity Student"],
-      homeLabel: "João Victor Ventura Martins — home",
-    },
-  },
   preferences: {
     label: "Preferences",
     language: {

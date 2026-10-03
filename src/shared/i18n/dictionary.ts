@@ -23,6 +23,7 @@ const pt = {
   footer: {
     location: "Cabo Verde - MG 37880-000",
     logoLabel: "João Victor Ventura Martins — início",
+    privacy: "Privacidade",
     nav: {
       title: "Navegação",
       home: "Início",
@@ -35,6 +36,91 @@ const pt = {
   },
   common: {
     backToIndex: "← Index",
+  },
+  consent: {
+    label: "Consentimento de cookies",
+    message:
+      "Uso cookies do Google Analytics para entender como o site é visitado, só se você permitir.",
+    learnMore: "Saiba mais",
+    accept: "Aceitar",
+    decline: "Recusar",
+  },
+  privacy: {
+    title: "Privacidade",
+    subtitle: "Cookies e dados coletados neste site",
+    updatedLabel: "Última atualização",
+    updatedAt: "3 de outubro de 2026",
+    summary: {
+      title: "Resumo",
+      paragraphs: [
+        "Este site não usa cookies, a não ser que você aceite o Google Analytics. Ele serve só para eu entender como o portfólio é visitado: quais páginas são lidas e de onde vêm as visitas.",
+        "Tudo é opcional. Recusar não muda nada na sua navegação, e você pode mudar de ideia a qualquer momento nesta página.",
+      ],
+    },
+    analytics: {
+      title: "Google Analytics",
+      intro: "Se você aceitar, o Google Analytics registra, de forma agregada:",
+      items: [
+        "Páginas visitadas e tempo de navegação",
+        "De onde você veio (por exemplo, LinkedIn, GitHub ou uma busca)",
+        "Localização aproximada (cidade e país)",
+        "Tipo de dispositivo, sistema e navegador",
+        "Cliques em links externos e downloads de arquivos, como o currículo",
+      ],
+      notCollected:
+        "Não são coletados nome, e-mail ou qualquer informação que você digite. O recurso Google Signals, que cruza dados com contas Google, está desligado.",
+      processor:
+        "Os dados são processados pelo Google, que pode armazená-los fora do Brasil, e ficam disponíveis para análise por até 14 meses.",
+    },
+    storage: {
+      title: "O que fica salvo no seu navegador",
+      cookiesLabel: "Cookies do Google Analytics (só se você aceitar)",
+      cookies: [
+        {
+          name: "_ga",
+          description: "Distingue visitantes. Dura cerca de 2 anos.",
+        },
+        {
+          name: "_ga_<ID>",
+          description: "Mantém o estado da visita. Dura cerca de 2 anos.",
+        },
+      ],
+      essentialLabel:
+        "Itens necessários ao funcionamento do site (não rastreiam você)",
+      essential: [
+        {
+          name: "Tema e idioma",
+          description: "Lembram as preferências escolhidas no menu.",
+        },
+        {
+          name: "Escolha de cookies",
+          description: "Guarda se você aceitou ou recusou, e quando.",
+        },
+        {
+          name: "Dica de arrastar",
+          description:
+            "Evita repetir a dica do botão de preferências na mesma sessão.",
+        },
+      ],
+    },
+    choice: {
+      title: "Sua escolha",
+      currentLabel: "Escolha atual",
+      states: {
+        pending: "ainda não escolhida",
+        granted: "cookies aceitos",
+        denied: "cookies recusados",
+      },
+      validity:
+        "Sua escolha vale por 12 meses. Depois disso, o site pergunta de novo.",
+      saved: "Escolha salva.",
+    },
+    rights: {
+      title: "Seus direitos e contato",
+      paragraph:
+        "Pela LGPD, você pode pedir acesso, correção ou exclusão de dados pessoais. Os dados do Google Analytics são agregados e não me permitem identificar você, mas fico à disposição para qualquer dúvida.",
+      contactPrefix: "Fale comigo em",
+    },
   },
   certificates: {
     title: "Certificados",
@@ -124,6 +210,7 @@ const pt = {
   links: {
     label: "Linktree",
     roles: ["Engenheiro de Software", "Desenvolvedor FullStack"],
+    privacy: "Privacidade e cookies",
   },
   home: {
     intro: {
@@ -227,6 +314,7 @@ const en: Dictionary = {
   footer: {
     location: "Cabo Verde - MG, Brazil",
     logoLabel: "João Victor Ventura Martins — home",
+    privacy: "Privacy",
     nav: {
       title: "Navigation",
       home: "Home",
@@ -239,6 +327,91 @@ const en: Dictionary = {
   },
   common: {
     backToIndex: "← Index",
+  },
+  consent: {
+    label: "Cookie consent",
+    message:
+      "I use Google Analytics cookies to understand how this site is visited, only if you allow it.",
+    learnMore: "Learn more",
+    accept: "Accept",
+    decline: "Decline",
+  },
+  privacy: {
+    title: "Privacy",
+    subtitle: "Cookies and data collected on this site",
+    updatedLabel: "Last updated",
+    updatedAt: "October 3, 2026",
+    summary: {
+      title: "Summary",
+      paragraphs: [
+        "This site doesn't use cookies unless you accept Google Analytics. It only helps me understand how the portfolio is visited: which pages are read and where visits come from.",
+        "Everything is optional. Declining changes nothing about your browsing, and you can change your mind at any time on this page.",
+      ],
+    },
+    analytics: {
+      title: "Google Analytics",
+      intro: "If you accept, Google Analytics records, in aggregate:",
+      items: [
+        "Pages visited and browsing time",
+        "Where you came from (for example, LinkedIn, GitHub or a search)",
+        "Approximate location (city and country)",
+        "Device type, operating system and browser",
+        "Clicks on external links and file downloads, such as the resume",
+      ],
+      notCollected:
+        "Your name, email or anything you type is not collected. Google Signals, which matches data with Google accounts, is turned off.",
+      processor:
+        "The data is processed by Google, which may store it outside Brazil, and is available for analysis for up to 14 months.",
+    },
+    storage: {
+      title: "What is stored in your browser",
+      cookiesLabel: "Google Analytics cookies (only if you accept)",
+      cookies: [
+        {
+          name: "_ga",
+          description: "Distinguishes visitors. Lasts about 2 years.",
+        },
+        {
+          name: "_ga_<ID>",
+          description: "Keeps the visit state. Lasts about 2 years.",
+        },
+      ],
+      essentialLabel:
+        "Items needed for the site to work (they don't track you)",
+      essential: [
+        {
+          name: "Theme and language",
+          description: "Remember the preferences chosen in the menu.",
+        },
+        {
+          name: "Cookie choice",
+          description: "Stores whether you accepted or declined, and when.",
+        },
+        {
+          name: "Drag hint",
+          description:
+            "Avoids repeating the preferences button hint in the same session.",
+        },
+      ],
+    },
+    choice: {
+      title: "Your choice",
+      currentLabel: "Current choice",
+      states: {
+        pending: "not chosen yet",
+        granted: "cookies accepted",
+        denied: "cookies declined",
+      },
+      validity:
+        "Your choice is valid for 12 months. After that, the site asks again.",
+      saved: "Choice saved.",
+    },
+    rights: {
+      title: "Your rights and contact",
+      paragraph:
+        "Under Brazil's LGPD, you can request access to, correction of or deletion of personal data. Google Analytics data is aggregated and doesn't let me identify you, but I'm happy to help with any questions.",
+      contactPrefix: "Reach me at",
+    },
   },
   certificates: {
     title: "Certificates",
@@ -328,6 +501,7 @@ const en: Dictionary = {
   links: {
     label: "Linktree",
     roles: ["Software Engineer", "FullStack Developer"],
+    privacy: "Privacy and cookies",
   },
   home: {
     intro: {

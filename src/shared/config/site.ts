@@ -6,6 +6,7 @@ export const siteConfig = {
   locale: "pt_BR",
   themeColor: "#1a1a1a",
   ogImage: "/og-image.png",
+  contactEmail: "jvmartinscv@gmail.com",
   sameAs: [
     "https://www.linkedin.com/in/jvvmartins/",
     "https://github.com/JoaoVictorVM",
@@ -40,6 +41,11 @@ export const siteConfig = {
       title: "GameDev — João Victor Ventura Martins",
       description:
         "Jogos que João Victor Ventura Martins vem criando por paixão.",
+    },
+    privacy: {
+      title: "Privacidade — João Victor Ventura Martins",
+      description:
+        "Como este site usa cookies e o Google Analytics, e como mudar a sua escolha.",
     },
     links: {
       title: "Links — João Victor Ventura Martins",

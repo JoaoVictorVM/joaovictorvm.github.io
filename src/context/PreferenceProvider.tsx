@@ -1,10 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import type { Language, ThemeMode } from "@/types/preferences";
 import {
   PreferenceContext,
@@ -45,24 +39,14 @@ export function PreferenceProvider({
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
   }, [language]);
 
-  const toggleTheme = useCallback(() => {
-    setTheme((current) => (current === "dark" ? "light" : "dark"));
-  }, []);
-
-  const toggleLanguage = useCallback(() => {
-    setLanguage((current) => (current === "pt" ? "en" : "pt"));
-  }, []);
-
   const value = useMemo<PreferenceContextValue>(
     () => ({
       language,
       theme,
       setLanguage,
       setTheme,
-      toggleLanguage,
-      toggleTheme,
     }),
-    [language, theme, toggleLanguage, toggleTheme],
+    [language, theme],
   );
 
   return (

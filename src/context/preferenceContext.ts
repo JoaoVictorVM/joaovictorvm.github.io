@@ -6,8 +6,6 @@ export interface PreferenceContextValue {
   theme: ThemeMode;
   setLanguage: (language: Language) => void;
   setTheme: (theme: ThemeMode) => void;
-  toggleLanguage: () => void;
-  toggleTheme: () => void;
 }
 
 export const PreferenceContext = createContext<PreferenceContextValue | null>(

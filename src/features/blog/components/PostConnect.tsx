@@ -14,7 +14,7 @@ export function PostConnect() {
       aria-labelledby="post-connect-title"
       className="border-line mt-12 border-t pt-6 lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:w-32 lg:translate-x-38 lg:border-t-0 lg:pt-0"
     >
-      <div className="space-y-4 lg:sticky lg:top-24">
+      <div className="space-y-4 lg:sticky lg:top-16">
         <p id="post-connect-title" className="text-detail text-sm">
           {blog.connect}
         </p>

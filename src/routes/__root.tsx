@@ -9,6 +9,7 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { PreferenceProvider } from "@/context/PreferenceProvider";
 import { ConsentProvider } from "@/context/ConsentProvider";
+import { ConsentAnalytics } from "@/components/layout/ConsentAnalytics";
 import { ConsentBanner } from "@/components/layout/ConsentBanner";
 import { NotFound } from "@/components/layout/NotFound";
 import { ErrorFallback } from "@/components/layout/ErrorFallback";
@@ -69,6 +70,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
           <ConsentProvider>
             {/* No começo do DOM para teclado e leitor de tela o encontrarem logo. */}
             <ConsentBanner />
+            <ConsentAnalytics />
             {children}
           </ConsentProvider>
         </PreferenceProvider>

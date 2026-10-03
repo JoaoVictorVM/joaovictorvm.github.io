@@ -134,6 +134,7 @@ const pt = {
   home: {
     intro: {
       name: "João Victor Ventura Martins",
+      roles: ["Engenheiro de Software", "Estudante de Cibersegurança"],
       lead: "Software Engineer com foco em Go e React, desenvolvendo aplicações com ênfase em arquitetura, performance, escalabilidade, manutenibilidade e organização de código.",
       summary:
         "Sinta-se a vontade para conhecer mais sobre minha trajetória, o que venho estudando e os projetos em que estou trabalhando.",
@@ -343,6 +344,7 @@ const en: Dictionary = {
   home: {
     intro: {
       name: "João Victor Ventura Martins",
+      roles: ["Software Engineer", "Cybersecurity Student"],
       lead: "Software Engineer focused on Go for backend and React for frontend, building applications with an emphasis on architecture, performance, scalability, maintainability and clean code organization.",
       summary:
         "Feel free to explore my journey, what I am currently studying, and the projects I am working on.",

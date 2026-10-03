@@ -199,6 +199,55 @@
   }
 }
 
+/* Texto rotativo (RotatingText): cada item é digitado, espera e é apagado.
+   A largura anima de 0 até a largura medida do texto (--text-width) em
+   degraus por caractere, e a borda direita faz o papel de cursor. */
+.rotating-text {
+  --role-delay: 0ms;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 1px solid currentColor;
+}
+.rotating-text[data-first] {
+  --role-delay: var(--rotating-start, 0ms);
+}
+.visible .rotating-text {
+  animation:
+    rotatingType calc(var(--chars) * var(--role-type-char)) steps(var(--chars))
+      var(--role-delay) forwards,
+    rotatingErase calc(var(--chars) * var(--erase-char)) steps(var(--chars))
+      calc(
+        var(--role-delay) + var(--chars) * var(--role-type-char) +
+          var(--duration-role-hold)
+      )
+      forwards,
+    caretBlink var(--duration-caret) steps(1) infinite;
+}
+.rotating-text-group:hover .rotating-text {
+  animation-play-state: paused;
+}
+@keyframes rotatingType {
+  to {
+    width: var(--text-width);
+  }
+}
+@keyframes rotatingErase {
+  from {
+    width: var(--text-width);
+  }
+  to {
+    width: 0;
+  }
+}
+@keyframes caretBlink {
+  50% {
+    border-color: transparent;
+  }
+}
+
 /* Capturado à parte na transição de rota, para o botão flutuante não sumir e
    reaparecer junto com a página. */
 .preferences-trigger {

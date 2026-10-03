@@ -7,6 +7,8 @@ export const siteConfig = {
   themeColor: "#1a1a1a",
   ogImage: "/og-image.png",
   contactEmail: "jvmartinscv@gmail.com",
+  /** Google Analytics 4 (fluxo Web do site publicado). Não é segredo: vai no HTML. */
+  analyticsId: "G-5W15S3E20Y",
   sameAs: [
     "https://www.linkedin.com/in/jvvmartins/",
     "https://github.com/JoaoVictorVM",

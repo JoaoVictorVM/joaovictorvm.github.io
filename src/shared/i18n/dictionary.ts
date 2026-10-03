@@ -4,6 +4,7 @@ const pt = {
   skipToContent: "Pular para o conteúdo",
   preferences: {
     label: "Preferências",
+    dragHint: "Arraste para mover",
     language: {
       label: "Idioma",
       names: {
@@ -207,6 +208,7 @@ const en: Dictionary = {
   skipToContent: "Skip to content",
   preferences: {
     label: "Preferences",
+    dragHint: "Drag to move",
     language: {
       label: "Language",
       names: {

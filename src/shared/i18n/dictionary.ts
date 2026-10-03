@@ -45,6 +45,10 @@ const pt = {
   certificates: {
     title: "Certificados",
     subtitle: "Qualidade e excelência comprovadas",
+    count: {
+      one: "certificado",
+      other: "certificados",
+    },
   },
   projects: {
     title: "Projetos",
@@ -250,6 +254,10 @@ const en: Dictionary = {
   certificates: {
     title: "Certificates",
     subtitle: "Proven quality and excellence",
+    count: {
+      one: "certificate",
+      other: "certificates",
+    },
   },
   projects: {
     title: "Projects",

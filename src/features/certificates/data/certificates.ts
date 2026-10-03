@@ -13,6 +13,7 @@ export interface Certificate {
 }
 
 export interface CertificateGroup {
+  institutionId: string;
   institution: string;
   certificates: Certificate[];
 }
@@ -120,6 +121,7 @@ export function groupCertificates(): CertificateGroup[] {
       existing.certificates.push(certificate);
     } else {
       groups.set(certificate.institutionId, {
+        institutionId: certificate.institutionId,
         institution: certificate.institution,
         certificates: [certificate],
       });

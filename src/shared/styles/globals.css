@@ -12,10 +12,14 @@ body {
     color var(--duration-theme) ease;
 }
 
-:focus-visible {
-  outline: 2px solid var(--text-color);
-  outline-offset: 2px;
-  border-radius: 2px;
+/* Em base para que utilitários `rounded-*` prevaleçam: fora de layer, o
+   border-radius daqui deixava botões redondos quadrados ao receber foco. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 }
 
 @utility grid-certificate {

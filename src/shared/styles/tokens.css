@@ -18,6 +18,7 @@
   --duration-caret: 1s;
   --stagger: 120ms;
   --duration-page: 300ms;
+  --duration-hero: 500ms;
 
   --ease-reveal: cubic-bezier(0.4, 0, 0.2, 1);
 

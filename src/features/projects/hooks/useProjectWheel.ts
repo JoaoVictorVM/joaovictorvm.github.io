@@ -1,10 +1,12 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
+import { PROJECT_HERO_TRANSITION } from "@/features/projects/lib/heroTransition";
 
 /** Distância (px) para um gesto de ponteiro deixar de ser clique. */
 const DRAG_THRESHOLD = 5;
@@ -76,19 +78,22 @@ function prefersReducedMotion() {
  * gesto; o arrasto horizontal gira acompanhando o ponteiro e encaixa ao soltar;
  * clique e teclado trazem o item ao centro pelo caminho mais curto. Os cards são
  * posicionados direto pelo DOM, a cada frame, sem re-renderizar.
+ *
+ * `initialIndex` é o item que começa no centro (ex.: o projeto de onde se voltou),
+ * já marcado com a View Transition para a página "encolher" até ele.
  */
-export function useProjectWheel(count: number) {
+export function useProjectWheel(count: number, initialIndex = 0) {
   const stageRef = useRef<HTMLDivElement>(null);
   const wheelRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLLIElement | null)[]>([]);
   const geometry = useRef<WheelGeometry | null>(null);
   /** Posição atual da roda (contínua) e o alvo do giro em andamento. */
-  const spin = useRef(0);
-  const spinTarget = useRef(0);
+  const spin = useRef(initialIndex);
+  const spinTarget = useRef(initialIndex);
   const spinFrame = useRef(0);
   const gesture = useRef<GestureState | null>(null);
   const shouldSuppressClick = useRef(false);
-  const activeIndexRef = useRef(0);
+  const activeIndexRef = useRef(initialIndex);
   /** Item que estava no centro quando o ponteiro tocou: decide se o clique navega. */
   const centerAtPress = useRef<number | null>(null);
 
@@ -168,11 +173,31 @@ export function useProjectWheel(count: number) {
     activeIndexRef.current = wrapIndex(Math.round(position), count);
   }, [count]);
 
+  /**
+   * Dá o nome da View Transition só ao card `index` (ou a nenhum, com `null`):
+   * dois elementos com o mesmo nome cancelariam a animação.
+   */
+  const markHero = useCallback((index: number | null) => {
+    cardRefs.current.forEach((card, cardIndex) => {
+      const face = card?.firstElementChild;
+      if (!(face instanceof HTMLElement)) {
+        return;
+      }
+      if (cardIndex === index) {
+        face.style.setProperty("view-transition-name", PROJECT_HERO_TRANSITION);
+      } else {
+        face.style.removeProperty("view-transition-name");
+      }
+    });
+  }, []);
+
   /** Gira a roda até `target` (animado; instantâneo com reduced-motion). */
   const spinTo = useCallback(
     (target: number) => {
       window.cancelAnimationFrame(spinFrame.current);
       spinTarget.current = target;
+      // Girou: o card marcado para a volta deixa de ser o central.
+      markHero(null);
 
       if (prefersReducedMotion()) {
         spin.current = target;
@@ -192,7 +217,7 @@ export function useProjectWheel(count: number) {
       };
       spinFrame.current = window.requestAnimationFrame(step);
     },
-    [render],
+    [markHero, render],
   );
 
   /** Avança `steps` itens a partir do alvo atual (giros seguidos se somam). */
@@ -212,12 +237,15 @@ export function useProjectWheel(count: number) {
     [count, spinTo],
   );
 
-  useEffect(() => {
+  // Layout effect: a roda precisa estar posicionada (e o card central marcado)
+  // antes de o navegador capturar a página nova na View Transition de volta.
+  useLayoutEffect(() => {
     const remeasure = () => {
       measure();
       render();
     };
     remeasure();
+    markHero(wrapIndex(initialIndex, count));
     window.addEventListener("resize", remeasure);
     // Mudanças de tamanho sem resize da janela (fonte carregando, por exemplo).
     const observer = new ResizeObserver(remeasure);
@@ -229,7 +257,7 @@ export function useProjectWheel(count: number) {
       window.removeEventListener("resize", remeasure);
       observer.disconnect();
     };
-  }, [measure, render]);
+  }, [count, initialIndex, markHero, measure, render]);
 
   // Roda do mouse e touchpad: um gesto avança exatamente um item. Rolar para
   // baixo traz o item da direita ao centro; para cima, o da esquerda.
@@ -362,9 +390,10 @@ export function useProjectWheel(count: number) {
   }, []);
 
   /**
-   * Clique num card: só o card central abre o projeto; os demais são trazidos
-   * ao centro. Vale o centro do momento do toque (o foco já pode ter iniciado o
-   * giro até o clique chegar); pelo teclado, vale o centro atual.
+   * Clique num card: só o card central abre o projeto (marcado para "crescer"
+   * até a página); os demais são trazidos ao centro. Vale o centro do momento
+   * do toque (o foco já pode ter iniciado o giro até o clique chegar); pelo
+   * teclado, vale o centro atual.
    */
   const onCardClick = useCallback(
     (index: number, event: ReactMouseEvent<HTMLElement>) => {
@@ -373,9 +402,11 @@ export function useProjectWheel(count: number) {
       if (index !== center) {
         event.preventDefault();
         rotateTo(index);
+        return;
       }
+      markHero(index);
     },
-    [rotateTo],
+    [markHero, rotateTo],
   );
 
   return {

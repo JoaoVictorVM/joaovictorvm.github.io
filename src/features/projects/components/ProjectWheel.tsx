@@ -5,6 +5,7 @@ import { ShowcaseLink } from "@/features/projects/components/ShowcaseLink";
 import { showcaseItems } from "@/features/projects/data/showcase";
 import { getShowcaseText } from "@/features/projects/data/showcaseText";
 import { useProjectWheel } from "@/features/projects/hooks/useProjectWheel";
+import { getLastViewedProject } from "@/features/projects/lib/heroTransition";
 import { usePreference } from "@/shared/hooks/usePreference";
 import { useI18n } from "@/shared/hooks/useI18n";
 
@@ -16,8 +17,16 @@ export function ProjectWheel() {
   const { language } = usePreference();
   const t = useI18n().projects;
   const count = showcaseItems.length;
+  // Voltando de um projeto, a roda começa com ele no centro.
+  const lastViewed = getLastViewedProject();
+  const initialIndex = Math.max(
+    0,
+    showcaseItems.findIndex(
+      (item) => item.kind === "project" && item.project.id === lastViewed,
+    ),
+  );
   const { stageRef, wheelRef, cardRefs, rotateTo, onCardClick, wheelHandlers } =
-    useProjectWheel(count);
+    useProjectWheel(count, initialIndex);
 
   function onListKeyDown(event: KeyboardEvent<HTMLUListElement>) {
     if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {

@@ -2,7 +2,10 @@ import {
   DisclosureList,
   type DisclosureItem,
 } from "@/components/ui/DisclosureList";
-import { projects } from "@/features/projects/data/projects";
+import {
+  allProjectsCallout,
+  projects,
+} from "@/features/projects/data/projects";
 import { usePreference } from "@/shared/hooks/usePreference";
 
 export function ProjectAccordion() {
@@ -19,6 +22,18 @@ export function ProjectAccordion() {
       url: link.url,
     })),
   }));
+
+  items.push({
+    id: "all-projects",
+    title: allProjectsCallout.title[language],
+    body: allProjectsCallout.details[language],
+    links: [
+      {
+        label: allProjectsCallout.link.label[language],
+        url: allProjectsCallout.link.url,
+      },
+    ],
+  });
 
   return <DisclosureList items={items} />;
 }

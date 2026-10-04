@@ -24,6 +24,10 @@ const pt = {
     location: "Cabo Verde - MG 37880-000",
     logoLabel: "João Victor Ventura Martins — início",
     privacy: "Privacidade",
+    drawer: {
+      open: "Abrir rodapé",
+      close: "Fechar rodapé",
+    },
     nav: {
       title: "Navegação",
       home: "Início",
@@ -319,6 +323,10 @@ const en: Dictionary = {
     location: "Cabo Verde - MG, Brazil",
     logoLabel: "João Victor Ventura Martins — home",
     privacy: "Privacy",
+    drawer: {
+      open: "Open footer",
+      close: "Close footer",
+    },
     nav: {
       title: "Navigation",
       home: "Home",

@@ -3,7 +3,7 @@ import { BackLink } from "@/components/layout/BackLink";
 
 interface PageColumnProps {
   backLabel: string;
-  backTo?: "/" | "/blog";
+  backTo?: "/" | "/blog" | "/projects";
   children: ReactNode;
 }
 

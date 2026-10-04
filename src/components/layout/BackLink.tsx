@@ -3,7 +3,7 @@ import { cn } from "@/shared/lib/cn";
 
 interface BackLinkProps {
   label: string;
-  to?: "/" | "/blog";
+  to?: "/" | "/blog" | "/projects";
   className?: string;
 }
 

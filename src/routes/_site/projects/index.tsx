@@ -9,7 +9,7 @@ import { useI18n } from "@/shared/hooks/useI18n";
 import { useReveal } from "@/shared/hooks/useReveal";
 import { cn } from "@/shared/lib/cn";
 
-export const Route = createFileRoute("/_site/projects")({
+export const Route = createFileRoute("/_site/projects/")({
   head: () => pageHead({ ...siteConfig.pages.projects, path: "/projects" }),
   component: ProjectsPage,
 });

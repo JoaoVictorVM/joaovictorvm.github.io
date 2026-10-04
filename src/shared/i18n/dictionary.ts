@@ -133,6 +133,10 @@ const pt = {
   projects: {
     title: "Projetos",
     subtitle: "Abaixo alguns projetos selecionados",
+    backToProjects: "← Projetos",
+    viewProject: "Ver projeto",
+    stackLabel: "Stack",
+    galleryLabel: "Galeria",
   },
   blog: {
     title: "Blog",
@@ -424,6 +428,10 @@ const en: Dictionary = {
   projects: {
     title: "Projects",
     subtitle: "Below are some selected projects",
+    backToProjects: "← Projects",
+    viewProject: "View project",
+    stackLabel: "Stack",
+    galleryLabel: "Gallery",
   },
   blog: {
     title: "Writing",

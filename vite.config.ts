@@ -3,6 +3,7 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import tsConfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
+import { projects } from "./src/features/projects/data/projects";
 
 export default defineConfig({
   base: "/",
@@ -22,6 +23,13 @@ export default defineConfig({
           prerender: { enabled: true, outputPath: "404.html" },
           sitemap: { exclude: true },
         },
+        // Declaradas a partir dos dados: os links para elas podem não estar no
+        // HTML inicial (ex.: dentro de um acordeão fechado), e aí o crawler não
+        // as encontraria.
+        ...projects.map((project) => ({
+          path: `/projects/${project.id}`,
+          prerender: { enabled: true },
+        })),
       ],
       prerender: {
         enabled: true,

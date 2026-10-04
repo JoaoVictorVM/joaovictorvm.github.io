@@ -24,6 +24,10 @@ const pt = {
     location: "Cabo Verde - MG 37880-000",
     logoLabel: "João Victor Ventura Martins — início",
     privacy: "Privacidade",
+    drawer: {
+      open: "Abrir rodapé",
+      close: "Fechar rodapé",
+    },
     nav: {
       title: "Navegação",
       home: "Início",
@@ -134,7 +138,6 @@ const pt = {
     title: "Projetos",
     subtitle: "Abaixo alguns projetos selecionados",
     backToProjects: "← Projetos",
-    viewProject: "Ver projeto",
     stackLabel: "Stack",
     galleryLabel: "Galeria",
   },
@@ -319,6 +322,10 @@ const en: Dictionary = {
     location: "Cabo Verde - MG, Brazil",
     logoLabel: "João Victor Ventura Martins — home",
     privacy: "Privacy",
+    drawer: {
+      open: "Open footer",
+      close: "Close footer",
+    },
     nav: {
       title: "Navigation",
       home: "Home",
@@ -429,7 +436,6 @@ const en: Dictionary = {
     title: "Projects",
     subtitle: "Below are some selected projects",
     backToProjects: "← Projects",
-    viewProject: "View project",
     stackLabel: "Stack",
     galleryLabel: "Gallery",
   },

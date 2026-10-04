@@ -1,4 +1,4 @@
-import { useState, type CSSProperties, type ReactNode } from "react";
+import { useState, type CSSProperties } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { cn } from "@/shared/lib/cn";
@@ -15,8 +15,6 @@ export interface DisclosureItem {
   tags?: string[];
   tagsLabel?: string;
   links?: DisclosureLink[];
-  /** Ação extra exibida antes dos links (ex.: link interno para uma página de detalhe). */
-  cta?: ReactNode;
 }
 
 interface DisclosureListProps {
@@ -73,7 +71,6 @@ export function DisclosureList({ items }: DisclosureListProps) {
                     {item.tags.join(" · ")}
                   </p>
                 )}
-                {item.cta && <div className="accordion-reveal">{item.cta}</div>}
                 {item.links && item.links.length > 0 && (
                   <div className="accordion-reveal flex flex-wrap gap-2">
                     {item.links.map((link) => (

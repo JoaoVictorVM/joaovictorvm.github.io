@@ -248,10 +248,10 @@
   }
 }
 
-/* Capturado à parte na transição de rota, para o botão flutuante não sumir e
+/* Capturada à parte na transição de rota, para a navegação fixa não sumir e
    reaparecer junto com a página. */
-.preferences-trigger {
-  view-transition-name: preferences-trigger;
+.site-nav {
+  view-transition-name: site-nav;
 }
 
 /* Card da roda → página do projeto (e volta): o mesmo nome nos dois lados faz o

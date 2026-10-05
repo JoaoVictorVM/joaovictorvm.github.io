@@ -37,7 +37,8 @@ export function LinkTree() {
             <LinkCard key={item.title.pt} item={item} />
           ))}
         </div>
-        {/* Esta página não tem rodapé: é o acesso à política e à troca da escolha de cookies. */}
+        {/* Esta página não tem a navegação do site (nem o menu com "Privacidade"):
+            este link é o acesso à política e à troca da escolha de cookies. */}
         <Link
           to="/privacy"
           className={cn(

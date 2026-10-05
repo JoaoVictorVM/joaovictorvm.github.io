@@ -10,8 +10,8 @@ import { usePreference } from "@/shared/hooks/usePreference";
 import { useI18n } from "@/shared/hooks/useI18n";
 
 /**
- * Vitrine de projetos em arco, ocupando uma tela fixa: topo da página e a roda,
- * com espaço embaixo para a alça do rodapé (que nesta página é uma gaveta).
+ * Vitrine de projetos em arco, ocupando uma tela fixa: topo da página e, no
+ * espaço restante, a roda.
  */
 export function ProjectWheel() {
   const { language } = usePreference();
@@ -52,11 +52,10 @@ export function ProjectWheel() {
         <ProjectsHeader />
       </div>
 
-      {/* `mb-14` reserva o espaço da alça do rodapé, que flutua no fim da tela. */}
       <div
         ref={wheelRef}
         {...wheelHandlers}
-        className="relative mb-14 flex-1 touch-none select-none"
+        className="relative flex-1 touch-none select-none"
       >
         <ul aria-label={t.title} onKeyDown={onListKeyDown}>
           {showcaseItems.map((item, index) => {

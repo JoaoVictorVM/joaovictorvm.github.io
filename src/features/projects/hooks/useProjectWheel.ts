@@ -107,7 +107,7 @@ export function useProjectWheel(count: number, initialIndex = 0) {
     }
 
     // O card ocupa a largura do conteúdo, mas encolhe (mantendo 16:9) se a
-    // altura disponível entre o título e a alça do rodapé não comportá-lo.
+    // altura disponível abaixo do título não comportá-lo.
     items.forEach((item) => {
       item?.style.removeProperty("width");
     });

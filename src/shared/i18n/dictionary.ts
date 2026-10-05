@@ -44,6 +44,13 @@ const pt = {
         custom: "Cursor personalizado",
       },
     },
+    background: {
+      label: "Fundo",
+      names: {
+        plain: "Fundo liso",
+        dots: "Fundo pontilhado",
+      },
+    },
   },
   common: {
     backToIndex: "← Index",
@@ -100,7 +107,7 @@ const pt = {
         "Itens necessários ao funcionamento do site (não rastreiam você)",
       essential: [
         {
-          name: "Tema, idioma e cursor",
+          name: "Tema, idioma, cursor e fundo",
           description: "Lembram as preferências escolhidas no menu.",
         },
         {
@@ -344,6 +351,13 @@ const en: Dictionary = {
         custom: "Custom cursor",
       },
     },
+    background: {
+      label: "Background",
+      names: {
+        plain: "Plain background",
+        dots: "Dotted background",
+      },
+    },
   },
   common: {
     backToIndex: "← Index",
@@ -400,7 +414,7 @@ const en: Dictionary = {
         "Items needed for the site to work (they don't track you)",
       essential: [
         {
-          name: "Theme, language and cursor",
+          name: "Theme, language, cursor and background",
           description: "Remember the preferences chosen in the menu.",
         },
         {

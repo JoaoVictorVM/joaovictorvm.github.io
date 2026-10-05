@@ -1,13 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
 import { usePreference } from "@/shared/hooks/usePreference";
+import { isClickableTarget, MOUSE_QUERY } from "@/shared/lib/pointer";
 
-/** Aparelho com mouse: o único em que o cursor personalizado faz sentido. */
-export const MOUSE_QUERY = "(hover: hover) and (pointer: fine)";
-
-/** Elementos que contam como clicáveis: o cursor vira o círculo invertido. */
-const CLICKABLE_SELECTOR =
-  'a[href], button, [role="button"], [role^="menuitem"], summary, label, select, .cursor-pointer';
 /** Fração da distância que o círculo percorre por frame (o "atraso" suave). */
 const RING_FOLLOW = 0.2;
 /** Classe no <html> que esconde o cursor do sistema (só com o personalizado ativo). */
@@ -81,10 +76,7 @@ export function CustomCursor() {
       schedule();
     };
     const onPointerOver = (event: PointerEvent) => {
-      const isClickable =
-        event.target instanceof Element &&
-        event.target.closest(CLICKABLE_SELECTOR) !== null;
-      root.dataset.hover = String(isClickable);
+      root.dataset.hover = String(isClickableTarget(event.target));
     };
     const onMouseLeave = () => {
       isVisible = false;

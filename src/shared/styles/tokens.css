@@ -19,6 +19,11 @@
   --stagger: 120ms;
   --duration-page: 300ms;
   --duration-hero: 500ms;
+  --duration-cursor: 200ms;
+
+  /* Branco puro do cursor personalizado: com mix-blend-mode: difference ele
+     inverte o que está embaixo, nos dois temas. */
+  --color-invert: #ffffff;
 
   --ease-reveal: cubic-bezier(0.4, 0, 0.2, 1);
 

@@ -48,7 +48,7 @@ function PreferenceOption({ value, label, children }: PreferenceOptionProps) {
       value={value}
       aria-label={label}
       title={label}
-      // Mantém o menu aberto para trocar idioma e tema sem reabrir.
+      // Mantém o menu aberto para trocar várias preferências sem reabrir.
       onSelect={(event) => {
         event.preventDefault();
       }}

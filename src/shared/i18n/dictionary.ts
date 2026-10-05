@@ -37,6 +37,13 @@ const pt = {
         dark: "Escuro",
       },
     },
+    cursor: {
+      label: "Cursor",
+      names: {
+        system: "Cursor do sistema",
+        custom: "Cursor personalizado",
+      },
+    },
   },
   common: {
     backToIndex: "← Index",
@@ -53,7 +60,7 @@ const pt = {
     title: "Privacidade",
     subtitle: "Cookies e dados coletados neste site",
     updatedLabel: "Última atualização",
-    updatedAt: "4 de outubro de 2026",
+    updatedAt: "5 de outubro de 2026",
     summary: {
       title: "Resumo",
       paragraphs: [
@@ -93,7 +100,7 @@ const pt = {
         "Itens necessários ao funcionamento do site (não rastreiam você)",
       essential: [
         {
-          name: "Tema e idioma",
+          name: "Tema, idioma e cursor",
           description: "Lembram as preferências escolhidas no menu.",
         },
         {
@@ -330,6 +337,13 @@ const en: Dictionary = {
         dark: "Dark",
       },
     },
+    cursor: {
+      label: "Cursor",
+      names: {
+        system: "System cursor",
+        custom: "Custom cursor",
+      },
+    },
   },
   common: {
     backToIndex: "← Index",
@@ -346,7 +360,7 @@ const en: Dictionary = {
     title: "Privacy",
     subtitle: "Cookies and data collected on this site",
     updatedLabel: "Last updated",
-    updatedAt: "October 4, 2026",
+    updatedAt: "October 5, 2026",
     summary: {
       title: "Summary",
       paragraphs: [
@@ -386,7 +400,7 @@ const en: Dictionary = {
         "Items needed for the site to work (they don't track you)",
       essential: [
         {
-          name: "Theme and language",
+          name: "Theme, language and cursor",
           description: "Remember the preferences chosen in the menu.",
         },
         {

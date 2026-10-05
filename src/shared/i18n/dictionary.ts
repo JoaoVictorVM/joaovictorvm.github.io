@@ -4,6 +4,16 @@ const pt = {
   skipToContent: "Pular para o conteúdo",
   nav: {
     menuLabel: "Navegação",
+    logoLabel: "João Victor Ventura Martins — início",
+    privacy: "Privacidade",
+    pages: {
+      home: "Início",
+      about: "Sobre",
+      projects: "Projetos",
+      certificates: "Certificados",
+      blog: "Blog",
+      gamedev: "GameDev",
+    },
     info: {
       label: "Informações",
       title: "Informações",
@@ -26,24 +36,6 @@ const pt = {
         light: "Claro",
         dark: "Escuro",
       },
-    },
-  },
-  footer: {
-    location: "Cabo Verde - MG 37880-000",
-    logoLabel: "João Victor Ventura Martins — início",
-    privacy: "Privacidade",
-    drawer: {
-      open: "Abrir rodapé",
-      close: "Fechar rodapé",
-    },
-    nav: {
-      title: "Navegação",
-      home: "Início",
-      about: "Sobre",
-      projects: "Projetos",
-      certificates: "Certificados",
-      blog: "Blog",
-      gamedev: "GameDev",
     },
   },
   common: {
@@ -305,6 +297,16 @@ const en: Dictionary = {
   skipToContent: "Skip to content",
   nav: {
     menuLabel: "Navigation",
+    logoLabel: "João Victor Ventura Martins — home",
+    privacy: "Privacy",
+    pages: {
+      home: "Home",
+      about: "About",
+      projects: "Projects",
+      certificates: "Certificates",
+      blog: "Writing",
+      gamedev: "GameDev",
+    },
     info: {
       label: "Information",
       title: "Information",
@@ -327,24 +329,6 @@ const en: Dictionary = {
         light: "Light",
         dark: "Dark",
       },
-    },
-  },
-  footer: {
-    location: "Cabo Verde - MG, Brazil",
-    logoLabel: "João Victor Ventura Martins — home",
-    privacy: "Privacy",
-    drawer: {
-      open: "Open footer",
-      close: "Close footer",
-    },
-    nav: {
-      title: "Navigation",
-      home: "Home",
-      about: "About",
-      projects: "Projects",
-      certificates: "Certificates",
-      blog: "Writing",
-      gamedev: "GameDev",
     },
   },
   common: {

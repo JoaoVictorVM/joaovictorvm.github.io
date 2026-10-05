@@ -22,6 +22,91 @@ body {
   }
 }
 
+/* Cursor personalizado (CustomCursor). O cursor do sistema só some com o
+   personalizado ativo, e volta com um <dialog> aberto: a "top layer" do modal
+   fica acima de qualquer elemento, então o cursor personalizado não apareceria. */
+html.has-custom-cursor:not(:has(dialog[open])),
+html.has-custom-cursor:not(:has(dialog[open])) * {
+  cursor: none !important;
+}
+.custom-cursor {
+  position: fixed;
+  inset: 0;
+  /* Acima dos menus (z-50), que entram no fim do <body> ao abrir. */
+  z-index: 60;
+  pointer-events: none;
+  /* A inversão precisa estar no próprio elemento fixo: num filho, a mistura
+     ficaria isolada dentro do cursor e não alcançaria a página. */
+  mix-blend-mode: difference;
+  opacity: 0;
+  transition: opacity var(--duration-cursor) var(--ease-reveal);
+}
+.custom-cursor[data-visible="true"] {
+  opacity: 1;
+}
+html:has(dialog[open]) .custom-cursor {
+  display: none;
+}
+.custom-cursor-ring,
+.custom-cursor-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+.custom-cursor-ring > span,
+.custom-cursor-dot > span {
+  display: block;
+  translate: -50% -50%;
+  border-radius: 9999px;
+  transition:
+    width var(--duration-cursor) var(--ease-reveal),
+    height var(--duration-cursor) var(--ease-reveal),
+    background-color var(--duration-cursor) var(--ease-reveal),
+    opacity var(--duration-cursor) var(--ease-reveal);
+}
+.custom-cursor-ring > span {
+  width: calc(var(--spacing) * 8);
+  height: calc(var(--spacing) * 8);
+  border: 1px solid var(--color-invert);
+}
+.custom-cursor-dot > span {
+  width: calc(var(--spacing) * 2);
+  height: calc(var(--spacing) * 2);
+  background-color: var(--color-invert);
+}
+/* Sobre algo clicável: bolinha e círculo viram um só, preenchido e invertido. */
+.custom-cursor[data-hover="true"] .custom-cursor-ring > span {
+  width: calc(var(--spacing) * 12);
+  height: calc(var(--spacing) * 12);
+  background-color: var(--color-invert);
+}
+.custom-cursor[data-hover="true"] .custom-cursor-dot > span {
+  opacity: 0;
+}
+/* Clique: enquanto pressionado, o círculo encolhe em direção ao centro e a
+   bolinha cresce; sobre algo clicável, o círculo cheio só encolhe um pouco. */
+.custom-cursor[data-pressed="true"] .custom-cursor-ring > span {
+  width: calc(var(--spacing) * 6);
+  height: calc(var(--spacing) * 6);
+}
+.custom-cursor[data-pressed="true"] .custom-cursor-dot > span {
+  width: calc(var(--spacing) * 3);
+  height: calc(var(--spacing) * 3);
+}
+.custom-cursor[data-hover="true"][data-pressed="true"]
+  .custom-cursor-ring
+  > span {
+  width: calc(var(--spacing) * 10);
+  height: calc(var(--spacing) * 10);
+}
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor-ring > span,
+  .custom-cursor-dot > span {
+    transition: none;
+  }
+}
+
 @utility grid-certificate {
   grid-template-columns: calc(var(--spacing) * 35) 1fr;
 }

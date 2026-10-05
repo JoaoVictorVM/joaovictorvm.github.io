@@ -1,6 +1,7 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Settings2 } from "lucide-react";
 
+import { BackgroundOptions } from "@/components/layout/BackgroundOptions";
 import { CursorOptions } from "@/components/layout/CursorOptions";
 import { LanguageOptions } from "@/components/layout/LanguageOptions";
 import { ThemeOptions } from "@/components/layout/ThemeOptions";
@@ -9,7 +10,7 @@ import { useI18n } from "@/shared/hooks/useI18n";
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
 import { MOUSE_QUERY } from "@/shared/lib/pointer";
 
-/** Menu de preferências (idioma, tema e cursor) da navegação. */
+/** Menu de preferências (idioma, tema, cursor e fundo) da navegação. */
 export function PreferencesMenu() {
   const t = useI18n();
   const hasMouse = useMediaQuery(MOUSE_QUERY);
@@ -35,12 +36,15 @@ export function PreferencesMenu() {
           <LanguageOptions />
           <DropdownMenu.Separator className="bg-line mx-2 my-1 h-px" />
           <ThemeOptions />
-          {/* O cursor personalizado só existe com mouse: sem ele, a opção nem
-              é renderizada (escondida por CSS, ainda entraria na navegação por setas). */}
+          {/* Cursor personalizado e fundo pontilhado só existem com mouse: sem
+              ele, as opções nem são renderizadas (escondidas por CSS, ainda
+              entrariam na navegação por setas). */}
           {hasMouse && (
             <>
               <DropdownMenu.Separator className="bg-line mx-2 my-1 h-px" />
               <CursorOptions />
+              <DropdownMenu.Separator className="bg-line mx-2 my-1 h-px" />
+              <BackgroundOptions />
             </>
           )}
         </DropdownMenu.Content>

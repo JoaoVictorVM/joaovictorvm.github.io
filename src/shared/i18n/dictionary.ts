@@ -37,6 +37,13 @@ const pt = {
         dark: "Escuro",
       },
     },
+    cursor: {
+      label: "Cursor",
+      names: {
+        system: "Cursor do sistema",
+        custom: "Cursor personalizado",
+      },
+    },
   },
   common: {
     backToIndex: "← Index",
@@ -328,6 +335,13 @@ const en: Dictionary = {
       names: {
         light: "Light",
         dark: "Dark",
+      },
+    },
+    cursor: {
+      label: "Cursor",
+      names: {
+        system: "System cursor",
+        custom: "Custom cursor",
       },
     },
   },

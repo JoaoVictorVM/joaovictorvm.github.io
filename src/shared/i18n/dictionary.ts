@@ -2,9 +2,17 @@ import type { Language } from "@/types/preferences";
 
 const pt = {
   skipToContent: "Pular para o conteúdo",
+  nav: {
+    menuLabel: "Navegação",
+    info: {
+      label: "Informações",
+      title: "Informações",
+      body: "Em breve, mais informações por aqui.",
+      close: "Fechar",
+    },
+  },
   preferences: {
     label: "Preferências",
-    dragHint: "Arraste para mover",
     language: {
       label: "Idioma",
       names: {
@@ -53,7 +61,7 @@ const pt = {
     title: "Privacidade",
     subtitle: "Cookies e dados coletados neste site",
     updatedLabel: "Última atualização",
-    updatedAt: "3 de outubro de 2026",
+    updatedAt: "4 de outubro de 2026",
     summary: {
       title: "Resumo",
       paragraphs: [
@@ -99,11 +107,6 @@ const pt = {
         {
           name: "Escolha de cookies",
           description: "Guarda se você aceitou ou recusou, e quando.",
-        },
-        {
-          name: "Dica de arrastar",
-          description:
-            "Evita repetir a dica do botão de preferências na mesma sessão.",
         },
       ],
     },
@@ -300,9 +303,17 @@ export type Dictionary = typeof pt;
 
 const en: Dictionary = {
   skipToContent: "Skip to content",
+  nav: {
+    menuLabel: "Navigation",
+    info: {
+      label: "Information",
+      title: "Information",
+      body: "More information coming here soon.",
+      close: "Close",
+    },
+  },
   preferences: {
     label: "Preferences",
-    dragHint: "Drag to move",
     language: {
       label: "Language",
       names: {
@@ -351,7 +362,7 @@ const en: Dictionary = {
     title: "Privacy",
     subtitle: "Cookies and data collected on this site",
     updatedLabel: "Last updated",
-    updatedAt: "October 3, 2026",
+    updatedAt: "October 4, 2026",
     summary: {
       title: "Summary",
       paragraphs: [
@@ -397,11 +408,6 @@ const en: Dictionary = {
         {
           name: "Cookie choice",
           description: "Stores whether you accepted or declined, and when.",
-        },
-        {
-          name: "Drag hint",
-          description:
-            "Avoids repeating the preferences button hint in the same session.",
         },
       ],
     },

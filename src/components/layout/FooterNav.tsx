@@ -1,28 +1,15 @@
 import { Link } from "@tanstack/react-router";
 
+import { siteNavItems } from "@/shared/config/navigation";
 import { useI18n } from "@/shared/hooks/useI18n";
-import type { Dictionary } from "@/shared/i18n/dictionary";
 
-type FooterNavLabel = keyof Omit<Dictionary["footer"]["nav"], "title">;
-
-interface FooterNavItem {
-  to: "/" | "/about" | "/projects" | "/certificates" | "/blog" | "/gamedev";
-  label: FooterNavLabel;
-}
+const ITEMS_PER_ROW = 3;
 
 // Ordem de leitura natural no DOM (e no mobile). No desktop o alinhamento é à
 // direita e a ordem é invertida visualmente via `sm:flex-row-reverse`.
-const rows: readonly (readonly FooterNavItem[])[] = [
-  [
-    { to: "/", label: "home" },
-    { to: "/about", label: "about" },
-    { to: "/gamedev", label: "gamedev" },
-  ],
-  [
-    { to: "/projects", label: "projects" },
-    { to: "/certificates", label: "certificates" },
-    { to: "/blog", label: "blog" },
-  ],
+const rows = [
+  siteNavItems.slice(0, ITEMS_PER_ROW),
+  siteNavItems.slice(ITEMS_PER_ROW),
 ];
 
 export function FooterNav() {

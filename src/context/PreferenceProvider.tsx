@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import type { Language, ThemeMode } from "@/types/preferences";
+import type { CursorMode, Language, ThemeMode } from "@/types/preferences";
 import {
   PreferenceContext,
   type PreferenceContextValue,
@@ -7,12 +7,14 @@ import {
 
 const LANGUAGE_STORAGE_KEY = "portfolio-language";
 const THEME_STORAGE_KEY = "portfolio-theme";
+const CURSOR_STORAGE_KEY = "portfolio-cursor";
 
 export function PreferenceProvider({
   children,
 }: Readonly<{ children: ReactNode }>) {
   const [language, setLanguage] = useState<Language>("pt");
   const [theme, setTheme] = useState<ThemeMode>("dark");
+  const [cursor, setCursor] = useState<CursorMode>("custom");
 
   useEffect(() => {
     const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
@@ -25,6 +27,11 @@ export function PreferenceProvider({
       setTheme(storedTheme);
     } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
       setTheme("light");
+    }
+
+    const storedCursor = window.localStorage.getItem(CURSOR_STORAGE_KEY);
+    if (storedCursor === "system" || storedCursor === "custom") {
+      setCursor(storedCursor);
     }
   }, []);
 
@@ -39,14 +46,20 @@ export function PreferenceProvider({
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
   }, [language]);
 
+  useEffect(() => {
+    window.localStorage.setItem(CURSOR_STORAGE_KEY, cursor);
+  }, [cursor]);
+
   const value = useMemo<PreferenceContextValue>(
     () => ({
       language,
       theme,
+      cursor,
       setLanguage,
       setTheme,
+      setCursor,
     }),
-    [language, theme],
+    [language, theme, cursor],
   );
 
   return (

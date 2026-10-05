@@ -12,6 +12,7 @@ import { ConsentProvider } from "@/context/ConsentProvider";
 import { ConsentAnalytics } from "@/components/layout/ConsentAnalytics";
 import { ConsentBanner } from "@/components/layout/ConsentBanner";
 import { CustomCursor } from "@/components/layout/CustomCursor";
+import { DotBackground } from "@/components/layout/DotBackground";
 import { NotFound } from "@/components/layout/NotFound";
 import { ErrorFallback } from "@/components/layout/ErrorFallback";
 import { siteConfig } from "@/shared/config/site";
@@ -74,6 +75,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
             <ConsentAnalytics />
             {children}
           </ConsentProvider>
+          <DotBackground />
           <CustomCursor />
         </PreferenceProvider>
         <TanStackRouterDevtools position="bottom-right" />

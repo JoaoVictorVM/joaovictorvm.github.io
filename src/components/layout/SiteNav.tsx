@@ -18,7 +18,7 @@ const REVEAL_ZONE = 64;
  * para baixo e volta ao rolar para cima. Só os botões recebem ponteiro.
  */
 export function SiteNav() {
-  const { footer } = useI18n();
+  const { nav } = useI18n();
   const isHidden = useHideOnScroll(REVEAL_ZONE);
 
   return (
@@ -31,7 +31,7 @@ export function SiteNav() {
       <div className="header-enter pointer-events-auto flex gap-2">
         <Link
           to="/"
-          aria-label={footer.logoLabel}
+          aria-label={nav.logoLabel}
           className={cn(iconButtonClassName, "text-2xs")}
         >
           &lt;J/&gt;

@@ -6,7 +6,10 @@ import { iconButtonClassName } from "@/components/ui/iconButton";
 import { siteNavItems } from "@/shared/config/navigation";
 import { useI18n } from "@/shared/hooks/useI18n";
 
-/** Menu hambúrguer com as páginas do site; a página atual fica destacada. */
+/**
+ * Menu hambúrguer com as páginas do site (a atual fica destacada) e, separado
+ * no fim, o link para a página de privacidade.
+ */
 export function NavMenu() {
   const t = useI18n();
 
@@ -39,10 +42,22 @@ export function NavMenu() {
                 inactiveProps={{ className: "text-detail" }}
                 className="data-highlighted:text-text flex cursor-pointer rounded px-3 py-2 transition-colors outline-none"
               >
-                {t.footer.nav[item.label]}
+                {t.nav.pages[item.label]}
               </Link>
             </DropdownMenu.Item>
           ))}
+          {/* Acesso permanente à política e à troca da escolha de cookies. */}
+          <DropdownMenu.Separator className="bg-line mx-2 my-1 h-px" />
+          <DropdownMenu.Item asChild>
+            <Link
+              to="/privacy"
+              activeProps={{ className: "text-text" }}
+              inactiveProps={{ className: "text-detail" }}
+              className="data-highlighted:text-text flex cursor-pointer rounded px-3 py-2 text-xs transition-colors outline-none"
+            >
+              {t.nav.privacy}
+            </Link>
+          </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>

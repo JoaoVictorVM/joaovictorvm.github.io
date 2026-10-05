@@ -4,6 +4,16 @@ const pt = {
   skipToContent: "Pular para o conteúdo",
   nav: {
     menuLabel: "Navegação",
+    logoLabel: "João Victor Ventura Martins — início",
+    privacy: "Privacidade",
+    pages: {
+      home: "Início",
+      about: "Sobre",
+      projects: "Projetos",
+      certificates: "Certificados",
+      blog: "Blog",
+      gamedev: "GameDev",
+    },
     info: {
       label: "Informações",
       title: "Informações",
@@ -305,6 +315,16 @@ const en: Dictionary = {
   skipToContent: "Skip to content",
   nav: {
     menuLabel: "Navigation",
+    logoLabel: "João Victor Ventura Martins — home",
+    privacy: "Privacy",
+    pages: {
+      home: "Home",
+      about: "About",
+      projects: "Projects",
+      certificates: "Certificates",
+      blog: "Writing",
+      gamedev: "GameDev",
+    },
     info: {
       label: "Information",
       title: "Information",

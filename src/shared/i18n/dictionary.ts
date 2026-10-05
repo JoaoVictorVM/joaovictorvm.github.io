@@ -107,7 +107,7 @@ const pt = {
         "Itens necessários ao funcionamento do site (não rastreiam você)",
       essential: [
         {
-          name: "Tema, idioma e cursor",
+          name: "Tema, idioma, cursor e fundo",
           description: "Lembram as preferências escolhidas no menu.",
         },
         {
@@ -414,7 +414,7 @@ const en: Dictionary = {
         "Items needed for the site to work (they don't track you)",
       essential: [
         {
-          name: "Theme, language and cursor",
+          name: "Theme, language, cursor and background",
           description: "Remember the preferences chosen in the menu.",
         },
         {

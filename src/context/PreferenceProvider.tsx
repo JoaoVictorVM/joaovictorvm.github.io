@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import type { CursorMode, Language, ThemeMode } from "@/types/preferences";
+import type {
+  BackgroundMode,
+  CursorMode,
+  Language,
+  ThemeMode,
+} from "@/types/preferences";
 import {
   PreferenceContext,
   type PreferenceContextValue,
@@ -8,6 +13,7 @@ import {
 const LANGUAGE_STORAGE_KEY = "portfolio-language";
 const THEME_STORAGE_KEY = "portfolio-theme";
 const CURSOR_STORAGE_KEY = "portfolio-cursor";
+const BACKGROUND_STORAGE_KEY = "portfolio-background";
 
 export function PreferenceProvider({
   children,
@@ -15,6 +21,7 @@ export function PreferenceProvider({
   const [language, setLanguage] = useState<Language>("pt");
   const [theme, setTheme] = useState<ThemeMode>("dark");
   const [cursor, setCursor] = useState<CursorMode>("custom");
+  const [background, setBackground] = useState<BackgroundMode>("dots");
 
   useEffect(() => {
     const storedLanguage = window.localStorage.getItem(LANGUAGE_STORAGE_KEY);
@@ -33,6 +40,13 @@ export function PreferenceProvider({
     if (storedCursor === "system" || storedCursor === "custom") {
       setCursor(storedCursor);
     }
+
+    const storedBackground = window.localStorage.getItem(
+      BACKGROUND_STORAGE_KEY,
+    );
+    if (storedBackground === "plain" || storedBackground === "dots") {
+      setBackground(storedBackground);
+    }
   }, []);
 
   useEffect(() => {
@@ -50,16 +64,22 @@ export function PreferenceProvider({
     window.localStorage.setItem(CURSOR_STORAGE_KEY, cursor);
   }, [cursor]);
 
+  useEffect(() => {
+    window.localStorage.setItem(BACKGROUND_STORAGE_KEY, background);
+  }, [background]);
+
   const value = useMemo<PreferenceContextValue>(
     () => ({
       language,
       theme,
       cursor,
+      background,
       setLanguage,
       setTheme,
       setCursor,
+      setBackground,
     }),
-    [language, theme, cursor],
+    [language, theme, cursor, background],
   );
 
   return (

@@ -44,6 +44,13 @@ const pt = {
         custom: "Cursor personalizado",
       },
     },
+    background: {
+      label: "Fundo",
+      names: {
+        plain: "Fundo liso",
+        dots: "Fundo pontilhado",
+      },
+    },
   },
   common: {
     backToIndex: "← Index",
@@ -342,6 +349,13 @@ const en: Dictionary = {
       names: {
         system: "System cursor",
         custom: "Custom cursor",
+      },
+    },
+    background: {
+      label: "Background",
+      names: {
+        plain: "Plain background",
+        dots: "Dotted background",
       },
     },
   },

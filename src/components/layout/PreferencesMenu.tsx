@@ -2,12 +2,12 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { Settings2 } from "lucide-react";
 
 import { CursorOptions } from "@/components/layout/CursorOptions";
-import { MOUSE_QUERY } from "@/components/layout/CustomCursor";
 import { LanguageOptions } from "@/components/layout/LanguageOptions";
 import { ThemeOptions } from "@/components/layout/ThemeOptions";
 import { iconButtonClassName } from "@/components/ui/iconButton";
 import { useI18n } from "@/shared/hooks/useI18n";
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
+import { MOUSE_QUERY } from "@/shared/lib/pointer";
 
 /** Menu de preferências (idioma, tema e cursor) da navegação. */
 export function PreferencesMenu() {

@@ -6,7 +6,7 @@ import { PostBody } from "@/features/blog/components/PostBody";
 import { PostConnect } from "@/features/blog/components/PostConnect";
 import { PostHeader } from "@/features/blog/components/PostHeader";
 import { getPostBySlug } from "@/features/blog/data/posts";
-import { siteConfig } from "@/shared/config/site";
+import { pageTitle, siteConfig } from "@/shared/config/site";
 import { pageHead } from "@/shared/lib/seo";
 import { useI18n } from "@/shared/hooks/useI18n";
 import { useReveal } from "@/shared/hooks/useReveal";
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/_site/blog/$slug")({
     }
 
     return pageHead({
-      title: `${post.title} — ${siteConfig.name}`,
+      title: pageTitle(post.title),
       description: post.summary,
       path: `/blog/${post.slug}`,
     });

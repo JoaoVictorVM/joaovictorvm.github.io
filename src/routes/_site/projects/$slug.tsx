@@ -7,7 +7,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { ProjectDetail } from "@/features/projects/components/ProjectDetail";
 import { getProjectBySlug } from "@/features/projects/data/projects";
 import { rememberProject } from "@/features/projects/lib/heroTransition";
-import { siteConfig } from "@/shared/config/site";
+import { pageTitle, siteConfig } from "@/shared/config/site";
 import { pageHead } from "@/shared/lib/seo";
 import { usePreference } from "@/shared/hooks/usePreference";
 import { useI18n } from "@/shared/hooks/useI18n";
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/_site/projects/$slug")({
     }
 
     return pageHead({
-      title: `${project.title.pt} — ${siteConfig.name}`,
+      title: pageTitle(project.title.en),
       description: project.summary.pt,
       path: `/projects/${project.id}`,
     });

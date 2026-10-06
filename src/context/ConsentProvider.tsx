@@ -73,6 +73,8 @@ export function ConsentProvider({
 }: Readonly<{ children: ReactNode }>) {
   const [choice, setChoice] = useState<ConsentChoice>("pending");
   const [isResolved, setIsResolved] = useState(false);
+  /** Aviso reaberto depois de já haver uma escolha. */
+  const [isReopened, setIsReopened] = useState(false);
 
   useEffect(() => {
     setChoice(readStoredChoice());
@@ -82,16 +84,36 @@ export function ConsentProvider({
   const grant = useCallback(() => {
     storeChoice("granted");
     setChoice("granted");
+    setIsReopened(false);
   }, []);
 
   const deny = useCallback(() => {
     storeChoice("denied");
     setChoice("denied");
+    setIsReopened(false);
   }, []);
 
+  const openPrompt = useCallback(() => {
+    setIsReopened(true);
+  }, []);
+
+  const closePrompt = useCallback(() => {
+    setIsReopened(false);
+  }, []);
+
+  const isPromptOpen = isResolved && (choice === "pending" || isReopened);
+
   const value = useMemo<ConsentContextValue>(
-    () => ({ choice, isResolved, grant, deny }),
-    [choice, isResolved, grant, deny],
+    () => ({
+      choice,
+      isResolved,
+      isPromptOpen,
+      grant,
+      deny,
+      openPrompt,
+      closePrompt,
+    }),
+    [choice, isResolved, isPromptOpen, grant, deny, openPrompt, closePrompt],
   );
 
   return (

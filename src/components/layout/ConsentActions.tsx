@@ -8,19 +8,21 @@ interface ConsentActionsProps {
   className?: string;
 }
 
-// Mesmo peso visual para as duas opções: recusar tem que ser tão fácil quanto aceitar.
+// Mesmo peso visual para as duas opções: recusar tem que ser tão fácil quanto
+// aceitar. A escolha atual fica com a borda destacada.
 const buttonClassName =
-  "border-line text-text hover:border-text cursor-pointer rounded-full border px-4 py-1.5 text-xs transition-colors";
+  "border-line text-text hover:border-text aria-pressed:border-text cursor-pointer rounded-full border px-4 py-1.5 text-xs transition-colors";
 
 /** Botões Recusar/Aceitar, usados no banner e na página de privacidade. */
 export function ConsentActions({ onChoice, className }: ConsentActionsProps) {
-  const { grant, deny } = useConsent();
+  const { choice, grant, deny } = useConsent();
   const t = useI18n().consent;
 
   return (
     <div className={cn("flex gap-2", className)}>
       <button
         type="button"
+        aria-pressed={choice === "denied"}
         onClick={() => {
           deny();
           onChoice?.();
@@ -31,6 +33,7 @@ export function ConsentActions({ onChoice, className }: ConsentActionsProps) {
       </button>
       <button
         type="button"
+        aria-pressed={choice === "granted"}
         onClick={() => {
           grant();
           onChoice?.();

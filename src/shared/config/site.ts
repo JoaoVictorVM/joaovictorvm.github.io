@@ -1,6 +1,16 @@
+const NAME = "João Victor Ventura Martins";
+
+/** Separador dos títulos das abas (nunca travessão). */
+const TITLE_SEPARATOR = " :: ";
+
+/** Título de aba: o nome da página (em inglês) seguido do nome do site. */
+export function pageTitle(page: string): string {
+  return `${page}${TITLE_SEPARATOR}${NAME}`;
+}
+
 export const siteConfig = {
   url: "https://joaovictorvm.github.io",
-  name: "João Victor Ventura Martins",
+  name: NAME,
   shortName: "João Victor",
   jobTitle: "Software Engineer",
   locale: "pt_BR",
@@ -16,46 +26,46 @@ export const siteConfig = {
   ],
   pages: {
     home: {
-      title: "João Victor Ventura Martins — Software Engineer",
+      title: `${NAME}${TITLE_SEPARATOR}Software Engineer`,
       description:
         "Software Engineer com foco em Frontend. Conheça meus projetos, certificados e os jogos que crio por paixão.",
     },
     certificates: {
-      title: "Certificados — João Victor Ventura Martins",
+      title: pageTitle("Certificates"),
       description: "Certificados e formações de João Victor Ventura Martins.",
     },
     about: {
-      title: "Sobre mim — João Victor Ventura Martins",
+      title: pageTitle("About"),
       description:
         "Trajetória, forma de trabalhar e interesses de João Victor Ventura Martins além do currículo.",
     },
     projects: {
-      title: "Projetos — João Victor Ventura Martins",
+      title: pageTitle("Projects"),
       description:
         "Projetos de front-end e back-end desenvolvidos por João Victor Ventura Martins.",
     },
     blog: {
-      title: "Blog — João Victor Ventura Martins",
+      title: pageTitle("Writing"),
       description:
         "Textos de João Victor Ventura Martins sobre desenvolvimento, estudos e o que anda gostando.",
     },
     games: {
-      title: "GameDev — João Victor Ventura Martins",
+      title: pageTitle("GameDev"),
       description:
         "Jogos que João Victor Ventura Martins vem criando por paixão.",
     },
     privacy: {
-      title: "Privacidade — João Victor Ventura Martins",
+      title: pageTitle("Privacy"),
       description:
         "Como este site usa cookies e o Google Analytics, e como mudar a sua escolha.",
     },
     links: {
-      title: "Links — João Victor Ventura Martins",
+      title: pageTitle("Links"),
       description:
         "Todos os links de João Victor Ventura Martins em um só lugar.",
     },
     notFound: {
-      title: "Página não encontrada — João Victor Ventura Martins",
+      title: pageTitle("Page not found"),
       description: "A página que você procura não existe ou foi movida.",
     },
   },

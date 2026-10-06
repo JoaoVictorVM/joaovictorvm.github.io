@@ -11,6 +11,7 @@ import { PreferenceProvider } from "@/context/PreferenceProvider";
 import { ConsentProvider } from "@/context/ConsentProvider";
 import { ConsentAnalytics } from "@/components/layout/ConsentAnalytics";
 import { ConsentBanner } from "@/components/layout/ConsentBanner";
+import { ConsentTrigger } from "@/components/layout/ConsentTrigger";
 import { CustomCursor } from "@/components/layout/CustomCursor";
 import { DotBackground } from "@/components/layout/DotBackground";
 import { NotFound } from "@/components/layout/NotFound";
@@ -74,6 +75,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
             <ConsentBanner />
             <ConsentAnalytics />
             {children}
+            <ConsentTrigger />
           </ConsentProvider>
           <DotBackground />
           <CustomCursor />

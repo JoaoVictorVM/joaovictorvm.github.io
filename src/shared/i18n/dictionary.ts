@@ -62,6 +62,7 @@ const pt = {
     learnMore: "Saiba mais",
     accept: "Aceitar",
     decline: "Recusar",
+    trigger: "Cookies",
     close: "Fechar aviso de cookies",
   },
   privacy: {
@@ -370,6 +371,7 @@ const en: Dictionary = {
     learnMore: "Learn more",
     accept: "Accept",
     decline: "Decline",
+    trigger: "Cookies",
     close: "Close cookie notice",
   },
   privacy: {

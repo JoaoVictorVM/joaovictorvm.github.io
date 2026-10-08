@@ -151,6 +151,9 @@ const pt = {
     backToProjects: "← Projetos",
     stackLabel: "Stack",
     galleryLabel: "Galeria",
+    repositoryLabel: "no GitHub",
+    liveLabel: "Abrir",
+    allProjects: "Ver todos os projetos no GitHub",
   },
   blog: {
     title: "Blog",
@@ -460,6 +463,9 @@ const en: Dictionary = {
     backToProjects: "← Projects",
     stackLabel: "Stack",
     galleryLabel: "Gallery",
+    repositoryLabel: "on GitHub",
+    liveLabel: "Open",
+    allProjects: "See all projects on GitHub",
   },
   blog: {
     title: "Writing",

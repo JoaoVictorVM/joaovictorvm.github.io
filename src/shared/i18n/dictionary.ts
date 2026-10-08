@@ -143,6 +143,24 @@ const pt = {
       one: "certificado",
       other: "certificados",
     },
+    controls: {
+      label: "Filtrar e ordenar",
+      activeLabel: "Filtrar e ordenar (filtros ativos)",
+      filter: "Filtro",
+      filters: {
+        all: "Todas",
+        frontend: "Front-end",
+        backend: "Back-end",
+      },
+      sort: "Ordenar",
+      sorts: {
+        recent: "Mais recentes",
+        importance: "Mais importantes",
+      },
+      of: "de",
+      clear: "Limpar",
+      empty: "Nenhum certificado com esse filtro.",
+    },
   },
   projects: {
     title: "Projetos",
@@ -453,6 +471,24 @@ const en: Dictionary = {
     count: {
       one: "certificate",
       other: "certificates",
+    },
+    controls: {
+      label: "Filter and sort",
+      activeLabel: "Filter and sort (filters active)",
+      filter: "Filter",
+      filters: {
+        all: "All",
+        frontend: "Front-end",
+        backend: "Back-end",
+      },
+      sort: "Sort",
+      sorts: {
+        recent: "Most recent",
+        importance: "Most important",
+      },
+      of: "of",
+      clear: "Clear",
+      empty: "No certificates match this filter.",
     },
   },
   projects: {

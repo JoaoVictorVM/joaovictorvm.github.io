@@ -19,7 +19,7 @@ const REVEAL_ZONE = 64;
  */
 export function SiteNav() {
   const { nav } = useI18n();
-  const isHidden = useHideOnScroll(REVEAL_ZONE);
+  const { isHidden } = useHideOnScroll(REVEAL_ZONE);
 
   return (
     <div

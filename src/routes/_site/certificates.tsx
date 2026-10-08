@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Container } from "@/components/layout/Container";
 import { PageColumn } from "@/components/layout/PageColumn";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { FilterResults } from "@/components/ui/FilterResults";
 import { CertificateControls } from "@/features/certificates/components/CertificateControls";
 import { CertificateList } from "@/features/certificates/components/CertificateList";
-import { CertificateResults } from "@/features/certificates/components/CertificateResults";
 import {
   certificates as allCertificates,
   filterCertificates,
@@ -47,10 +47,11 @@ function CertificatesPage() {
             ref={ref}
             className={cn("content-reveal delay-300", isVisible && "visible")}
           >
-            <CertificateResults
+            <FilterResults
               shown={shown.length}
               total={allCertificates.length}
-              isDefault={view.isDefault}
+              noun={certificates.count}
+              isActive={!view.isDefault}
               onClear={view.reset}
             />
             {shown.length > 0 ? (

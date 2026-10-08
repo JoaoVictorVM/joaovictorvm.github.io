@@ -149,6 +149,27 @@ export const certificates: Certificate[] = [
     areas: ["frontend"],
     importance: 2,
   },
+  {
+    id: "javascript-es6",
+    institutionId: "origamid",
+    institution: "Origamid",
+    title: {
+      pt: "JavaScript Completo ES6",
+      en: "Complete JavaScript ES6",
+    },
+    issuedAt: "2026-09-16",
+    areas: ["frontend"],
+    importance: 2,
+  },
+  {
+    id: "react",
+    institutionId: "origamid",
+    institution: "Origamid",
+    title: { pt: "React Completo", en: "Complete React" },
+    issuedAt: "2026-10-08",
+    areas: ["frontend"],
+    importance: 3,
+  },
 ];
 
 /** Ordem fixa das instituições na página (a ordem em que aparecem na lista). */

@@ -4,17 +4,36 @@ import { usePreference } from "@/shared/hooks/usePreference";
 import { useI18n } from "@/shared/hooks/useI18n";
 import { CertificateGroup } from "@/features/certificates/components/CertificateGroup";
 import { CertificateRow } from "@/features/certificates/components/CertificateRow";
-import { groupCertificates } from "@/features/certificates/data/certificates";
+import {
+  certificates as allCertificates,
+  formatCertificateDate,
+  groupCertificates,
+  type Certificate,
+} from "@/features/certificates/data/certificates";
 import { cn } from "@/shared/lib/cn";
 
-const certificateGroups = groupCertificates();
-const allGroupIds = certificateGroups.map((group) => group.institutionId);
+const allGroupIds = groupCertificates(allCertificates).map(
+  (group) => group.institutionId,
+);
 
 const TYPE_CHAR = 35;
 const CASCADE_OVERLAP = 0.55;
 const CASCADE_GAP = 80;
 
-export function CertificateList() {
+interface CertificateListProps {
+  /** Certificados já filtrados e ordenados. */
+  certificates: readonly Certificate[];
+  /**
+   * A lista mudou (filtro/ordem): os certificados entram com o fade rápido em
+   * vez de refazer a cascata de digitação da primeira entrada.
+   */
+  skipCascade: boolean;
+}
+
+export function CertificateList({
+  certificates,
+  skipCascade,
+}: CertificateListProps) {
   const { language } = usePreference();
   const { count } = useI18n().certificates;
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -33,6 +52,7 @@ export function CertificateList() {
     setOpenIds(nextIds);
   }
 
+  const certificateGroups = groupCertificates(certificates);
   const seqDelayById = new Map<string, number>();
   let cascadeDelay = 0;
   for (const group of certificateGroups) {
@@ -52,7 +72,7 @@ export function CertificateList() {
     >
       {certificateGroups.map((group) => {
         const total = group.certificates.length;
-        const isInstant = collapsedIds.has(group.institutionId);
+        const isInstant = skipCascade || collapsedIds.has(group.institutionId);
         const firstId = group.certificates[0]?.id ?? "";
 
         return (
@@ -69,7 +89,10 @@ export function CertificateList() {
           >
             {group.certificates.map((certificate, index) => {
               const title = certificate.title[language];
-              const date = certificate.date[language];
+              const date = formatCertificateDate(
+                certificate.issuedAt,
+                language,
+              );
 
               return (
                 <div

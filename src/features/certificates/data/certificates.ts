@@ -1,3 +1,16 @@
+import type { Language } from "@/types/preferences";
+
+/** Áreas usadas no filtro da página de certificados. */
+export const certificateAreas = ["frontend", "backend"] as const;
+export type CertificateArea = (typeof certificateAreas)[number];
+
+/** Ordens da lista: `recent` (padrão) pela data; `importance` pelos destaques. */
+export const certificateSorts = ["recent", "importance"] as const;
+export type CertificateSort = (typeof certificateSorts)[number];
+
+/** 3 = destaque, 2 = relevante, 1 = complementar. */
+export type CertificateImportance = 1 | 2 | 3;
+
 export interface Certificate {
   id: string;
   institutionId: string;
@@ -6,10 +19,10 @@ export interface Certificate {
     pt: string;
     en: string;
   };
-  date: {
-    pt: string;
-    en: string;
-  };
+  /** Data de conclusão: `"AAAA-MM-DD"` ou, quando só se sabe o ano, `"AAAA"`. */
+  issuedAt: string;
+  areas: CertificateArea[];
+  importance: CertificateImportance;
 }
 
 export interface CertificateGroup {
@@ -24,109 +37,182 @@ export const certificates: Certificate[] = [
     institutionId: "rocketseat",
     institution: "Rocketseat",
     title: { pt: "NLW Operator - FullStack", en: "NLW Operator - FullStack" },
-    date: { pt: "17/03/2026", en: "03/17/2026" },
+    issuedAt: "2026-03-17",
+    areas: ["frontend", "backend"],
+    importance: 3,
   },
   {
     id: "nlw-pocket",
     institutionId: "rocketseat",
     institution: "Rocketseat",
     title: { pt: "NLW Pocket - FullStack", en: "NLW Pocket - FullStack" },
-    date: { pt: "10/10/2025", en: "10/10/2025" },
+    issuedAt: "2025-10-10",
+    areas: ["frontend", "backend"],
+    importance: 2,
   },
   {
     id: "introducao-csharp-dotnet",
     institutionId: "rocketseat",
     institution: "Rocketseat",
     title: { pt: "Introdução ao C# e .NET", en: "Introduction to C# & .NET" },
-    date: { pt: "11/03/2026", en: "03/11/2026" },
+    issuedAt: "2026-03-11",
+    areas: ["backend"],
+    importance: 2,
   },
   {
     id: "microservices",
     institutionId: "rocketseat",
     institution: "Rocketseat",
     title: { pt: "Microsserviços Escaláveis", en: "Scalable Microservices" },
-    date: { pt: "01/04/2026", en: "04/01/2026" },
+    issuedAt: "2026-04-01",
+    areas: ["backend"],
+    importance: 3,
   },
   {
     id: "frontend-uxui-design",
     institutionId: "origamid",
     institution: "Origamid",
     title: { pt: "Front-end & UX/UI Design", en: "Front-End & UX/UI Design" },
-    date: { pt: "2026", en: "2026" },
+    issuedAt: "2026",
+    areas: ["frontend"],
+    importance: 3,
   },
   {
     id: "html-css",
     institutionId: "origamid",
     institution: "Origamid",
     title: { pt: "HTML & CSS", en: "HTML & CSS" },
-    date: { pt: "06/02/2026", en: "02/06/2026" },
+    issuedAt: "2026-02-06",
+    areas: ["frontend"],
+    importance: 1,
   },
   {
     id: "jquery",
     institutionId: "origamid",
     institution: "Origamid",
     title: { pt: "JavaScript & jQuery", en: "JavaScript & jQuery" },
-    date: { pt: "27/03/2026", en: "03/27/2026" },
+    issuedAt: "2026-03-27",
+    areas: ["frontend"],
+    importance: 1,
   },
   {
     id: "css-flexbox",
     institutionId: "origamid",
     institution: "Origamid",
     title: { pt: "CSS Flexbox", en: "CSS Flexbox" },
-    date: { pt: "11/02/2026", en: "02/11/2026" },
+    issuedAt: "2026-02-11",
+    areas: ["frontend"],
+    importance: 1,
   },
   {
     id: "css-grid-layout",
     institutionId: "origamid",
     institution: "Origamid",
     title: { pt: "CSS Grid Layout", en: "CSS Grid Layout" },
-    date: { pt: "20/02/2026", en: "02/20/2026" },
+    issuedAt: "2026-02-20",
+    areas: ["frontend"],
+    importance: 1,
   },
   {
     id: "css-avancado",
     institutionId: "origamid",
     institution: "Origamid",
     title: { pt: "CSS Avançado", en: "Advanced CSS" },
-    date: { pt: "27/02/2026", en: "02/27/2026" },
+    issuedAt: "2026-02-27",
+    areas: ["frontend"],
+    importance: 2,
   },
   {
     id: "bootstrap",
     institutionId: "origamid",
     institution: "Origamid",
     title: { pt: "Bootstrap", en: "Bootstrap" },
-    date: { pt: "13/03/2026", en: "03/13/2026" },
+    issuedAt: "2026-03-13",
+    areas: ["frontend"],
+    importance: 1,
   },
   {
     id: "sass",
     institutionId: "origamid",
     institution: "Origamid",
     title: { pt: "CSS com SASS", en: "CSS with SASS" },
-    date: { pt: "20/03/2026", en: "03/20/2026" },
+    issuedAt: "2026-03-20",
+    areas: ["frontend"],
+    importance: 1,
   },
   {
     id: "tailwind-css",
     institutionId: "origamid",
     institution: "Origamid",
     title: { pt: "Tailwind CSS", en: "Tailwind CSS" },
-    date: { pt: "06/03/2026", en: "03/06/2026" },
+    issuedAt: "2026-03-06",
+    areas: ["frontend"],
+    importance: 2,
   },
 ];
 
-export function groupCertificates(): CertificateGroup[] {
-  const groups = new Map<string, CertificateGroup>();
+/** Ordem fixa das instituições na página (a ordem em que aparecem na lista). */
+const institutionOrder = [...new Set(certificates.map((c) => c.institutionId))];
 
-  for (const certificate of certificates) {
-    const existing = groups.get(certificate.institutionId);
-    if (existing) {
-      existing.certificates.push(certificate);
-    } else {
-      groups.set(certificate.institutionId, {
-        institutionId: certificate.institutionId,
-        institution: certificate.institution,
-        certificates: [certificate],
-      });
-    }
+/** Data só com o ano vale como o fim daquele ano ao ordenar. */
+function sortableDate(issuedAt: string): string {
+  return issuedAt.length === 4 ? `${issuedAt}-12-31` : issuedAt;
+}
+
+function byMostRecent(a: Certificate, b: Certificate): number {
+  return sortableDate(b.issuedAt).localeCompare(sortableDate(a.issuedAt));
+}
+
+const comparators: Record<
+  CertificateSort,
+  (a: Certificate, b: Certificate) => number
+> = {
+  recent: byMostRecent,
+  // Empate de importância: o mais recente primeiro.
+  importance: (a, b) => b.importance - a.importance || byMostRecent(a, b),
+};
+
+/** `undefined` = todas as áreas. */
+export function filterCertificates(
+  list: readonly Certificate[],
+  area: CertificateArea | undefined,
+): Certificate[] {
+  return area ? list.filter((c) => c.areas.includes(area)) : [...list];
+}
+
+export function sortCertificates(
+  list: readonly Certificate[],
+  sort: CertificateSort,
+): Certificate[] {
+  return [...list].sort(comparators[sort]);
+}
+
+/**
+ * Agrupa por instituição, mantendo a ordem da lista recebida dentro de cada
+ * grupo e a ordem fixa entre os grupos. Grupo sem certificados não aparece.
+ */
+export function groupCertificates(
+  list: readonly Certificate[],
+): CertificateGroup[] {
+  return institutionOrder.flatMap((institutionId) => {
+    const items = list.filter((c) => c.institutionId === institutionId);
+    const first = items[0];
+    return first
+      ? [{ institutionId, institution: first.institution, certificates: items }]
+      : [];
+  });
+}
+
+/** "17/03/2026" (PT), "03/17/2026" (EN) ou só "2026". */
+export function formatCertificateDate(
+  issuedAt: string,
+  language: Language,
+): string {
+  const [year, month, day] = issuedAt.split("-");
+  if (!year || !month || !day) {
+    return issuedAt;
   }
-
-  return [...groups.values()];
+  return language === "pt"
+    ? `${day}/${month}/${year}`
+    : `${month}/${day}/${year}`;
 }

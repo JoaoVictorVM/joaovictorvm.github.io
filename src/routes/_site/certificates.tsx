@@ -3,6 +3,10 @@ import { Container } from "@/components/layout/Container";
 import { PageColumn } from "@/components/layout/PageColumn";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { CertificateList } from "@/features/certificates/components/CertificateList";
+import {
+  certificates as allCertificates,
+  sortCertificates,
+} from "@/features/certificates/data/certificates";
 import { siteConfig } from "@/shared/config/site";
 import { pageHead } from "@/shared/lib/seo";
 import { useI18n } from "@/shared/hooks/useI18n";
@@ -31,7 +35,10 @@ function CertificatesPage() {
             ref={ref}
             className={cn("content-reveal delay-300", isVisible && "visible")}
           >
-            <CertificateList />
+            <CertificateList
+              certificates={sortCertificates(allCertificates, "recent")}
+              skipCascade={false}
+            />
           </div>
         </PageColumn>
       </Container>

@@ -53,6 +53,10 @@ const pt = {
   },
   common: {
     backToIndex: "← Index",
+    filterResults: {
+      of: "de",
+      clear: "Limpar",
+    },
   },
   consent: {
     label: "Consentimento de cookies",
@@ -157,8 +161,6 @@ const pt = {
         recent: "Mais recentes",
         importance: "Mais importantes",
       },
-      of: "de",
-      clear: "Limpar",
       empty: "Nenhum certificado com esse filtro.",
     },
   },
@@ -382,6 +384,10 @@ const en: Dictionary = {
   },
   common: {
     backToIndex: "← Index",
+    filterResults: {
+      of: "of",
+      clear: "Clear",
+    },
   },
   consent: {
     label: "Cookie consent",
@@ -486,8 +492,6 @@ const en: Dictionary = {
         recent: "Most recent",
         importance: "Most important",
       },
-      of: "of",
-      clear: "Clear",
       empty: "No certificates match this filter.",
     },
   },

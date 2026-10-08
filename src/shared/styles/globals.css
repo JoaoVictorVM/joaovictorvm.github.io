@@ -23,10 +23,9 @@ body {
 }
 
 /* Cursor personalizado (CustomCursor). O cursor do sistema só some com o
-   personalizado ativo, e volta com um <dialog> aberto: a "top layer" do modal
-   fica acima de qualquer elemento, então o cursor personalizado não apareceria. */
-html.has-custom-cursor:not(:has(dialog[open])),
-html.has-custom-cursor:not(:has(dialog[open])) * {
+   personalizado ativo. */
+html.has-custom-cursor,
+html.has-custom-cursor * {
   cursor: none !important;
 }
 .custom-cursor {
@@ -43,9 +42,6 @@ html.has-custom-cursor:not(:has(dialog[open])) * {
 }
 .custom-cursor[data-visible="true"] {
   opacity: 1;
-}
-html:has(dialog[open]) .custom-cursor {
-  display: none;
 }
 .custom-cursor-ring,
 .custom-cursor-dot {

@@ -18,7 +18,6 @@ const pt = {
       label: "Informações",
       title: "Informações",
       body: "Em breve, mais informações por aqui.",
-      close: "Fechar",
     },
   },
   preferences: {
@@ -330,7 +329,6 @@ const en: Dictionary = {
       label: "Information",
       title: "Information",
       body: "More information coming here soon.",
-      close: "Close",
     },
   },
   preferences: {

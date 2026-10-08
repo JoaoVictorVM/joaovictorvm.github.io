@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import { InfoDialog } from "@/components/layout/InfoDialog";
+import { InfoPopover } from "@/components/layout/InfoPopover";
 import { NavMenu } from "@/components/layout/NavMenu";
 import { PreferencesMenu } from "@/components/layout/PreferencesMenu";
 import { iconButtonClassName } from "@/components/ui/iconButton";
@@ -46,7 +46,7 @@ export function SiteNav() {
         >
           &lt;J/&gt;
         </Link>
-        <InfoDialog />
+        <InfoPopover />
       </div>
       <div className="header-enter pointer-events-auto flex gap-2">
         <PreferencesMenu />

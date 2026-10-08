@@ -173,6 +173,17 @@ const pt = {
     repositoryLabel: "no GitHub",
     liveLabel: "Abrir",
     allProjects: "Ver todos os projetos no GitHub",
+    count: {
+      one: "projeto",
+      other: "projetos",
+    },
+    controls: {
+      label: "Filtrar projetos",
+      activeLabel: "Filtrar projetos (filtro ativo)",
+      filter: "Filtro",
+      all: "Todas",
+      empty: "Nenhum projeto com esse filtro.",
+    },
   },
   blog: {
     title: "Blog",
@@ -504,6 +515,17 @@ const en: Dictionary = {
     repositoryLabel: "on GitHub",
     liveLabel: "Open",
     allProjects: "See all projects on GitHub",
+    count: {
+      one: "project",
+      other: "projects",
+    },
+    controls: {
+      label: "Filter projects",
+      activeLabel: "Filter projects (filter active)",
+      filter: "Filter",
+      all: "All",
+      empty: "No projects match this filter.",
+    },
   },
   blog: {
     title: "Writing",

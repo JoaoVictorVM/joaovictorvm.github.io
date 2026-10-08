@@ -19,7 +19,7 @@ const REVEAL_ZONE = 64;
  */
 export function SiteNav() {
   const { nav } = useI18n();
-  const isHidden = useHideOnScroll(REVEAL_ZONE);
+  const { isHidden, isPastRevealZone } = useHideOnScroll(REVEAL_ZONE);
 
   return (
     <div
@@ -28,6 +28,16 @@ export function SiteNav() {
         isHidden && "max-xl:-translate-y-24",
       )}
     >
+      {/* Abaixo de xl, a barra fica sobre o conteúdo ao rolar: um degradê da
+          cor do fundo atrás dos botões destaca a barra e apaga o texto que
+          passa por baixo. Desde o topo da tela (o -top-4 compensa o top-4). */}
+      <div
+        aria-hidden
+        className={cn(
+          "from-bg absolute inset-x-0 -top-4 -z-10 h-24 bg-linear-to-b from-60% to-transparent opacity-0 transition-opacity duration-300 motion-reduce:transition-none xl:hidden",
+          isPastRevealZone && "opacity-100",
+        )}
+      />
       <div className="header-enter pointer-events-auto flex gap-2">
         <Link
           to="/"

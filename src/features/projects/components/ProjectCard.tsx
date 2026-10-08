@@ -1,32 +1,54 @@
+import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
-import type { ProjectImage } from "@/features/projects/data/projects";
+import { GithubIcon } from "@/components/ui/BrandIcons";
+import {
+  getProjectLink,
+  type Project,
+} from "@/features/projects/data/projects";
 import { usePreference } from "@/shared/hooks/usePreference";
+import { useI18n } from "@/shared/hooks/useI18n";
 import { asset } from "@/shared/lib/asset";
 
 interface ProjectCardProps {
-  /** Posição na vitrine, exibida como "01", "02"... */
-  position: number;
-  title: string;
-  cover?: ProjectImage;
-  isExternal?: boolean;
+  project: Project;
+}
+
+interface CardIconLinkProps {
+  href: string;
+  label: string;
+  children: ReactNode;
+}
+
+function CardIconLink({ href, label, children }: CardIconLinkProps) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={label}
+      title={label}
+      className="text-detail hover:text-text flex size-8 items-center justify-center rounded-lg transition-colors"
+    >
+      {children}
+    </a>
+  );
 }
 
 /**
- * Face visual do card de um projeto. Com capa, a imagem ocupa o card; sem capa
- * (provisório), mostra o número e o nome. O link que o envolve fica a cargo de
- * quem usa o card.
+ * Card de um projeto na grade: capa, nome com os links (repositório e, se
+ * houver, o projeto no ar) e a descrição curta. O card em si não é clicável.
  */
-export function ProjectCard({
-  position,
-  title,
-  cover,
-  isExternal = false,
-}: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
   const { language } = usePreference();
+  const t = useI18n().projects;
+  const title = project.title[language];
+  const repository = getProjectLink(project, "repository");
+  const live = getProjectLink(project, "live");
+  const { cover } = project;
 
-  if (cover) {
-    return (
-      <span className="border-line group-hover:border-text block aspect-video overflow-hidden rounded-2xl border transition-colors">
+  return (
+    <article className="flex flex-col gap-4">
+      {cover ? (
         <img
           src={asset(cover.src)}
           alt={cover.alt[language]}
@@ -34,24 +56,39 @@ export function ProjectCard({
           height={cover.height}
           loading="lazy"
           decoding="async"
-          draggable={false}
-          className="size-full object-cover"
+          className="border-line aspect-video w-full rounded-2xl border object-cover"
         />
-      </span>
-    );
-  }
+      ) : (
+        // Capa provisória até as imagens dos projetos chegarem.
+        <div
+          aria-hidden
+          className="border-line text-detail flex aspect-video items-center justify-center rounded-2xl border p-4 text-center text-sm"
+        >
+          {title}
+        </div>
+      )}
 
-  return (
-    <span className="border-line bg-bg group-hover:border-text flex aspect-video flex-col justify-between rounded-2xl border p-5 transition-colors">
-      <span className="text-detail text-xs">
-        {String(position).padStart(2, "0")}
-      </span>
-      <span className="text-text flex items-center gap-1 text-lg">
-        {title}
-        {isExternal && (
-          <ArrowUpRight size={16} aria-hidden className="text-detail" />
-        )}
-      </span>
-    </span>
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="text-text font-normal">{title}</h2>
+          <div className="-mr-2 flex shrink-0 items-center">
+            {repository && (
+              <CardIconLink
+                href={repository.url}
+                label={`${title} ${t.repositoryLabel}`}
+              >
+                <GithubIcon aria-hidden className="size-4" />
+              </CardIconLink>
+            )}
+            {live && (
+              <CardIconLink href={live.url} label={`${t.liveLabel} ${title}`}>
+                <ArrowUpRight size={18} aria-hidden />
+              </CardIconLink>
+            )}
+          </div>
+        </div>
+        <p className="text-detail text-sm">{project.summary[language]}</p>
+      </div>
+    </article>
   );
 }

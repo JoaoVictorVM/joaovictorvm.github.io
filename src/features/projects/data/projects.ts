@@ -3,7 +3,11 @@ export interface LocalizedText {
   en: string;
 }
 
+/** `repository`: código no GitHub; `live`: o projeto no ar (site, jogo). */
+export type ProjectLinkKind = "repository" | "live";
+
 export interface ProjectLink {
+  kind: ProjectLinkKind;
   label: LocalizedText;
   url: string;
 }
@@ -25,16 +29,9 @@ export interface Project {
   details: LocalizedText;
   stack?: string[];
   links?: ProjectLink[];
-  /** Capa da página (e, futuramente, do card do carrossel). */
+  /** Capa do card na grade e da página do projeto. */
   cover?: ProjectImage;
   gallery?: ProjectImage[];
-}
-
-/** Fecho da lista: não é um projeto, só o convite para ver tudo no GitHub. */
-export interface ProjectsCallout {
-  title: LocalizedText;
-  details: LocalizedText;
-  link: ProjectLink;
 }
 
 export const projects: Project[] = [
@@ -66,10 +63,12 @@ export const projects: Project[] = [
     ],
     links: [
       {
+        kind: "repository",
         label: { pt: "Repositório", en: "Repository" },
         url: "https://github.com/JoaoVictorVM/focuzen",
       },
       {
+        kind: "live",
         label: { pt: "Site", en: "Site" },
         url: "https://focuzen.onrender.com/",
       },
@@ -100,6 +99,7 @@ export const projects: Project[] = [
     ],
     links: [
       {
+        kind: "repository",
         label: { pt: "Repositório", en: "Repository" },
         url: "https://github.com/JoaoVictorVM/leaks-n-promo",
       },
@@ -128,6 +128,7 @@ export const projects: Project[] = [
     ],
     links: [
       {
+        kind: "repository",
         label: { pt: "Repositório", en: "Repository" },
         url: "https://github.com/JoaoVictorVM/gofetch",
       },
@@ -158,10 +159,12 @@ export const projects: Project[] = [
     ],
     links: [
       {
+        kind: "repository",
         label: { pt: "Repositório", en: "Repository" },
         url: "https://github.com/JoaoVictorVM/LP-Expedition33",
       },
       {
+        kind: "live",
         label: { pt: "Site", en: "Site" },
         url: "https://joaovictorvm.github.io/LP-Expedition33/",
       },
@@ -181,6 +184,7 @@ export const projects: Project[] = [
     stack: ["NestJS", "Prisma ORM", "PostgreSQL", "JWT"],
     links: [
       {
+        kind: "repository",
         label: { pt: "Repositório", en: "Repository" },
         url: "https://github.com/JoaoVictorVM/SchedulingAPI",
       },
@@ -207,10 +211,12 @@ export const projects: Project[] = [
     ],
     links: [
       {
+        kind: "repository",
         label: { pt: "Repositório", en: "Repository" },
         url: "https://github.com/JoaoVictorVM/Prototipo-AutoBattle",
       },
       {
+        kind: "live",
         label: { pt: "Jogo", en: "Game" },
         url: "https://joaovictorvm.itch.io/autobattle",
       },
@@ -218,18 +224,18 @@ export const projects: Project[] = [
   },
 ];
 
-export const allProjectsCallout: ProjectsCallout = {
-  title: { pt: "Todos os projetos", en: "All projects" },
-  details: {
-    pt: "Apresentei aqui alguns dos meus principais projetos, mas fique à vontade para explorar todos os meus repositórios, conhecer outras experiências e acompanhar meu desenvolvimento no GitHub.",
-    en: "These are a few highlighted projects—feel free to explore the full repository list, discover other experiences, and track my evolution on GitHub.",
-  },
-  link: {
-    label: { pt: "GitHub", en: "GitHub" },
-    url: "https://github.com/JoaoVictorVM?tab=repositories",
-  },
-};
+/** Todos os repositórios, para o link abaixo da grade. */
+export const allProjectsUrl =
+  "https://github.com/JoaoVictorVM?tab=repositories";
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.id === slug);
+}
+
+/** Link de um tipo (repositório ou projeto no ar), se o projeto tiver. */
+export function getProjectLink(
+  project: Project,
+  kind: ProjectLinkKind,
+): ProjectLink | undefined {
+  return project.links?.find((link) => link.kind === kind);
 }

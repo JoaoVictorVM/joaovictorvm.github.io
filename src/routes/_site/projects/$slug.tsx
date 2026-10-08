@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Container } from "@/components/layout/Container";
 import { NotFound } from "@/components/layout/NotFound";
@@ -6,7 +5,6 @@ import { PageColumn } from "@/components/layout/PageColumn";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { ProjectDetail } from "@/features/projects/components/ProjectDetail";
 import { getProjectBySlug } from "@/features/projects/data/projects";
-import { rememberProject } from "@/features/projects/lib/heroTransition";
 import { pageTitle, siteConfig } from "@/shared/config/site";
 import { pageHead } from "@/shared/lib/seo";
 import { usePreference } from "@/shared/hooks/usePreference";
@@ -41,13 +39,6 @@ function ProjectPage() {
   const { ref, isVisible } = useReveal();
   const project = getProjectBySlug(slug);
 
-  // A roda de projetos volta centralizada no último projeto aberto.
-  useEffect(() => {
-    if (project) {
-      rememberProject(project.id);
-    }
-  }, [project]);
-
   if (!project) {
     return <NotFound />;
   }
@@ -56,19 +47,15 @@ function ProjectPage() {
     <article className="py-16">
       <Container>
         <PageColumn backLabel={projects.backToProjects} backTo="/projects">
-          {/* Destino da View Transition do card da roda (o link de volta, na
-              margem, fica de fora). */}
-          <div className="project-hero">
-            <PageHeader
-              title={project.title[language]}
-              subtitle={project.summary[language]}
-            />
-            <div
-              ref={ref}
-              className={cn("content-reveal delay-300", isVisible && "visible")}
-            >
-              <ProjectDetail project={project} />
-            </div>
+          <PageHeader
+            title={project.title[language]}
+            subtitle={project.summary[language]}
+          />
+          <div
+            ref={ref}
+            className={cn("content-reveal delay-300", isVisible && "visible")}
+          >
+            <ProjectDetail project={project} />
           </div>
         </PageColumn>
       </Container>

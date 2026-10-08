@@ -254,17 +254,6 @@
   view-transition-name: site-nav;
 }
 
-/* Card da roda → página do projeto (e volta): o mesmo nome nos dois lados faz o
-   navegador animar um se transformando no outro. Nos cards o nome é aplicado
-   por JS (PROJECT_HERO_TRANSITION), só no card clicado. */
-.project-hero {
-  view-transition-name: project-hero;
-}
-::view-transition-group(project-hero) {
-  animation-duration: var(--duration-hero);
-  animation-timing-function: var(--ease-reveal);
-}
-
 ::view-transition-old(root) {
   animation: pageOut var(--duration-page) var(--ease-reveal) both;
 }
@@ -331,10 +320,5 @@
   }
   ::view-transition-new(root) {
     animation: pageInFade var(--duration-page) var(--ease-reveal) both;
-  }
-  ::view-transition-group(project-hero),
-  ::view-transition-old(project-hero),
-  ::view-transition-new(project-hero) {
-    animation: none;
   }
 }

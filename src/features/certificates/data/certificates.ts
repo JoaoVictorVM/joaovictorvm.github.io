@@ -80,12 +80,15 @@ export const certificates: Certificate[] = [
     importance: 3,
   },
   {
-    id: "frontend-uxui-design",
+    id: "frontend-backend-uxui-design",
     institutionId: "origamid",
     institution: "Origamid",
-    title: { pt: "Front-end & UX/UI Design", en: "Front-End & UX/UI Design" },
+    title: {
+      pt: "Front-end, Back-end & UX/UI Design",
+      en: "Front-End, Back-End & UX/UI Design",
+    },
     issuedAt: "2026",
-    areas: ["frontend"],
+    areas: ["frontend", "backend"],
     importance: 3,
   },
   {

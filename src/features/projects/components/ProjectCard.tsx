@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "@/components/ui/BrandIcons";
 import { iconButtonClassName } from "@/components/ui/iconButton";
@@ -9,9 +10,16 @@ import {
 import { usePreference } from "@/shared/hooks/usePreference";
 import { useI18n } from "@/shared/hooks/useI18n";
 import { asset } from "@/shared/lib/asset";
+import { cn } from "@/shared/lib/cn";
+
+/** `focused`: o card em destaque; `dimmed`: outro card está em destaque. */
+export type ProjectCardEmphasis = "none" | "focused" | "dimmed";
 
 interface ProjectCardProps {
   project: Project;
+  emphasis: ProjectCardEmphasis;
+  /** Mouse ou foco do teclado entrando (true) ou saindo (false) do card. */
+  onFocusChange: (isFocused: boolean) => void;
 }
 
 interface CardIconLinkProps {
@@ -37,18 +45,51 @@ function CardIconLink({ href, label, children }: CardIconLinkProps) {
 
 /**
  * Card de um projeto na grade: capa, nome com os links (repositório e, se
- * houver, o projeto no ar) e a descrição curta. O card em si não é clicável.
+ * houver, o projeto no ar) e a descrição curta. O card inteiro leva à página
+ * do projeto: o nome é o link, e uma camada dele (`after:`) cobre o card — sem
+ * link dentro de link. Os botões ficam acima dessa camada.
  */
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  emphasis,
+  onFocusChange,
+}: ProjectCardProps) {
   const { language } = usePreference();
   const t = useI18n().projects;
   const title = project.title[language];
   const repository = getProjectLink(project, "repository");
   const live = getProjectLink(project, "live");
   const { cover } = project;
+  const coverClassName = cn(
+    "aspect-video w-full rounded-2xl border transition-colors",
+    emphasis === "focused" ? "border-text" : "border-line",
+  );
 
   return (
-    <article className="flex flex-col gap-4">
+    <article
+      onMouseEnter={() => {
+        onFocusChange(true);
+      }}
+      onMouseLeave={() => {
+        onFocusChange(false);
+      }}
+      onFocus={() => {
+        onFocusChange(true);
+      }}
+      onBlur={(event) => {
+        // Só sai do destaque quando o foco deixa o card (não entre os links dele).
+        if (
+          !(event.relatedTarget instanceof Node) ||
+          !event.currentTarget.contains(event.relatedTarget)
+        ) {
+          onFocusChange(false);
+        }
+      }}
+      className={cn(
+        "relative flex flex-col gap-4 transition-opacity duration-200 motion-reduce:transition-none",
+        emphasis === "dimmed" && "opacity-40",
+      )}
+    >
       {cover ? (
         <img
           src={asset(cover.src)}
@@ -57,13 +98,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
           height={cover.height}
           loading="lazy"
           decoding="async"
-          className="border-line aspect-video w-full rounded-2xl border object-cover"
+          className={cn(coverClassName, "object-cover")}
         />
       ) : (
         // Capa provisória até as imagens dos projetos chegarem.
         <div
           aria-hidden
-          className="border-line text-detail flex aspect-video items-center justify-center rounded-2xl border p-4 text-center text-sm"
+          className={cn(
+            coverClassName,
+            "text-detail flex items-center justify-center p-4 text-center text-sm",
+          )}
         >
           {title}
         </div>
@@ -71,8 +115,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-between gap-4">
-          <h2 className="text-text font-normal">{title}</h2>
-          <div className="flex shrink-0 items-center gap-2">
+          <h2 className="text-text font-normal">
+            <Link
+              to="/projects/$slug"
+              params={{ slug: project.id }}
+              // A camada `after:` cobre o card inteiro; o anel de foco vai nela.
+              className="focus-visible:after:outline-text after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-solid"
+            >
+              {title}
+            </Link>
+          </h2>
+          <div className="relative z-10 flex shrink-0 items-center gap-2">
             {repository && (
               <CardIconLink
                 href={repository.url}

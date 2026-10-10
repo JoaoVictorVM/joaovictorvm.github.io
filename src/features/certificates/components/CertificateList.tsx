@@ -1,6 +1,5 @@
-import { useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
-import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
 import { usePreference } from "@/shared/hooks/usePreference";
 import { useI18n } from "@/shared/hooks/useI18n";
 import { CertificateGroup } from "@/features/certificates/components/CertificateGroup";
@@ -14,7 +13,6 @@ import {
 } from "@/features/certificates/data/certificates";
 import { asset } from "@/shared/lib/asset";
 import { cn } from "@/shared/lib/cn";
-import { MOUSE_QUERY } from "@/shared/lib/pointer";
 
 const allGroupIds = groupCertificates(allCertificates).map(
   (group) => group.institutionId,
@@ -50,10 +48,33 @@ export function CertificateList({
   const { language } = usePreference();
   const { count } = useI18n().certificates;
   const [hoveredId, setHoveredId] = useState<string | null>(null);
-  // O preview com a imagem do certificado só existe com mouse.
-  const hasMouse = useMediaQuery(MOUSE_QUERY);
-  const [isPointerInside, setIsPointerInside] = useState(false);
+  // Destaque vindo de um toque (celular): fecha ao tocar fora ou rolar.
+  const [isTapSelection, setIsTapSelection] = useState(false);
   const hasPreloadedRef = useRef(false);
+
+  useEffect(() => {
+    if (!isTapSelection) {
+      return;
+    }
+    const clear = () => {
+      setHoveredId(null);
+      setIsTapSelection(false);
+    };
+    const onPointerDown = (event: PointerEvent) => {
+      const isOnRow =
+        event.target instanceof Element &&
+        event.target.closest("[data-certificate-row]") !== null;
+      if (!isOnRow) {
+        clear();
+      }
+    };
+    document.addEventListener("pointerdown", onPointerDown, { passive: true });
+    window.addEventListener("scroll", clear, { passive: true });
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("scroll", clear);
+    };
+  }, [isTapSelection]);
   const [openIds, setOpenIds] = useState<string[]>(allGroupIds);
   // Grupos já recolhidos ao menos uma vez: ao reabrir, os certificados entram
   // com um fade rápido em vez de esperar de novo a cascata de digitação.
@@ -90,23 +111,15 @@ export function CertificateList({
       type="multiple"
       value={openIds}
       onValueChange={changeOpenIds}
-      onPointerEnter={(event) => {
-        if (event.pointerType !== "mouse") {
-          return;
-        }
-        setIsPointerInside(true);
+      // Primeiro contato com a lista (mouse ou toque): baixa as imagens.
+      onPointerEnter={() => {
         if (!hasPreloadedRef.current) {
           hasPreloadedRef.current = true;
           preloadImages(allCertificates);
         }
       }}
-      onPointerLeave={() => {
-        setIsPointerInside(false);
-      }}
     >
-      {hasMouse && (
-        <CertificatePreview image={hoveredImage} isTracking={isPointerInside} />
-      )}
+      <CertificatePreview image={hoveredImage} />
       {certificateGroups.map((group) => {
         const total = group.certificates.length;
         const isInstant = skipCascade || collapsedIds.has(group.institutionId);
@@ -150,7 +163,18 @@ export function CertificateList({
                       hoveredId !== null && hoveredId !== certificate.id
                     }
                     onHoverChange={(isHovered) => {
-                      setHoveredId(isHovered ? certificate.id : null);
+                      // No celular o navegador também simula mouseenter/leave no
+                      // toque; quem manda ali é o onTap.
+                      if (!isTapSelection) {
+                        setHoveredId(isHovered ? certificate.id : null);
+                      }
+                    }}
+                    onTap={() => {
+                      // Tocar de novo no certificado em destaque fecha o preview.
+                      const isSameSelection =
+                        isTapSelection && hoveredId === certificate.id;
+                      setHoveredId(isSameSelection ? null : certificate.id);
+                      setIsTapSelection(!isSameSelection);
                     }}
                   />
                   {index < total - 1 && (

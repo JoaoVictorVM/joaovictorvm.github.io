@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "@/components/ui/BrandIcons";
+import { iconButtonClassName } from "@/components/ui/iconButton";
 import {
   getProjectLink,
   type Project,
@@ -27,7 +28,7 @@ function CardIconLink({ href, label, children }: CardIconLinkProps) {
       rel="noreferrer"
       aria-label={label}
       title={label}
-      className="text-detail hover:text-text flex size-8 items-center justify-center rounded-lg transition-colors"
+      className={iconButtonClassName}
     >
       {children}
     </a>
@@ -71,7 +72,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-text font-normal">{title}</h2>
-          <div className="-mr-2 flex shrink-0 items-center">
+          <div className="flex shrink-0 items-center gap-2">
             {repository && (
               <CardIconLink
                 href={repository.url}
@@ -82,7 +83,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             )}
             {live && (
               <CardIconLink href={live.url} label={`${t.liveLabel} ${title}`}>
-                <ArrowUpRight size={18} aria-hidden />
+                <ArrowUpRight size={16} aria-hidden />
               </CardIconLink>
             )}
           </div>

@@ -8,8 +8,6 @@ import { cn } from "@/shared/lib/cn";
 interface CertificatePreviewProps {
   /** Imagem do certificado em foco; `undefined` esconde o preview. */
   image: CertificateImage | undefined;
-  /** Mouse sobre a lista: acompanha o cursor (mesmo sem preview visível). */
-  isTracking: boolean;
 }
 
 /**
@@ -17,17 +15,16 @@ interface CertificatePreviewProps {
  * nome do certificado já está no texto da linha. Ao sair, mantém a última
  * imagem até o fade terminar. Vai direto no <body>: dentro de um ancestral com
  * `transform` (as animações de entrada), o `fixed` deixaria de ser relativo à tela.
+ * Acompanha o mouse o tempo todo (mesmo invisível): ao aparecer, já está ao
+ * lado do cursor, sem surgir no canto da tela.
  */
-export function CertificatePreview({
-  image,
-  isTracking,
-}: CertificatePreviewProps) {
+export function CertificatePreview({ image }: CertificatePreviewProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [lastImage, setLastImage] = useState(image);
   if (image && image !== lastImage) {
     setLastImage(image);
   }
-  useFollowPointer(ref, isTracking);
+  useFollowPointer(ref, true);
 
   return createPortal(
     <div

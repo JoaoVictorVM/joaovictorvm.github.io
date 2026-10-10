@@ -5,17 +5,30 @@ interface CertificateRowProps {
   date: string;
   isDimmed: boolean;
   onHoverChange: (isHovered: boolean) => void;
+  /** Toque (sem mouse): seleciona o certificado, como o hover faz com mouse. */
+  onTap: () => void;
 }
 
-/** Faixa do título até a data: só ela aciona o destaque do hover. */
+/**
+ * Faixa do título até a data: só ela aciona o destaque (hover com mouse, toque
+ * no celular). O atributo marca a faixa para "tocar fora" fechar o destaque.
+ */
 export function CertificateRow({
   title,
   date,
   isDimmed,
   onHoverChange,
+  onTap,
 }: CertificateRowProps) {
   return (
     <div
+      data-certificate-row
+      // Só no fim do toque: arrastar para rolar vira pointercancel, não abre.
+      onPointerUp={(event) => {
+        if (event.pointerType !== "mouse") {
+          onTap();
+        }
+      }}
       onMouseEnter={() => {
         onHoverChange(true);
       }}

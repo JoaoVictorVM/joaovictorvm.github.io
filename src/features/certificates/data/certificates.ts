@@ -51,6 +51,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-03-17",
     areas: ["frontend", "backend"],
     importance: 3,
+    image: {
+      src: "images/certificates/nlw-operator.webp",
+      width: 640,
+      height: 452,
+      kind: "certificate",
+    },
   },
   {
     id: "nlw-pocket",
@@ -60,6 +66,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2025-10-10",
     areas: ["frontend", "backend"],
     importance: 2,
+    image: {
+      src: "images/certificates/nlw-pocket.webp",
+      width: 558,
+      height: 341,
+      kind: "certificate",
+    },
   },
   {
     id: "introducao-csharp-dotnet",
@@ -69,6 +81,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-03-11",
     areas: ["backend"],
     importance: 2,
+    image: {
+      src: "images/certificates/introducao-csharp-dotnet.webp",
+      width: 559,
+      height: 341,
+      kind: "certificate",
+    },
   },
   {
     id: "microservices",
@@ -78,15 +96,30 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-04-01",
     areas: ["backend"],
     importance: 3,
+    image: {
+      src: "images/certificates/microservices.webp",
+      width: 558,
+      height: 341,
+      kind: "certificate",
+    },
   },
   {
-    id: "frontend-uxui-design",
+    id: "frontend-backend-uxui-design",
     institutionId: "origamid",
     institution: "Origamid",
-    title: { pt: "Front-end & UX/UI Design", en: "Front-End & UX/UI Design" },
+    title: {
+      pt: "Front-end, Back-end & UX/UI Design",
+      en: "Front-End, Back-End & UX/UI Design",
+    },
     issuedAt: "2026",
-    areas: ["frontend"],
+    areas: ["frontend", "backend"],
     importance: 3,
+    image: {
+      src: "images/certificates/frontend-backend-uxui-design.webp",
+      width: 640,
+      height: 453,
+      kind: "certificate",
+    },
   },
   {
     id: "html-css",
@@ -96,6 +129,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-02-06",
     areas: ["frontend"],
     importance: 1,
+    image: {
+      src: "images/certificates/html-css.webp",
+      width: 640,
+      height: 450,
+      kind: "certificate",
+    },
   },
   {
     id: "jquery",
@@ -105,6 +144,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-03-27",
     areas: ["frontend"],
     importance: 1,
+    image: {
+      src: "images/certificates/jquery.webp",
+      width: 640,
+      height: 450,
+      kind: "certificate",
+    },
   },
   {
     id: "css-flexbox",
@@ -114,6 +159,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-02-11",
     areas: ["frontend"],
     importance: 1,
+    image: {
+      src: "images/certificates/css-flexbox.webp",
+      width: 640,
+      height: 453,
+      kind: "certificate",
+    },
   },
   {
     id: "css-grid-layout",
@@ -123,6 +174,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-02-20",
     areas: ["frontend"],
     importance: 1,
+    image: {
+      src: "images/certificates/css-grid-layout.webp",
+      width: 640,
+      height: 452,
+      kind: "certificate",
+    },
   },
   {
     id: "css-avancado",
@@ -132,6 +189,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-02-27",
     areas: ["frontend"],
     importance: 2,
+    image: {
+      src: "images/certificates/css-avancado.webp",
+      width: 640,
+      height: 451,
+      kind: "certificate",
+    },
   },
   {
     id: "bootstrap",
@@ -141,6 +204,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-03-13",
     areas: ["frontend"],
     importance: 1,
+    image: {
+      src: "images/certificates/bootstrap.webp",
+      width: 640,
+      height: 450,
+      kind: "certificate",
+    },
   },
   {
     id: "sass",
@@ -150,6 +219,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-03-20",
     areas: ["frontend"],
     importance: 1,
+    image: {
+      src: "images/certificates/sass.webp",
+      width: 640,
+      height: 451,
+      kind: "certificate",
+    },
   },
   {
     id: "tailwind-css",
@@ -159,6 +234,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-03-06",
     areas: ["frontend"],
     importance: 2,
+    image: {
+      src: "images/certificates/tailwind-css.webp",
+      width: 640,
+      height: 450,
+      kind: "certificate",
+    },
   },
   {
     id: "javascript-es6",
@@ -171,6 +252,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-09-16",
     areas: ["frontend"],
     importance: 2,
+    image: {
+      src: "images/certificates/javascript-es6.webp",
+      width: 640,
+      height: 450,
+      kind: "certificate",
+    },
   },
   {
     id: "react",

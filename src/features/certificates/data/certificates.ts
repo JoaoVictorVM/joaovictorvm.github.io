@@ -11,6 +11,16 @@ export type CertificateSort = (typeof certificateSorts)[number];
 /** 3 = destaque, 2 = relevante, 1 = complementar. */
 export type CertificateImportance = 1 | 2 | 3;
 
+/** Imagem exibida no hover: o certificado em si ou uma badge (ex.: AWS, Oracle). */
+export interface CertificateImage {
+  /** Caminho a partir de `public/` (ex.: "images/certificates/react.webp"). */
+  src: string;
+  width: number;
+  height: number;
+  /** `badge` aparece menor e sem moldura (costuma ter fundo transparente). */
+  kind: "certificate" | "badge";
+}
+
 export interface Certificate {
   id: string;
   institutionId: string;
@@ -23,6 +33,7 @@ export interface Certificate {
   issuedAt: string;
   areas: CertificateArea[];
   importance: CertificateImportance;
+  image?: CertificateImage;
 }
 
 export interface CertificateGroup {
@@ -169,6 +180,12 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-10-08",
     areas: ["frontend"],
     importance: 3,
+    image: {
+      src: "images/certificates/react.webp",
+      width: 640,
+      height: 450,
+      kind: "certificate",
+    },
   },
 ];
 

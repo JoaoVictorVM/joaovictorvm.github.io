@@ -1,8 +1,10 @@
-import { useState, type CSSProperties } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
+import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
 import { usePreference } from "@/shared/hooks/usePreference";
 import { useI18n } from "@/shared/hooks/useI18n";
 import { CertificateGroup } from "@/features/certificates/components/CertificateGroup";
+import { CertificatePreview } from "@/features/certificates/components/CertificatePreview";
 import { CertificateRow } from "@/features/certificates/components/CertificateRow";
 import {
   certificates as allCertificates,
@@ -10,11 +12,22 @@ import {
   groupCertificates,
   type Certificate,
 } from "@/features/certificates/data/certificates";
+import { asset } from "@/shared/lib/asset";
 import { cn } from "@/shared/lib/cn";
+import { MOUSE_QUERY } from "@/shared/lib/pointer";
 
 const allGroupIds = groupCertificates(allCertificates).map(
   (group) => group.institutionId,
 );
+
+/** Baixa as imagens de uma vez, para a troca no hover ser instantânea. */
+function preloadImages(list: readonly Certificate[]) {
+  for (const certificate of list) {
+    if (certificate.image) {
+      new Image().src = asset(certificate.image.src);
+    }
+  }
+}
 
 const TYPE_CHAR = 35;
 const CASCADE_OVERLAP = 0.55;
@@ -37,6 +50,10 @@ export function CertificateList({
   const { language } = usePreference();
   const { count } = useI18n().certificates;
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // O preview com a imagem do certificado só existe com mouse.
+  const hasMouse = useMediaQuery(MOUSE_QUERY);
+  const [isPointerInside, setIsPointerInside] = useState(false);
+  const hasPreloadedRef = useRef(false);
   const [openIds, setOpenIds] = useState<string[]>(allGroupIds);
   // Grupos já recolhidos ao menos uma vez: ao reabrir, os certificados entram
   // com um fade rápido em vez de esperar de novo a cascata de digitação.
@@ -64,12 +81,32 @@ export function CertificateList({
     }
   }
 
+  const hoveredImage = certificates.find(
+    (certificate) => certificate.id === hoveredId,
+  )?.image;
+
   return (
     <Accordion.Root
       type="multiple"
       value={openIds}
       onValueChange={changeOpenIds}
+      onPointerEnter={(event) => {
+        if (event.pointerType !== "mouse") {
+          return;
+        }
+        setIsPointerInside(true);
+        if (!hasPreloadedRef.current) {
+          hasPreloadedRef.current = true;
+          preloadImages(allCertificates);
+        }
+      }}
+      onPointerLeave={() => {
+        setIsPointerInside(false);
+      }}
     >
+      {hasMouse && (
+        <CertificatePreview image={hoveredImage} isTracking={isPointerInside} />
+      )}
       {certificateGroups.map((group) => {
         const total = group.certificates.length;
         const isInstant = skipCascade || collapsedIds.has(group.institutionId);

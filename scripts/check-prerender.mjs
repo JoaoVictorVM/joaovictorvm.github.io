@@ -6,32 +6,12 @@
  * segue com status 200, então o pré-render do TanStack não percebe. O HTML
  * publicado sairia sem aquele conteúdo (sem SEO, vazio até o JS carregar).
  */
-import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { readFile } from "node:fs/promises";
+import { findHtmlFiles } from "./lib/html-files.mjs";
 
-const OUTPUT_DIR = "dist/client";
 const CLIENT_RENDER_MARKER = "<!--$!-->";
 
-/** @param {string} dir @returns {Promise<string[]>} */
-async function findHtmlFiles(dir) {
-  const entries = await readdir(dir, { withFileTypes: true });
-  const nested = await Promise.all(
-    entries.map((entry) => {
-      const path = join(dir, entry.name);
-      if (entry.isDirectory()) {
-        return findHtmlFiles(path);
-      }
-      return Promise.resolve(entry.name.endsWith(".html") ? [path] : []);
-    }),
-  );
-  return nested.flat();
-}
-
-const files = await findHtmlFiles(OUTPUT_DIR);
-if (files.length === 0) {
-  throw new Error(`Nenhum HTML em ${OUTPUT_DIR}: rode o build antes.`);
-}
-
+const files = await findHtmlFiles();
 const broken = [];
 for (const file of files) {
   if ((await readFile(file, "utf8")).includes(CLIENT_RENDER_MARKER)) {

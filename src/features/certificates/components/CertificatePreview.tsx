@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { CertificateImage } from "@/features/certificates/data/certificates";
 import { useFollowPointer } from "@/shared/hooks/useFollowPointer";
+import { useIsHydrated } from "@/shared/hooks/useIsHydrated";
 import { asset } from "@/shared/lib/asset";
 import { cn } from "@/shared/lib/cn";
 
@@ -16,7 +17,8 @@ interface CertificatePreviewProps {
  * imagem até o fade terminar. Vai direto no <body>: dentro de um ancestral com
  * `transform` (as animações de entrada), o `fixed` deixaria de ser relativo à tela.
  * Acompanha o mouse o tempo todo (mesmo invisível): ao aparecer, já está ao
- * lado do cursor, sem surgir no canto da tela.
+ * lado do cursor, sem surgir no canto da tela. Só existe depois de hidratar:
+ * no pré-render não há `document` (nem nada para mostrar).
  */
 export function CertificatePreview({ image }: CertificatePreviewProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -24,7 +26,13 @@ export function CertificatePreview({ image }: CertificatePreviewProps) {
   if (image && image !== lastImage) {
     setLastImage(image);
   }
-  useFollowPointer(ref, true);
+  const isHydrated = useIsHydrated();
+  // Ativo só com o elemento montado (depois de hidratar).
+  useFollowPointer(ref, isHydrated);
+
+  if (!isHydrated) {
+    return null;
+  }
 
   return createPortal(
     <div

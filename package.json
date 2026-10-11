@@ -9,7 +9,7 @@
   "packageManager": "pnpm@10.32.1",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && node scripts/check-prerender.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",

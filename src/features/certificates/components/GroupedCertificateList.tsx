@@ -75,7 +75,7 @@ export function GroupedCertificateList({
             institution={group.institution}
             summary={`${String(total)} ${total === 1 ? count.one : count.other}`}
             isOpen={openIds.includes(group.institutionId)}
-            revealDelay={delays.get(firstId) ?? 0}
+            revealDelay={skipCascade ? 0 : (delays.get(firstId) ?? 0)}
             onExpand={() => {
               changeOpenIds([...openIds, group.institutionId]);
             }}

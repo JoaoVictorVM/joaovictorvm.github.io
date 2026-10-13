@@ -57,6 +57,7 @@ function CertificatesPage() {
             {shown.length > 0 ? (
               <CertificateList
                 certificates={shown}
+                grouping={view.grouping}
                 skipCascade={view.hasChanged}
               />
             ) : (

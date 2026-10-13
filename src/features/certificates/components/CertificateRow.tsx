@@ -7,6 +7,7 @@ interface CertificateRowProps {
   onHoverChange: (isHovered: boolean) => void;
   /** Toque (sem mouse): seleciona o certificado, como o hover faz com mouse. */
   onTap: () => void;
+  className?: string;
 }
 
 /**
@@ -19,6 +20,7 @@ export function CertificateRow({
   isDimmed,
   onHoverChange,
   onTap,
+  className,
 }: CertificateRowProps) {
   return (
     <div
@@ -35,7 +37,10 @@ export function CertificateRow({
       onMouseLeave={() => {
         onHoverChange(false);
       }}
-      className="text-detail hover:text-text/80 flex items-center justify-between gap-3 px-2 py-4 transition-colors md:pr-0 md:pl-3"
+      className={cn(
+        "text-detail hover:text-text/80 flex items-center justify-between gap-3 px-2 py-4 transition-colors md:pr-0 md:pl-3",
+        className,
+      )}
     >
       <span
         className={cn(

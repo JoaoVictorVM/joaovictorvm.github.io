@@ -8,6 +8,10 @@ export type CertificateArea = (typeof certificateAreas)[number];
 export const certificateSorts = ["recent", "importance"] as const;
 export type CertificateSort = (typeof certificateSorts)[number];
 
+/** Agrupamentos da lista: `institution` (padrão) ou `none`, uma lista única. */
+export const certificateGroupings = ["institution", "none"] as const;
+export type CertificateGrouping = (typeof certificateGroupings)[number];
+
 /** 3 = destaque, 2 = relevante, 1 = complementar. */
 export type CertificateImportance = 1 | 2 | 3;
 

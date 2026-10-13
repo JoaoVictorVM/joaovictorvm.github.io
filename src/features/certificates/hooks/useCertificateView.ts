@@ -2,6 +2,7 @@ import { useState } from "react";
 import { getRouteApi } from "@tanstack/react-router";
 import type {
   CertificateArea,
+  CertificateGrouping,
   CertificateSort,
 } from "@/features/certificates/data/certificates";
 import type { CertificateSearch } from "@/features/certificates/lib/certificateSearch";
@@ -13,18 +14,23 @@ export interface CertificateView {
   /** Área filtrada; `undefined` = todas. */
   filter: CertificateArea | undefined;
   sort: CertificateSort;
-  /** Filtro e ordem no padrão (nada a limpar). */
+  grouping: CertificateGrouping;
+  /**
+   * Filtro e ordem no padrão (nada a limpar). O agrupamento não conta: só muda
+   * a forma de exibir, não quais certificados aparecem.
+   */
   isDefault: boolean;
   /** A lista já mudou nesta visita (ou chegou filtrada pelo link). */
   hasChanged: boolean;
   setFilter: (filter: CertificateArea | undefined) => void;
   setSort: (sort: CertificateSort) => void;
+  setGrouping: (grouping: CertificateGrouping) => void;
   reset: () => void;
 }
 
 /**
- * Filtro e ordem dos certificados, lidos e escritos na URL. Até hidratar vale o
- * padrão, igual ao HTML pré-renderizado (que não conhece a query).
+ * Filtro, ordem e agrupamento dos certificados, lidos e escritos na URL. Até
+ * hidratar vale o padrão, igual ao HTML pré-renderizado (que não conhece a query).
  */
 export function useCertificateView(): CertificateView {
   const search = routeApi.useSearch();
@@ -35,12 +41,14 @@ export function useCertificateView(): CertificateView {
   const filter = isHydrated ? search.filter : undefined;
   const sort: CertificateSort =
     (isHydrated ? search.sort : undefined) ?? "recent";
+  const grouping: CertificateGrouping =
+    (isHydrated ? search.group : undefined) ?? "institution";
   const isDefault = filter === undefined && sort === "recent";
 
   function update(change: (current: CertificateSearch) => CertificateSearch) {
     setHasInteracted(true);
     void navigate({
-      search: change,
+      search: (current) => withoutDefaults(change(current)),
       resetScroll: false,
       // Trocar o filtro não é trocar de página: sem a transição de rota.
       viewTransition: false,
@@ -50,23 +58,27 @@ export function useCertificateView(): CertificateView {
   return {
     filter,
     sort,
+    grouping,
     isDefault,
     hasChanged: hasInteracted || !isDefault,
     setFilter: (next) => {
-      update(({ sort: currentSort }) =>
-        withoutDefaults({ filter: next, sort: currentSort }),
-      );
+      update((current) => ({ ...current, filter: next }));
     },
     setSort: (next) => {
-      update(({ filter: currentFilter }) =>
-        withoutDefaults({
-          filter: currentFilter,
-          sort: next === "recent" ? undefined : next,
-        }),
-      );
+      update((current) => ({
+        ...current,
+        sort: next === "recent" ? undefined : next,
+      }));
     },
+    setGrouping: (next) => {
+      update((current) => ({
+        ...current,
+        group: next === "institution" ? undefined : next,
+      }));
+    },
+    // Limpa filtro e ordem; o agrupamento escolhido continua.
     reset: () => {
-      update(() => ({}));
+      update(({ group }) => ({ group }));
     },
   };
 }
@@ -79,6 +91,9 @@ function withoutDefaults(search: CertificateSearch): CertificateSearch {
   }
   if (search.sort) {
     result.sort = search.sort;
+  }
+  if (search.group) {
+    result.group = search.group;
   }
   return result;
 }

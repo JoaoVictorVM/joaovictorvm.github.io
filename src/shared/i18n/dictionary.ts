@@ -148,8 +148,8 @@ const pt = {
       other: "certificados",
     },
     controls: {
-      label: "Filtrar e ordenar",
-      activeLabel: "Filtrar e ordenar (filtros ativos)",
+      label: "Filtrar, ordenar e agrupar",
+      activeLabel: "Filtrar, ordenar e agrupar (filtros ativos)",
       filter: "Filtro",
       filters: {
         all: "Todas",
@@ -160,6 +160,11 @@ const pt = {
       sorts: {
         recent: "Mais recentes",
         importance: "Mais importantes",
+      },
+      group: "Agrupar",
+      groupings: {
+        institution: "Por instituição",
+        none: "Não agrupar",
       },
       empty: "Nenhum certificado com esse filtro.",
     },
@@ -490,8 +495,8 @@ const en: Dictionary = {
       other: "certificates",
     },
     controls: {
-      label: "Filter and sort",
-      activeLabel: "Filter and sort (filters active)",
+      label: "Filter, sort and group",
+      activeLabel: "Filter, sort and group (filters active)",
       filter: "Filter",
       filters: {
         all: "All",
@@ -502,6 +507,11 @@ const en: Dictionary = {
       sorts: {
         recent: "Most recent",
         importance: "Most important",
+      },
+      group: "Group",
+      groupings: {
+        institution: "By institution",
+        none: "Don't group",
       },
       empty: "No certificates match this filter.",
     },

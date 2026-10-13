@@ -2,8 +2,10 @@ import { Funnel } from "lucide-react";
 import { OptionsMenu } from "@/components/ui/OptionsMenu";
 import {
   certificateAreas,
+  certificateGroupings,
   certificateSorts,
   type CertificateArea,
+  type CertificateGrouping,
   type CertificateSort,
 } from "@/features/certificates/data/certificates";
 import type { CertificateView } from "@/features/certificates/hooks/useCertificateView";
@@ -17,7 +19,7 @@ interface CertificateControlsProps {
   view: CertificateView;
 }
 
-/** Botão de filtro e ordenação da página de certificados. */
+/** Botão de filtro, ordenação e agrupamento da página de certificados. */
 export function CertificateControls({ view }: CertificateControlsProps) {
   const t = useI18n().certificates.controls;
 
@@ -49,6 +51,18 @@ export function CertificateControls({ view }: CertificateControlsProps) {
         {certificateSorts.map((option) => (
           <OptionsMenu.Option key={option} value={option}>
             {t.sorts[option]}
+          </OptionsMenu.Option>
+        ))}
+      </OptionsMenu.Group>
+      <OptionsMenu.Separator />
+      <OptionsMenu.Group<CertificateGrouping>
+        label={t.group}
+        value={view.grouping}
+        onValueChange={view.setGrouping}
+      >
+        {certificateGroupings.map((option) => (
+          <OptionsMenu.Option key={option} value={option}>
+            {t.groupings[option]}
           </OptionsMenu.Option>
         ))}
       </OptionsMenu.Group>

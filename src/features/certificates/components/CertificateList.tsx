@@ -8,16 +8,7 @@ import {
   type CertificateGrouping,
 } from "@/features/certificates/data/certificates";
 import { useCertificateHighlight } from "@/features/certificates/hooks/useCertificateHighlight";
-import { asset } from "@/shared/lib/asset";
-
-/** Baixa as imagens de uma vez, para a troca no hover ser instantânea. */
-function preloadImages(list: readonly Certificate[]) {
-  for (const certificate of list) {
-    if (certificate.image) {
-      new Image().src = asset(certificate.image.src);
-    }
-  }
-}
+import { preloadCertificateImages } from "@/features/certificates/lib/preloadCertificateImages";
 
 interface CertificateListProps {
   /** Certificados já filtrados e ordenados. */
@@ -49,7 +40,7 @@ export function CertificateList({
       onPointerEnter={() => {
         if (!hasPreloadedRef.current) {
           hasPreloadedRef.current = true;
-          preloadImages(allCertificates);
+          preloadCertificateImages(allCertificates);
         }
       }}
     >

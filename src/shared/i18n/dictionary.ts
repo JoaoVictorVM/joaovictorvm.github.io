@@ -147,6 +147,9 @@ const pt = {
       one: "certificado",
       other: "certificados",
     },
+    /** Descrição dos certificados em destaque na home. */
+    highlightSummary: (institution: string, date: string) =>
+      `Certificação concluída pela ${institution} em ${date}, validando conhecimentos na área.`,
     controls: {
       label: "Filtrar, ordenar e agrupar",
       activeLabel: "Filtrar, ordenar e agrupar (filtros ativos)",
@@ -155,6 +158,7 @@ const pt = {
         all: "Todas",
         frontend: "Front-end",
         backend: "Back-end",
+        ai: "IA",
       },
       sort: "Ordenar",
       sorts: {
@@ -300,18 +304,6 @@ const pt = {
       projectsTitle: "Projetos",
       certificatesCta: "Todos os Certificados",
       projectsCta: "Demais Projetos",
-      certificates: [
-        {
-          title: "Front End & UX/UI Design",
-          description:
-            "Certificação concluída pela Origamid em 06/02/2026, validando conhecimentos na área.",
-        },
-        {
-          title: "NLW Operator - FullStack",
-          description:
-            "Certificação concluída pela Rocketseat em 17/03/2026, validando conhecimentos na área.",
-        },
-      ],
       projects: [
         {
           title: "Focuzen",
@@ -494,6 +486,8 @@ const en: Dictionary = {
       one: "certificate",
       other: "certificates",
     },
+    highlightSummary: (institution: string, date: string) =>
+      `${institution} certification completed on ${date}, confirming practical knowledge.`,
     controls: {
       label: "Filter, sort and group",
       activeLabel: "Filter, sort and group (filters active)",
@@ -502,6 +496,7 @@ const en: Dictionary = {
         all: "All",
         frontend: "Front-end",
         backend: "Back-end",
+        ai: "AI",
       },
       sort: "Sort",
       sorts: {
@@ -647,18 +642,6 @@ const en: Dictionary = {
       projectsTitle: "Projects",
       certificatesCta: "All Certificates",
       projectsCta: "Other Projects",
-      certificates: [
-        {
-          title: "Front End & UX/UI Design",
-          description:
-            "Origamid certification completed on 02/06/2026, confirming practical knowledge.",
-        },
-        {
-          title: "NLW Operator - FullStack",
-          description:
-            "Rocketseat certification completed on 03/17/2026, confirming practical knowledge.",
-        },
-      ],
       projects: [
         {
           title: "Focuzen",

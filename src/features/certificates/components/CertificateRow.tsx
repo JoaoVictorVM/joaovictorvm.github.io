@@ -1,3 +1,4 @@
+import { highlightTriggerProps } from "@/features/certificates/hooks/useCertificateHighlight";
 import { cn } from "@/shared/lib/cn";
 
 interface CertificateRowProps {
@@ -10,10 +11,7 @@ interface CertificateRowProps {
   className?: string;
 }
 
-/**
- * Faixa do título até a data: só ela aciona o destaque (hover com mouse, toque
- * no celular). O atributo marca a faixa para "tocar fora" fechar o destaque.
- */
+/** Faixa do título até a data: só ela aciona o destaque. */
 export function CertificateRow({
   title,
   date,
@@ -24,19 +22,7 @@ export function CertificateRow({
 }: CertificateRowProps) {
   return (
     <div
-      data-certificate-row
-      // Só no fim do toque: arrastar para rolar vira pointercancel, não abre.
-      onPointerUp={(event) => {
-        if (event.pointerType !== "mouse") {
-          onTap();
-        }
-      }}
-      onMouseEnter={() => {
-        onHoverChange(true);
-      }}
-      onMouseLeave={() => {
-        onHoverChange(false);
-      }}
+      {...highlightTriggerProps({ onHoverChange, onTap })}
       className={cn(
         "text-detail hover:text-text/80 flex items-center justify-between gap-3 px-2 py-4 transition-colors md:pr-0 md:pl-3",
         className,

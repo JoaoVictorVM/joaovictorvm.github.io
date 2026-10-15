@@ -1,7 +1,7 @@
 import type { Language } from "@/types/preferences";
 
 /** Áreas usadas no filtro da página de certificados. */
-export const certificateAreas = ["frontend", "backend"] as const;
+export const certificateAreas = ["frontend", "backend", "ai"] as const;
 export type CertificateArea = (typeof certificateAreas)[number];
 
 /** Ordens da lista: `recent` (padrão) pela data; `importance` pelos destaques. */
@@ -38,6 +38,8 @@ export interface Certificate {
   areas: CertificateArea[];
   importance: CertificateImportance;
   image?: CertificateImage;
+  /** Aparece no bloco de certificados da home. */
+  featured?: boolean;
 }
 
 export interface CertificateGroup {
@@ -47,6 +49,21 @@ export interface CertificateGroup {
 }
 
 export const certificates: Certificate[] = [
+  {
+    id: "google-ai-fundamentals",
+    institutionId: "google",
+    institution: "Google",
+    title: { pt: "Google AI Fundamentals", en: "Google AI Fundamentals" },
+    issuedAt: "2026-10-14",
+    areas: ["ai"],
+    importance: 2,
+    image: {
+      src: "images/certificates/google-ai-fundamentals.webp",
+      width: 640,
+      height: 494,
+      kind: "certificate",
+    },
+  },
   {
     id: "nlw-operator",
     institutionId: "rocketseat",
@@ -118,6 +135,7 @@ export const certificates: Certificate[] = [
     issuedAt: "2026",
     areas: ["frontend", "backend"],
     importance: 3,
+    featured: true,
     image: {
       src: "images/certificates/frontend-backend-uxui-design.webp",
       width: 640,
@@ -271,6 +289,7 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-10-08",
     areas: ["frontend"],
     importance: 3,
+    featured: true,
     image: {
       src: "images/certificates/react.webp",
       width: 640,
@@ -300,6 +319,11 @@ const comparators: Record<
   // Empate de importância: o mais recente primeiro.
   importance: (a, b) => b.importance - a.importance || byMostRecent(a, b),
 };
+
+/** Certificados do bloco da home, na ordem da lista. */
+export function getFeaturedCertificates(): readonly Certificate[] {
+  return certificates.filter((certificate) => certificate.featured);
+}
 
 /** `undefined` = todas as áreas. */
 export function filterCertificates(

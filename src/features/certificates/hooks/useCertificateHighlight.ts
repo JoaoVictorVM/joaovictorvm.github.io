@@ -1,9 +1,38 @@
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 
 export interface CertificateRowHighlight {
   isDimmed: boolean;
   onHoverChange: (isHovered: boolean) => void;
   onTap: () => void;
+}
+
+/**
+ * Eventos do elemento que aciona o destaque (hover com mouse, toque no
+ * celular). O atributo marca o elemento para "tocar fora" fechar o destaque.
+ */
+export function highlightTriggerProps({
+  onHoverChange,
+  onTap,
+}: Pick<CertificateRowHighlight, "onHoverChange" | "onTap">) {
+  return {
+    "data-certificate-row": true,
+    // Só no fim do toque: arrastar para rolar vira pointercancel, não abre.
+    onPointerUp: (event: ReactPointerEvent<HTMLElement>) => {
+      if (event.pointerType !== "mouse") {
+        onTap();
+      }
+    },
+    onMouseEnter: () => {
+      onHoverChange(true);
+    },
+    onMouseLeave: () => {
+      onHoverChange(false);
+    },
+  };
 }
 
 export interface CertificateHighlight {

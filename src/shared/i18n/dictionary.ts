@@ -155,6 +155,7 @@ const pt = {
         all: "Todas",
         frontend: "Front-end",
         backend: "Back-end",
+        ai: "IA",
       },
       sort: "Ordenar",
       sorts: {
@@ -502,6 +503,7 @@ const en: Dictionary = {
         all: "All",
         frontend: "Front-end",
         backend: "Back-end",
+        ai: "AI",
       },
       sort: "Sort",
       sorts: {

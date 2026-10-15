@@ -1,7 +1,7 @@
 import type { Language } from "@/types/preferences";
 
 /** Áreas usadas no filtro da página de certificados. */
-export const certificateAreas = ["frontend", "backend"] as const;
+export const certificateAreas = ["frontend", "backend", "ai"] as const;
 export type CertificateArea = (typeof certificateAreas)[number];
 
 /** Ordens da lista: `recent` (padrão) pela data; `importance` pelos destaques. */

@@ -48,6 +48,21 @@ export interface CertificateGroup {
 
 export const certificates: Certificate[] = [
   {
+    id: "google-ai-fundamentals",
+    institutionId: "google",
+    institution: "Google",
+    title: { pt: "Google AI Fundamentals", en: "Google AI Fundamentals" },
+    issuedAt: "2026-10-14",
+    areas: ["ai"],
+    importance: 2,
+    image: {
+      src: "images/certificates/google-ai-fundamentals.webp",
+      width: 640,
+      height: 494,
+      kind: "certificate",
+    },
+  },
+  {
     id: "nlw-operator",
     institutionId: "rocketseat",
     institution: "Rocketseat",

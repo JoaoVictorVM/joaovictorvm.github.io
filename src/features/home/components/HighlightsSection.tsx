@@ -1,35 +1,29 @@
+import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { inlineLinkClass } from "@/components/ui/inlineLink";
 import { WritingHighlights } from "@/features/blog/components/WritingHighlights";
+import { CertificateHighlights } from "@/features/certificates/components/CertificateHighlights";
 import { EducationBlock } from "@/features/home/components/EducationBlock";
 import { useI18n } from "@/shared/hooks/useI18n";
 import { useReveal } from "@/shared/hooks/useReveal";
 import { cn } from "@/shared/lib/cn";
 
-interface HighlightItem {
-  title: string;
-  description: string;
-  url?: string;
-}
-
 interface HighlightsColumnProps {
   title: string;
-  items: HighlightItem[];
   ctaLabel: string;
   ctaTo: "/certificates" | "/projects";
-  isProject?: boolean;
   isVisible: boolean;
+  children: ReactNode;
 }
 
 function HighlightsColumn({
   title,
-  items,
   ctaLabel,
   ctaTo,
-  isProject = false,
   isVisible,
+  children,
 }: HighlightsColumnProps) {
   return (
     <div
@@ -40,26 +34,7 @@ function HighlightsColumn({
     >
       <h2 className="text-detail text-sm font-normal">{title}</h2>
 
-      <div className="space-y-6">
-        {items.map((item) => (
-          <article key={item.title} className="space-y-1.5">
-            {isProject && item.url ? (
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noreferrer"
-                className={inlineLinkClass}
-              >
-                <span>{item.title}</span>
-                <ArrowUpRight size={14} aria-hidden className="text-detail" />
-              </a>
-            ) : (
-              <h3 className="text-text font-normal">{item.title}</h3>
-            )}
-            <p className="text-detail text-sm">{item.description}</p>
-          </article>
-        ))}
-      </div>
+      {children}
 
       <Link to={ctaTo} className={inlineLinkClass}>
         <span>{ctaLabel}</span>
@@ -85,19 +60,39 @@ export function HighlightsSection() {
         <div className="grid gap-12 md:grid-cols-2">
           <HighlightsColumn
             title={highlights.certificatesTitle}
-            items={highlights.certificates}
             ctaLabel={highlights.certificatesCta}
             ctaTo="/certificates"
             isVisible={isVisible}
-          />
+          >
+            <CertificateHighlights />
+          </HighlightsColumn>
           <HighlightsColumn
             title={highlights.projectsTitle}
-            items={highlights.projects}
             ctaLabel={highlights.projectsCta}
             ctaTo="/projects"
-            isProject
             isVisible={isVisible}
-          />
+          >
+            <div className="space-y-6">
+              {highlights.projects.map((project) => (
+                <article key={project.title} className="space-y-1.5">
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={inlineLinkClass}
+                  >
+                    <span>{project.title}</span>
+                    <ArrowUpRight
+                      size={14}
+                      aria-hidden
+                      className="text-detail"
+                    />
+                  </a>
+                  <p className="text-detail text-sm">{project.description}</p>
+                </article>
+              ))}
+            </div>
+          </HighlightsColumn>
         </div>
 
         <WritingHighlights isVisible={isVisible} />

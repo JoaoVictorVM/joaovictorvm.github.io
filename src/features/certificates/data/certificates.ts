@@ -38,6 +38,8 @@ export interface Certificate {
   areas: CertificateArea[];
   importance: CertificateImportance;
   image?: CertificateImage;
+  /** Aparece no bloco de certificados da home. */
+  featured?: boolean;
 }
 
 export interface CertificateGroup {
@@ -133,6 +135,7 @@ export const certificates: Certificate[] = [
     issuedAt: "2026",
     areas: ["frontend", "backend"],
     importance: 3,
+    featured: true,
     image: {
       src: "images/certificates/frontend-backend-uxui-design.webp",
       width: 640,
@@ -286,6 +289,7 @@ export const certificates: Certificate[] = [
     issuedAt: "2026-10-08",
     areas: ["frontend"],
     importance: 3,
+    featured: true,
     image: {
       src: "images/certificates/react.webp",
       width: 640,
@@ -315,6 +319,11 @@ const comparators: Record<
   // Empate de importância: o mais recente primeiro.
   importance: (a, b) => b.importance - a.importance || byMostRecent(a, b),
 };
+
+/** Certificados do bloco da home, na ordem da lista. */
+export function getFeaturedCertificates(): readonly Certificate[] {
+  return certificates.filter((certificate) => certificate.featured);
+}
 
 /** `undefined` = todas as áreas. */
 export function filterCertificates(

@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Todo dia às 06:00 UTC (03:00 em Brasília): atualiza o gráfico de atividade.
+  schedule:
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -30,6 +33,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm build
+        env:
+          # Lê a atividade pública do GitHub (scripts/fetch-github-activity.mjs).
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -8,8 +8,8 @@
   },
   "packageManager": "pnpm@10.32.1",
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build && node scripts/check-prerender.mjs && node scripts/add-csp.mjs",
+    "dev": "node scripts/fetch-github-activity.mjs && vite dev",
+    "build": "node scripts/fetch-github-activity.mjs && vite build && node scripts/check-prerender.mjs && node scripts/add-csp.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",

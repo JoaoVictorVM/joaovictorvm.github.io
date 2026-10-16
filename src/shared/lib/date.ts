@@ -1,15 +1,13 @@
+import { locales } from "@/shared/lib/locale";
 import type { Language } from "@/types/preferences";
 
-export type DateFormat = "long" | "short";
-
-const locales: Record<Language, string> = {
-  pt: "pt-BR",
-  en: "en-US",
-};
+export type DateFormat = "long" | "short" | "month";
 
 const formats: Record<DateFormat, Intl.DateTimeFormatOptions> = {
   long: { day: "2-digit", month: "long", year: "numeric" },
   short: { day: "2-digit", month: "short", year: "numeric" },
+  /** Só o mês abreviado: "out." (PT), "Oct" (EN). */
+  month: { month: "short" },
 };
 
 /**

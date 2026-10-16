@@ -17,6 +17,8 @@
   --duration-role-hold: 2500ms;
   --duration-caret: 1s;
   --stagger: 120ms;
+  /* Atraso entre as colunas (semanas) do gráfico de contribuições. */
+  --graph-stagger: 12ms;
   --duration-page: 300ms;
   --duration-cursor: 200ms;
 

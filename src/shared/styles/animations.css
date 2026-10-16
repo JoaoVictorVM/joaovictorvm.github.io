@@ -248,6 +248,18 @@
   }
 }
 
+/* Gráfico de contribuições: as semanas aparecem da mais antiga para a atual,
+   cada coluna com o atraso do seu índice (--column). */
+.graph-column {
+  opacity: 0;
+}
+.visible .graph-column {
+  animation: fadeIn var(--duration-fast) var(--ease-reveal) forwards;
+  animation-delay: calc(
+    var(--delay-300) + var(--column, 0) * var(--graph-stagger)
+  );
+}
+
 /* Capturada à parte na transição de rota, para a navegação fixa não sumir e
    reaparecer junto com a página. */
 .site-nav {
@@ -310,7 +322,8 @@
     transform: scaleX(1) !important;
     animation: none !important;
   }
-  .project-chevron {
+  .project-chevron,
+  .graph-column {
     opacity: 1 !important;
     animation: none !important;
   }

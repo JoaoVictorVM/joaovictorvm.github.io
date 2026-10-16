@@ -329,6 +329,17 @@ const pt = {
         "Tenho interesse especial em arquitetura de software, tanto na idealização de System Designs quanto na construção de Design Systems, e venho me aproximando da área de segurança da informação, ampliando meus conhecimentos através de uma graduação em Cybersegurança.",
       ],
     },
+    activity: {
+      title: "Atividade",
+      /** Resumo do gráfico, também usado como texto alternativo dele. */
+      total: (count: string) =>
+        `${count} contribuições no GitHub nos últimos 12 meses`,
+      legendLess: "Menos",
+      legendMore: "Mais",
+      studying: "Estudando",
+      reading: "Lendo",
+      latestRepository: "Último repositório",
+    },
     connect: {
       title: "Contato",
       prefix: "Me encontre em",
@@ -666,6 +677,16 @@ const en: Dictionary = {
       paragraphs: [
         "I have a particular interest in software architecture, both in designing systems (System Design) and in building Design Systems, and I have been getting closer to the field of information security, expanding my knowledge through a Cybersecurity degree.",
       ],
+    },
+    activity: {
+      title: "Activity",
+      total: (count: string) =>
+        `${count} GitHub contributions in the last 12 months`,
+      legendLess: "Less",
+      legendMore: "More",
+      studying: "Studying",
+      reading: "Reading",
+      latestRepository: "Latest repository",
     },
     connect: {
       title: "Connect",

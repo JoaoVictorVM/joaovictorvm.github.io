@@ -28,6 +28,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
+# gerado no build (scripts/fetch-github-activity.mjs)
+/src/features/home/data/github-activity.json
+
 # editor
 .vscode/*
 !.vscode/extensions.json

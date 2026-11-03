@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { ProjectFigure } from "@/features/projects/components/ProjectFigure";
+import { ProjectVideo } from "@/features/projects/components/ProjectVideo";
 import type { Project } from "@/features/projects/data/projects";
 import { usePreference } from "@/shared/hooks/usePreference";
 import { useI18n } from "@/shared/hooks/useI18n";
@@ -25,11 +26,19 @@ function DetailSection({
 export function ProjectDetail({ project }: ProjectDetailProps) {
   const { language } = usePreference();
   const t = useI18n().projects;
-  const { cover, gallery = [], stack = [], links = [] } = project;
+  const { cover, previewVideo, gallery = [], stack = [], links = [] } = project;
 
   return (
     <div className="text-text flex flex-col gap-10">
-      {cover && <ProjectFigure image={cover} isPriority />}
+      {previewVideo ? (
+        <ProjectVideo
+          video={previewVideo}
+          poster={cover}
+          className="border-line rounded-lg border"
+        />
+      ) : (
+        cover && <ProjectFigure image={cover} isPriority />
+      )}
 
       <p>{project.details[language]}</p>
 

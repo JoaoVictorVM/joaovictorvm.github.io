@@ -1,8 +1,9 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "@/components/ui/BrandIcons";
 import { iconButtonClassName } from "@/components/ui/iconButton";
+import { ProjectVideo } from "@/features/projects/components/ProjectVideo";
 import {
   getProjectLink,
   type Project,
@@ -55,11 +56,12 @@ export function ProjectCard({
   onFocusChange,
 }: ProjectCardProps) {
   const { language } = usePreference();
+  const [isHovered, setIsHovered] = useState(false);
   const t = useI18n().projects;
   const title = project.title[language];
   const repository = getProjectLink(project, "repository");
   const live = getProjectLink(project, "live");
-  const { cover } = project;
+  const { cover, previewVideo } = project;
   const coverClassName = cn(
     "aspect-video w-full rounded-2xl border transition-colors",
     emphasis === "focused" ? "border-text" : "border-line",
@@ -68,9 +70,11 @@ export function ProjectCard({
   return (
     <article
       onMouseEnter={() => {
+        setIsHovered(true);
         onFocusChange(true);
       }}
       onMouseLeave={() => {
+        setIsHovered(false);
         onFocusChange(false);
       }}
       onFocus={() => {
@@ -90,16 +94,25 @@ export function ProjectCard({
         emphasis === "dimmed" && "opacity-40",
       )}
     >
-      {cover ? (
-        <img
-          src={asset(cover.src)}
-          alt={cover.alt[language]}
-          width={cover.width}
-          height={cover.height}
-          loading="lazy"
-          decoding="async"
-          className={cn(coverClassName, "object-cover")}
+      {previewVideo ? (
+        <ProjectVideo
+          video={previewVideo}
+          poster={cover}
+          isHovered={isHovered}
+          className={coverClassName}
         />
+      ) : cover ? (
+        <div className={cn(coverClassName, "overflow-hidden")}>
+          <img
+            src={asset(cover.src)}
+            alt={cover.alt[language]}
+            width={cover.width}
+            height={cover.height}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover"
+          />
+        </div>
       ) : (
         // Capa provisória até as imagens dos projetos chegarem.
         <div

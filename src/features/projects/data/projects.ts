@@ -13,11 +13,17 @@ export interface ProjectLink {
 }
 
 export interface ProjectImage {
-  /** Caminho a partir de `public/` (ex.: "images/projects/focuzen/cover.webp"). */
+  /** Caminho a partir de `public/` (ex.: "media/projects/jotta/cover.webp"). */
   src: string;
   alt: LocalizedText;
   width: number;
   height: number;
+}
+
+export interface ProjectVideo {
+  /** Caminho do vídeo a partir de `public/`. */
+  src: string;
+  label: LocalizedText;
 }
 
 /** Tecnologias principais, usadas no filtro da página de projetos. */
@@ -27,6 +33,7 @@ export const projectTechnologies = [
   "typescript",
   "javascript",
   "nestjs",
+  "python",
 ] as const;
 export type ProjectTechnology = (typeof projectTechnologies)[number];
 
@@ -37,6 +44,7 @@ export const technologyLabels: Record<ProjectTechnology, string> = {
   typescript: "TypeScript",
   javascript: "JavaScript",
   nestjs: "NestJS",
+  python: "Python",
 };
 
 export interface Project {
@@ -52,10 +60,99 @@ export interface Project {
   links?: ProjectLink[];
   /** Capa do card na grade e da página do projeto. */
   cover?: ProjectImage;
+  previewVideo?: ProjectVideo;
   gallery?: ProjectImage[];
 }
 
 export const projects: Project[] = [
+  {
+    id: "jotta",
+    title: { pt: "Jotta", en: "Jotta" },
+    summary: {
+      pt: "Harness open-source para desenvolvimento com IA guiado por especificações, com contexto progressivo e controle de orçamento.",
+      en: "Open-source harness for spec-driven AI development, with progressive context and budget controls.",
+    },
+    details: {
+      pt: "Harness open-source que estrutura o desenvolvimento assistido por IA, conectando PRD, especificações, planos, implementação e entrega verificada. Combina instruções para agentes, skills e um runtime em Python, com carregamento progressivo de contexto para fornecer a cada tarefa apenas as informações necessárias. Mantém estado recuperável em JSON e checkpoints locais para retomar o trabalho entre sessões. Oferece três perfis de execução (manual-classic, lean e strict), validações de qualidade configuráveis, limites de orçamento e roteamento de modelos entre OpenAI, Anthropic ou o provedor herdado da plataforma. Integra GitHub e worktrees gerenciadas pelo Orca para entregas autônomas, preservando o trabalho bloqueado para inspeção. Documentos de planejamento e estado de execução permanecem locais ao projeto consumidor, e o instalador verifica conflitos antes de copiar os arquivos. Inclui verificações de repositório, autotestes e CI com GitHub Actions.",
+      en: "Open-source harness that structures AI-assisted development, connecting PRDs, specifications, plans, implementation and verified delivery. Combines agent instructions, skills and a Python runtime, with progressive context loading to give each task only the information it needs. Keeps recoverable JSON state and local checkpoints to resume work across sessions. Offers three execution profiles (manual-classic, lean and strict), configurable quality checks, budget limits and model routing across OpenAI, Anthropic or the provider inherited from the platform. Integrates GitHub and Orca-managed worktrees for autonomous delivery, preserving blocked work for inspection. Planning documents and execution state stay local to the consumer project, and the installer checks for conflicts before copying files. Includes repository checks, self-tests and CI with GitHub Actions.",
+    },
+    technologies: ["python"],
+    cover: {
+      src: "media/projects/jotta/jotta.webp",
+      alt: { pt: "Apresentação do Jotta", en: "Jotta overview" },
+      width: 1672,
+      height: 941,
+    },
+    stack: [
+      "Python",
+      "Markdown",
+      "JSON",
+      "YAML",
+      "Git",
+      "Orca CLI",
+      "GitHub Actions",
+    ],
+    links: [
+      {
+        kind: "repository",
+        label: { pt: "Repositório", en: "Repository" },
+        url: "https://github.com/JoaoVictorVM/jotta",
+      },
+    ],
+  },
+  {
+    id: "code-whispers",
+    title: { pt: "Code Whispers", en: "Code Whispers" },
+    summary: {
+      pt: "Jogo multiplayer de telefone sem fio do código, com Duelo e partidas de até 8 jogadores via WebRTC.",
+      en: "Multiplayer coding telephone game, with Duel mode and matches for up to 8 players over WebRTC.",
+    },
+    details: {
+      pt: "Jogo multiplayer no navegador em que os participantes escrevem, explicam e reescrevem código para descobrir como a ideia original muda no caminho. No Duelo, dois jogadores trocam trechos de código, explicam o que receberam e avaliam a interpretação do outro. No Telefone sem fio, de 3 a 8 jogadores alternam entre código e descrições, vendo apenas a etapa anterior até a revelação coletiva. Construído com TypeScript strict, Vite e Tailwind CSS, sem backend próprio, usa WebRTC via Trystero com sinalização por relays Nostr públicos. No modo em grupo, o host coordena as etapas, valida as respostas e envia a cada participante apenas o conteúdo necessário. A arquitetura separa regras puras de protocolo, sincronização de rede, estado e telas. Inclui editor CodeMirror 6 com destaque de sintaxe para oito linguagens, animações com GSAP, sons sintetizados via Web Audio API e testes com Vitest e jsdom. Distribuído como pacote estático no itch.io, sem cadastro ou instalação; os trechos de código nunca são executados.",
+      en: "Browser multiplayer game where participants write, explain and rewrite code to discover how the original idea changes along the way. In Duel mode, two players exchange code snippets, explain what they received and judge each other's interpretation. In Telephone mode, 3 to 8 players alternate between code and descriptions, seeing only the previous step until the shared reveal. Built with strict TypeScript, Vite and Tailwind CSS, with no dedicated backend, it uses WebRTC through Trystero with signaling over public Nostr relays. In group mode, the host coordinates steps, validates answers and sends each participant only the content they need. The architecture separates pure protocol rules, network synchronization, state and screens. Includes a CodeMirror 6 editor with syntax highlighting for eight languages, GSAP animations, sounds synthesized through the Web Audio API and tests with Vitest and jsdom. Distributed as a static package on itch.io, with no registration or installation; code snippets are never executed.",
+    },
+    technologies: ["typescript"],
+    cover: {
+      src: "media/projects/code-whispers/cover.webp",
+      alt: { pt: "Capa do Code Whispers", en: "Code Whispers cover" },
+      width: 1260,
+      height: 1000,
+    },
+    previewVideo: {
+      src: "media/projects/code-whispers/code-whispers.mp4",
+      label: {
+        pt: "Demonstração do Code Whispers",
+        en: "Code Whispers demo",
+      },
+    },
+    stack: [
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "CodeMirror 6",
+      "Trystero",
+      "WebRTC",
+      "Nostr",
+      "GSAP",
+      "canvas-confetti",
+      "Web Audio API",
+      "Vitest",
+      "jsdom",
+      "Bun",
+    ],
+    links: [
+      {
+        kind: "repository",
+        label: { pt: "Repositório", en: "Repository" },
+        url: "https://github.com/JoaoVictorVM/code-whispers",
+      },
+      {
+        kind: "live",
+        label: { pt: "Jogo", en: "Game" },
+        url: "https://joaovictorvm.itch.io/code-whispers",
+      },
+    ],
+  },
   {
     id: "focuzen",
     title: { pt: "Focuzen", en: "Focuzen" },

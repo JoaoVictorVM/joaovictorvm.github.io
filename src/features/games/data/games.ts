@@ -27,6 +27,28 @@ export const itchProfileUrl = "https://joaovictorvm.itch.io";
 
 export const games: Game[] = [
   {
+    id: "code-whispers",
+    title: { pt: "Code Whispers", en: "Code Whispers" },
+    summary: {
+      pt: "O telefone sem fio do código: jogo multiplayer no navegador com Duelo para 2 e Telefone sem fio para 3 a 8 jogadores.",
+      en: "A coding telephone game: browser multiplayer with Duel mode for 2 and Telephone mode for 3 to 8 players.",
+    },
+    description: {
+      pt: "Escreva código, explique o que recebeu e descubra como a ideia original muda no caminho. No Duelo, dois jogadores trocam trechos de código e avaliam as explicações um do outro. No Telefone sem fio, de 3 a 8 participantes alternam entre código e descrições, vendo apenas a etapa anterior até a revelação coletiva. As salas são compartilhadas por código, com conexão via WebRTC, sem cadastro ou instalação. Os trechos de código nunca são executados.",
+      en: "Write code, explain what you received and discover how the original idea changes along the way. In Duel mode, two players exchange code snippets and judge each other's explanations. In Telephone mode, 3 to 8 participants alternate between code and descriptions, seeing only the previous step until the shared reveal. Rooms are shared through a code, with WebRTC connections and no registration or installation. Code snippets are never executed.",
+    },
+    links: [
+      {
+        label: { pt: "Jogar", en: "Play" },
+        url: "https://joaovictorvm.itch.io/code-whispers",
+      },
+      {
+        label: { pt: "Repositório", en: "Repository" },
+        url: "https://github.com/JoaoVictorVM/code-whispers",
+      },
+    ],
+  },
+  {
     id: "game-1",
     title: { pt: "Protótipo Auto-Battle", en: "Auto-Battler Prototype" },
     summary: {

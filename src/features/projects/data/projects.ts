@@ -101,6 +101,59 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "code-whispers",
+    title: { pt: "Code Whispers", en: "Code Whispers" },
+    summary: {
+      pt: "Jogo multiplayer de telefone sem fio do código, com Duelo e partidas de até 8 jogadores via WebRTC.",
+      en: "Multiplayer coding telephone game, with Duel mode and matches for up to 8 players over WebRTC.",
+    },
+    details: {
+      pt: "Jogo multiplayer no navegador em que os participantes escrevem, explicam e reescrevem código para descobrir como a ideia original muda no caminho. No Duelo, dois jogadores trocam trechos de código, explicam o que receberam e avaliam a interpretação do outro. No Telefone sem fio, de 3 a 8 jogadores alternam entre código e descrições, vendo apenas a etapa anterior até a revelação coletiva. Construído com TypeScript strict, Vite e Tailwind CSS, sem backend próprio, usa WebRTC via Trystero com sinalização por relays Nostr públicos. No modo em grupo, o host coordena as etapas, valida as respostas e envia a cada participante apenas o conteúdo necessário. A arquitetura separa regras puras de protocolo, sincronização de rede, estado e telas. Inclui editor CodeMirror 6 com destaque de sintaxe para oito linguagens, animações com GSAP, sons sintetizados via Web Audio API e testes com Vitest e jsdom. Distribuído como pacote estático no itch.io, sem cadastro ou instalação; os trechos de código nunca são executados.",
+      en: "Browser multiplayer game where participants write, explain and rewrite code to discover how the original idea changes along the way. In Duel mode, two players exchange code snippets, explain what they received and judge each other's interpretation. In Telephone mode, 3 to 8 players alternate between code and descriptions, seeing only the previous step until the shared reveal. Built with strict TypeScript, Vite and Tailwind CSS, with no dedicated backend, it uses WebRTC through Trystero with signaling over public Nostr relays. In group mode, the host coordinates steps, validates answers and sends each participant only the content they need. The architecture separates pure protocol rules, network synchronization, state and screens. Includes a CodeMirror 6 editor with syntax highlighting for eight languages, GSAP animations, sounds synthesized through the Web Audio API and tests with Vitest and jsdom. Distributed as a static package on itch.io, with no registration or installation; code snippets are never executed.",
+    },
+    technologies: ["typescript"],
+    cover: {
+      src: "media/projects/code-whispers/cover.webp",
+      alt: { pt: "Capa do Code Whispers", en: "Code Whispers cover" },
+      width: 1260,
+      height: 1000,
+    },
+    previewVideo: {
+      src: "media/projects/code-whispers/code-whispers.mp4",
+      label: {
+        pt: "Demonstração do Code Whispers",
+        en: "Code Whispers demo",
+      },
+    },
+    stack: [
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "CodeMirror 6",
+      "Trystero",
+      "WebRTC",
+      "Nostr",
+      "GSAP",
+      "canvas-confetti",
+      "Web Audio API",
+      "Vitest",
+      "jsdom",
+      "Bun",
+    ],
+    links: [
+      {
+        kind: "repository",
+        label: { pt: "Repositório", en: "Repository" },
+        url: "https://github.com/JoaoVictorVM/code-whispers",
+      },
+      {
+        kind: "live",
+        label: { pt: "Jogo", en: "Game" },
+        url: "https://joaovictorvm.itch.io/code-whispers",
+      },
+    ],
+  },
+  {
     id: "focuzen",
     title: { pt: "Focuzen", en: "Focuzen" },
     summary: {

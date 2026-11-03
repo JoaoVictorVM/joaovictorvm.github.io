@@ -15,6 +15,7 @@ import { cn } from "@/shared/lib/cn";
 interface ProjectGridProps {
   /** Projetos já filtrados. */
   projects: readonly Project[];
+  showAllProjectsLink?: boolean;
 }
 
 /**
@@ -22,7 +23,10 @@ interface ProjectGridProps {
  * O card com o mouse (ou o foco do teclado) fica em destaque e os demais
  * esmaecem, como na lista de certificados.
  */
-export function ProjectGrid({ projects }: ProjectGridProps) {
+export function ProjectGrid({
+  projects,
+  showAllProjectsLink = true,
+}: ProjectGridProps) {
   const t = useI18n().projects;
   const [focusedId, setFocusedId] = useState<string | null>(null);
   // Um projeto que saiu da lista (filtro) não deixa os outros esmaecidos.
@@ -62,15 +66,17 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
         <p className="text-detail text-sm">{t.controls.empty}</p>
       )}
 
-      <a
-        href={allProjectsUrl}
-        target="_blank"
-        rel="noreferrer"
-        className={cn(inlineLinkClass, "self-start")}
-      >
-        <span>{t.allProjects}</span>
-        <ArrowUpRight size={14} aria-hidden className="text-detail" />
-      </a>
+      {showAllProjectsLink && (
+        <a
+          href={allProjectsUrl}
+          target="_blank"
+          rel="noreferrer"
+          className={cn(inlineLinkClass, "self-start")}
+        >
+          <span>{t.allProjects}</span>
+          <ArrowUpRight size={14} aria-hidden className="text-detail" />
+        </a>
+      )}
     </div>
   );
 }

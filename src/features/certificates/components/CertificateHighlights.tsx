@@ -30,7 +30,7 @@ export function CertificateHighlights() {
 
   return (
     <div
-      className="space-y-6"
+      className="grid gap-6 sm:grid-cols-2"
       // Primeiro contato com o bloco (mouse ou toque): baixa as imagens.
       onPointerEnter={() => {
         if (!hasPreloadedRef.current) {

@@ -50,6 +50,51 @@ export interface CertificateGroup {
 
 export const certificates: Certificate[] = [
   {
+    id: "claude-code-101",
+    institutionId: "anthropic",
+    institution: "Anthropic",
+    title: { pt: "Claude Code 101", en: "Claude Code 101" },
+    issuedAt: "2026-10-28",
+    areas: ["ai"],
+    importance: 2,
+    image: {
+      src: "images/certificates/claude-code-101.webp",
+      width: 1053,
+      height: 770,
+      kind: "certificate",
+    },
+  },
+  {
+    id: "claude-code-in-action",
+    institutionId: "anthropic",
+    institution: "Anthropic",
+    title: { pt: "Claude Code in Action", en: "Claude Code in Action" },
+    issuedAt: "2026-10-27",
+    areas: ["ai"],
+    importance: 2,
+    image: {
+      src: "images/certificates/claude-code-in-action.webp",
+      width: 1053,
+      height: 770,
+      kind: "certificate",
+    },
+  },
+  {
+    id: "openai-ai-foundations",
+    institutionId: "openai",
+    institution: "OpenAI",
+    title: { pt: "AI Foundations", en: "AI Foundations" },
+    issuedAt: "2026-11-02",
+    areas: ["ai"],
+    importance: 2,
+    image: {
+      src: "images/certificates/openai-ai-foundations.webp",
+      width: 400,
+      height: 400,
+      kind: "badge",
+    },
+  },
+  {
     id: "google-ai-fundamentals",
     institutionId: "google",
     institution: "Google",

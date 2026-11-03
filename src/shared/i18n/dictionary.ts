@@ -341,9 +341,9 @@ const pt = {
       latestRepository: "Último repositório",
     },
     connect: {
-      title: "Contato",
-      prefix: "Me encontre em",
-      orWord: "ou",
+      sectionTitle: "Me encontre",
+      title: "Conexões",
+      contactTitle: "Contato",
     },
   },
 };
@@ -689,9 +689,9 @@ const en: Dictionary = {
       latestRepository: "Latest repository",
     },
     connect: {
+      sectionTitle: "Reach Me",
       title: "Connect",
-      prefix: "Reach me at",
-      orWord: "or",
+      contactTitle: "Contact",
     },
   },
 };

@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { socialLinks } from "@/shared/data/socialLinks";
 import { useI18n } from "@/shared/hooks/useI18n";
@@ -9,36 +9,84 @@ export function ConnectSection() {
   const { home } = useI18n();
   const { connect } = home;
   const { ref, isVisible } = useReveal<HTMLElement>();
+  const groups = [
+    {
+      id: "connect",
+      title: connect.title,
+      labels: ["Linkedin", "Instagram", "GitHub"],
+    },
+    {
+      id: "contact",
+      title: connect.contactTitle,
+      labels: ["Email", "WhatsApp"],
+    },
+  ];
 
   return (
     <section
       ref={ref}
       className={cn("section-fade pb-16", isVisible && "visible")}
     >
-      <Container className="text-text space-y-4">
-        <h2 className="text-lg">{connect.title}</h2>
-        <p className={cn("text-appear delay-350", isVisible && "visible")}>
-          {connect.prefix}&nbsp;
-          {socialLinks.map((link, index) => {
-            const isSecondLast = index === socialLinks.length - 2;
-            const isLast = index === socialLinks.length - 1;
+      <Container className="text-text">
+        <h2 className="mb-6 text-lg">{connect.sectionTitle}</h2>
+        {groups.map((group) => (
+          <div key={group.id}>
+            <div className="group-line" />
+            <div className="md:grid-certificate md:grid">
+              <h3
+                id={`home-${group.id}`}
+                className="text-detail px-2 pt-4 pb-3 text-sm md:px-0 md:py-4"
+              >
+                {group.title}
+              </h3>
+              <ul aria-labelledby={`home-${group.id}`} className="min-w-0">
+                {group.labels
+                  .flatMap((label) =>
+                    socialLinks.filter((link) => link.label === label),
+                  )
+                  .map((link, index) => {
+                    const isExternal = link.href.startsWith("https://");
+                    const content = (
+                      <>
+                        {link.label}
+                        <ArrowUpRight
+                          size={16}
+                          aria-hidden
+                          className="shrink-0"
+                        />
+                      </>
+                    );
+                    const rowClassName =
+                      "flex items-center justify-between gap-3 px-2 py-4 md:px-3";
 
-            return (
-              <Fragment key={link.href}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="decoration-text/30 hover:decoration-text underline underline-offset-4 transition-colors"
-                >
-                  {link.label}
-                </a>
-                {!isLast && (isSecondLast ? ` ${connect.orWord} ` : ", ")}
-              </Fragment>
-            );
-          })}
-          .
-        </p>
+                    return (
+                      <li key={link.href}>
+                        {index > 0 && <div className="group-line" />}
+                        <a
+                          href={link.href}
+                          target={isExternal ? "_blank" : undefined}
+                          rel={isExternal ? "noreferrer" : undefined}
+                          className="contact-link relative block text-sm"
+                        >
+                          <span className={rowClassName}>{content}</span>
+                          <span
+                            aria-hidden
+                            className={cn(
+                              "contact-link-fill absolute inset-0",
+                              rowClassName,
+                            )}
+                          >
+                            {content}
+                          </span>
+                        </a>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
+          </div>
+        ))}
+        <div className="group-line md:ml-35" />
       </Container>
     </section>
   );

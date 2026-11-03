@@ -40,6 +40,8 @@
   --text-color: #e5e5e5;
   --detail-color: #8d8d8d;
   --line-color: #2e2e2e;
+  --opposite-bg-color: #eceff4;
+  --opposite-text-color: #3b4252;
 
   /* Realce de sintaxe — paleta Vesper (dark é a original do tema). */
   --syntax-plain: var(--text-color);
@@ -56,6 +58,8 @@
   --text-color: #3b4252;
   --detail-color: #5a6472;
   --line-color: #cccccc;
+  --opposite-bg-color: #1a1a1a;
+  --opposite-text-color: #e5e5e5;
 
   /* Vesper não tem variante light: são os mesmos papéis reescurecidos até
      passar em AA (≥ 4.5:1) sobre o fundo claro. */

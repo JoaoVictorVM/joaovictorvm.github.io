@@ -46,6 +46,18 @@ export function ConnectSection() {
                   )
                   .map((link, index) => {
                     const isExternal = link.href.startsWith("https://");
+                    const content = (
+                      <>
+                        {link.label}
+                        <ArrowUpRight
+                          size={16}
+                          aria-hidden
+                          className="shrink-0"
+                        />
+                      </>
+                    );
+                    const rowClassName =
+                      "flex items-center justify-between gap-3 px-2 py-4 md:px-3";
 
                     return (
                       <li key={link.href}>
@@ -54,14 +66,18 @@ export function ConnectSection() {
                           href={link.href}
                           target={isExternal ? "_blank" : undefined}
                           rel={isExternal ? "noreferrer" : undefined}
-                          className="hover:text-detail flex items-center justify-between gap-3 px-2 py-4 text-sm transition-colors md:pr-0 md:pl-3"
+                          className="contact-link relative block text-sm"
                         >
-                          {link.label}
-                          <ArrowUpRight
-                            size={16}
+                          <span className={rowClassName}>{content}</span>
+                          <span
                             aria-hidden
-                            className="shrink-0"
-                          />
+                            className={cn(
+                              "contact-link-fill absolute inset-0",
+                              rowClassName,
+                            )}
+                          >
+                            {content}
+                          </span>
                         </a>
                       </li>
                     );

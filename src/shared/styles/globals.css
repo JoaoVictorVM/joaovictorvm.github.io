@@ -107,6 +107,29 @@ html.has-custom-cursor * {
   grid-template-columns: calc(var(--spacing) * 35) 1fr;
 }
 
+/* A camada recortada revela fundo e texto juntos, mantendo o contraste
+   durante todo o preenchimento. O cursor com difference acompanha a inversão. */
+.contact-link-fill {
+  background: var(--opposite-bg-color);
+  color: var(--opposite-text-color);
+  clip-path: polygon(0 0, 0 0, -20% 100%, 0 100%);
+  transition: clip-path 650ms var(--ease-reveal);
+  pointer-events: none;
+}
+.contact-link:focus-visible .contact-link-fill {
+  clip-path: polygon(0 0, 120% 0, 100% 100%, 0 100%);
+}
+@media (hover: hover) and (pointer: fine) {
+  .contact-link:hover .contact-link-fill {
+    clip-path: polygon(0 0, 120% 0, 100% 100%, 0 100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-link-fill {
+    transition: none;
+  }
+}
+
 /* Tipografia do corpo dos posts: as mesmas classes usadas no restante do site,
    declaradas uma vez para que o conteúdo seja escrito em HTML semântico puro. */
 .post-body {

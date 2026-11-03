@@ -13,11 +13,17 @@ export interface ProjectLink {
 }
 
 export interface ProjectImage {
-  /** Caminho a partir de `public/` (ex.: "images/projects/focuzen/cover.webp"). */
+  /** Caminho a partir de `public/` (ex.: "media/projects/jotta/cover.webp"). */
   src: string;
   alt: LocalizedText;
   width: number;
   height: number;
+}
+
+export interface ProjectVideo {
+  /** Caminho do vídeo a partir de `public/`. */
+  src: string;
+  label: LocalizedText;
 }
 
 /** Tecnologias principais, usadas no filtro da página de projetos. */
@@ -52,6 +58,7 @@ export interface Project {
   links?: ProjectLink[];
   /** Capa do card na grade e da página do projeto. */
   cover?: ProjectImage;
+  previewVideo?: ProjectVideo;
   gallery?: ProjectImage[];
 }
 

@@ -33,6 +33,7 @@ export const projectTechnologies = [
   "typescript",
   "javascript",
   "nestjs",
+  "python",
 ] as const;
 export type ProjectTechnology = (typeof projectTechnologies)[number];
 
@@ -43,6 +44,7 @@ export const technologyLabels: Record<ProjectTechnology, string> = {
   typescript: "TypeScript",
   javascript: "JavaScript",
   nestjs: "NestJS",
+  python: "Python",
 };
 
 export interface Project {
@@ -63,6 +65,41 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: "jotta",
+    title: { pt: "Jotta", en: "Jotta" },
+    summary: {
+      pt: "Harness open-source para desenvolvimento com IA guiado por especificações, com contexto progressivo e controle de orçamento.",
+      en: "Open-source harness for spec-driven AI development, with progressive context and budget controls.",
+    },
+    details: {
+      pt: "Harness open-source que estrutura o desenvolvimento assistido por IA, conectando PRD, especificações, planos, implementação e entrega verificada. Combina instruções para agentes, skills e um runtime em Python, com carregamento progressivo de contexto para fornecer a cada tarefa apenas as informações necessárias. Mantém estado recuperável em JSON e checkpoints locais para retomar o trabalho entre sessões. Oferece três perfis de execução (manual-classic, lean e strict), validações de qualidade configuráveis, limites de orçamento e roteamento de modelos entre OpenAI, Anthropic ou o provedor herdado da plataforma. Integra GitHub e worktrees gerenciadas pelo Orca para entregas autônomas, preservando o trabalho bloqueado para inspeção. Documentos de planejamento e estado de execução permanecem locais ao projeto consumidor, e o instalador verifica conflitos antes de copiar os arquivos. Inclui verificações de repositório, autotestes e CI com GitHub Actions.",
+      en: "Open-source harness that structures AI-assisted development, connecting PRDs, specifications, plans, implementation and verified delivery. Combines agent instructions, skills and a Python runtime, with progressive context loading to give each task only the information it needs. Keeps recoverable JSON state and local checkpoints to resume work across sessions. Offers three execution profiles (manual-classic, lean and strict), configurable quality checks, budget limits and model routing across OpenAI, Anthropic or the provider inherited from the platform. Integrates GitHub and Orca-managed worktrees for autonomous delivery, preserving blocked work for inspection. Planning documents and execution state stay local to the consumer project, and the installer checks for conflicts before copying files. Includes repository checks, self-tests and CI with GitHub Actions.",
+    },
+    technologies: ["python"],
+    cover: {
+      src: "media/projects/jotta/jotta.webp",
+      alt: { pt: "Apresentação do Jotta", en: "Jotta overview" },
+      width: 1672,
+      height: 941,
+    },
+    stack: [
+      "Python",
+      "Markdown",
+      "JSON",
+      "YAML",
+      "Git",
+      "Orca CLI",
+      "GitHub Actions",
+    ],
+    links: [
+      {
+        kind: "repository",
+        label: { pt: "Repositório", en: "Repository" },
+        url: "https://github.com/JoaoVictorVM/jotta",
+      },
+    ],
+  },
   {
     id: "focuzen",
     title: { pt: "Focuzen", en: "Focuzen" },

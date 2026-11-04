@@ -41,12 +41,12 @@
 }
 
 :root {
-  --bg-color: #1a1a1a;
-  --text-color: #e5e5e5;
-  --detail-color: #8d8d8d;
-  --line-color: #2e2e2e;
-  --opposite-bg-color: #eceff4;
-  --opposite-text-color: #3b4252;
+  --bg-color: #1c1b19;
+  --text-color: #ece7df;
+  --detail-color: #968f83;
+  --line-color: var(--detail-color);
+  --opposite-bg-color: #e8e5e0;
+  --opposite-text-color: #141412;
 
   /* Realce de sintaxe — paleta Vesper (dark é a original do tema). */
   --syntax-plain: var(--text-color);
@@ -59,12 +59,12 @@
 }
 
 :root[data-theme="light"] {
-  --bg-color: #eceff4;
-  --text-color: #3b4252;
-  --detail-color: #5a6472;
-  --line-color: #cccccc;
-  --opposite-bg-color: #1a1a1a;
-  --opposite-text-color: #e5e5e5;
+  --bg-color: #e8e5e0;
+  --text-color: #141412;
+  --detail-color: #7a756b;
+  --line-color: var(--detail-color);
+  --opposite-bg-color: #1c1b19;
+  --opposite-text-color: #ece7df;
 
   /* Vesper não tem variante light: são os mesmos papéis reescurecidos até
      passar em AA (≥ 4.5:1) sobre o fundo claro. */

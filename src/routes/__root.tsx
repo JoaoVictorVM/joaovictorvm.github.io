@@ -20,7 +20,8 @@ import { siteConfig } from "@/shared/config/site";
 import { asset } from "@/shared/lib/asset";
 import { baseMeta, personJsonLd } from "@/shared/lib/seo";
 import appCss from "@/shared/styles/globals.css?url";
-import "@fontsource-variable/inter";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/instrument-sans";
 
 const preferenceScript = `(function(){try{var d=document.documentElement;var t=localStorage.getItem('portfolio-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}d.dataset.theme=t;var l=localStorage.getItem('portfolio-language');if(l==='pt'||l==='en'){d.dataset.language=l;d.lang=l==='pt'?'pt-BR':'en';}}catch(e){}})();`;
 

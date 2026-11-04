@@ -1,5 +1,10 @@
 @theme {
-  --font-sans: "Inter Variable", "Inter", system-ui, sans-serif;
+  /* Principal: nome, textos de leitura e títulos. */
+  --font-primary: "Geist Variable", "Geist", system-ui, sans-serif;
+  --font-sans: var(--font-primary);
+  /* Decoração: separadores, descrições e informações de apoio. */
+  --font-decoration:
+    "Instrument Sans Variable", "Instrument Sans", system-ui, sans-serif;
 
   --container-column: 42rem;
   --text-2xs: 0.55rem;

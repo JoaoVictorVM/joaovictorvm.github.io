@@ -101,6 +101,44 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "lastro",
+    title: { pt: "Lastro", en: "Lastro" },
+    summary: {
+      pt: "Harness open-source em Python para testes exploratórios supervisionados por IA em aplicações web, com foco em evidências.",
+      en: "Open-source Python harness for supervised AI exploratory testing of web applications, focused on evidence.",
+    },
+    details: {
+      pt: "Projeto open-source em desenvolvimento para estruturar testes exploratórios de aplicações web com agentes de IA supervisionados e conclusões apoiadas em evidências. Construído em Python, reúne uma CLI com Typer, configuração tipada com Pydantic, autenticação por scripts Playwright e histórico local em SQLite. Inclui uma aplicação de demonstração em FastAPI com defeitos intencionais para exercitar fluxos de teste, além de missões em texto ou Markdown e skills de exploração, heurísticas de QA e reprodução. A arquitetura contempla ferramentas de navegador via MCP, políticas de execução, memória persistente e relatórios rastreáveis. O runtime completo de execução de missões e as etapas de aprovação humana seguem em desenvolvimento, conforme o roadmap do projeto.",
+      en: "Open-source project in development to structure exploratory testing of web applications with supervised AI agents and evidence-backed conclusions. Built in Python, it brings together a Typer CLI, typed configuration with Pydantic, authentication through Playwright scripts and local SQLite history. Includes a FastAPI demo application with intentionally seeded defects to exercise test flows, alongside text or Markdown missions and skills for exploration, QA heuristics and reproduction. The architecture covers browser tools through MCP, execution policies, persistent memory and traceable reports. The full mission execution runtime and human approval stages remain in development, following the project roadmap.",
+    },
+    technologies: ["python"],
+    cover: {
+      src: "media/projects/lastro/lastro.webp",
+      alt: { pt: "Apresentação do Lastro", en: "Lastro overview" },
+      width: 1672,
+      height: 941,
+    },
+    stack: [
+      "Python",
+      "Typer",
+      "Pydantic",
+      "Playwright",
+      "MCP",
+      "FastAPI",
+      "SQLite",
+      "pytest",
+      "Ruff",
+      "uv",
+    ],
+    links: [
+      {
+        kind: "repository",
+        label: { pt: "Repositório", en: "Repository" },
+        url: "https://github.com/JoaoVictorVM/lastro",
+      },
+    ],
+  },
+  {
     id: "code-whispers",
     title: { pt: "Code Whispers", en: "Code Whispers" },
     summary: {

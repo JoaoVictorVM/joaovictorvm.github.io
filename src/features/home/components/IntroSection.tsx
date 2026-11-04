@@ -23,7 +23,7 @@ export function IntroSection() {
 
         <div
           className={cn(
-            "text-appear space-y-4 text-base font-normal delay-300",
+            "text-appear type-primary space-y-4 delay-300",
             isVisible && "visible",
           )}
         >

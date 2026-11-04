@@ -24,11 +24,11 @@ export function PostList() {
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
               <div className="space-y-1.5 pr-7 sm:pr-0">
-                <h2 className="text-text text-lg font-normal">{post.title}</h2>
-                <p className="text-detail text-sm">{post.summary}</p>
+                <h2 className="type-primary text-text">{post.title}</h2>
+                <p className="text-detail type-decoration">{post.summary}</p>
               </div>
 
-              <div className="text-detail flex shrink-0 items-center gap-3 pr-7 text-sm">
+              <div className="text-detail type-decoration flex shrink-0 items-center gap-3 pr-7">
                 <PostDate date={post.date} format="short" />
                 <span aria-hidden>·</span>
                 <span>

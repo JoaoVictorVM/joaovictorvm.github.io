@@ -32,7 +32,7 @@ export function ActivitySection() {
       className={cn("section-fade pb-20", isVisible && "visible")}
     >
       <Container className="text-text space-y-6">
-        <h2 className="text-lg">{activity.title}</h2>
+        <h2 className="type-primary">{activity.title}</h2>
 
         {githubActivity && total && (
           <div className="space-y-3">
@@ -43,7 +43,7 @@ export function ActivitySection() {
             />
             <div
               className={cn(
-                "text-appear text-detail flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-xs delay-300",
+                "text-appear text-detail type-decoration flex flex-wrap items-center justify-between gap-x-6 gap-y-2 delay-300",
                 isVisible && "visible",
               )}
             >
@@ -65,11 +65,15 @@ export function ActivitySection() {
         >
           <ActivityEntry label={activity.studying}>
             <dd>{studying.title[language]}</dd>
-            <dd className="text-detail text-sm">{studying.detail[language]}</dd>
+            <dd className="text-detail type-decoration">
+              {studying.detail[language]}
+            </dd>
           </ActivityEntry>
           <ActivityEntry label={activity.reading}>
             <dd>{reading.title[language]}</dd>
-            <dd className="text-detail text-sm">{reading.detail[language]}</dd>
+            <dd className="text-detail type-decoration">
+              {reading.detail[language]}
+            </dd>
           </ActivityEntry>
           {latestRepository && (
             <ActivityEntry label={activity.latestRepository}>
@@ -85,7 +89,7 @@ export function ActivitySection() {
                 </a>
               </dd>
               {latestRepository.description && (
-                <dd className="text-detail text-sm">
+                <dd className="text-detail type-decoration">
                   {latestRepository.description}
                 </dd>
               )}

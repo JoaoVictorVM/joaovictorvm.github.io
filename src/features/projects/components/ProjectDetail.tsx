@@ -16,7 +16,7 @@ function DetailSection({
 }: Readonly<{ title: string; children: ReactNode }>) {
   return (
     <section className="flex flex-col gap-4">
-      <h2 className="text-detail text-sm font-normal">{title}</h2>
+      <h2 className="text-detail type-decoration">{title}</h2>
       {children}
     </section>
   );
@@ -40,11 +40,11 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
         cover && <ProjectFigure image={cover} isPriority />
       )}
 
-      <p>{project.details[language]}</p>
+      <p className="type-primary">{project.details[language]}</p>
 
       {stack.length > 0 && (
         <DetailSection title={t.stackLabel}>
-          <p className="text-detail">{stack.join(" · ")}</p>
+          <p className="text-detail type-decoration">{stack.join(" · ")}</p>
         </DetailSection>
       )}
 

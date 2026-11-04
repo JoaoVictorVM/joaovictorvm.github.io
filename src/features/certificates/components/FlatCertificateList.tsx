@@ -52,7 +52,7 @@ export function FlatCertificateList({
                 skipCascade ? null : (delays.get(certificate.id) ?? 0),
               )}
             >
-              <span className="project-institution text-detail inline-block px-2 pt-4 text-xs md:justify-self-start md:px-0 md:py-4 md:text-sm">
+              <span className="project-institution text-detail type-decoration inline-block px-2 pt-4 md:justify-self-start md:px-0 md:py-4">
                 {certificate.institution}
               </span>
               <div className="min-w-0">

@@ -12,7 +12,10 @@ export function PostDate({ date, format = "long", className }: PostDateProps) {
   const { language } = usePreference();
 
   return (
-    <time dateTime={date} className={cn("text-detail text-sm", className)}>
+    <time
+      dateTime={date}
+      className={cn("text-detail type-decoration", className)}
+    >
       {formatDate(date, language, format)}
     </time>
   );

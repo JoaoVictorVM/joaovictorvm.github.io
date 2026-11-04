@@ -63,7 +63,7 @@ export function DisclosureList({ items }: DisclosureListProps) {
               </h2>
             </Accordion.Header>
             <Accordion.Content className="accordion-content">
-              <div className="text-detail space-y-3 px-2 pt-2 pb-3 text-sm">
+              <div className="text-detail type-decoration space-y-3 px-2 pt-2 pb-3">
                 <p className="accordion-reveal">{item.body}</p>
                 {item.tags && item.tags.length > 0 && (
                   <p className="accordion-reveal">

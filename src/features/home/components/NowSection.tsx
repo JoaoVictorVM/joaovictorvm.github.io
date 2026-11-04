@@ -18,7 +18,7 @@ export function NowSection() {
       className={cn("section-fade py-20", isVisible && "visible")}
     >
       <Container className="text-text space-y-6">
-        <h2 className="text-lg">{now.title}</h2>
+        <h2 className="type-primary">{now.title}</h2>
 
         {firstParagraph && (
           <p className={cn("text-appear delay-300", isVisible && "visible")}>
@@ -32,14 +32,14 @@ export function NowSection() {
             isVisible && "visible",
           )}
         >
-          <p className="text-detail text-sm">{now.stackLabel}</p>
+          <p className="text-detail type-decoration">{now.stackLabel}</p>
           <div className="grid gap-x-6 gap-y-4 sm:grid-cols-3">
             {stack.map((category) => (
               <div key={category.name.pt} className="space-y-1">
-                <h3 className="text-text font-normal">
+                <h3 className="type-primary text-text">
                   {category.name[language]}
                 </h3>
-                <p className="text-detail text-sm">
+                <p className="text-detail type-decoration">
                   {category.techs.join(" · ")}
                 </p>
               </div>

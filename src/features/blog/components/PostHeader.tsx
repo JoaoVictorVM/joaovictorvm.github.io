@@ -14,7 +14,7 @@ export function PostHeader({ title, date }: PostHeaderProps) {
     <div ref={ref} className="mb-10">
       <h1
         className={cn(
-          "fast-fade-up text-text text-lg delay-200",
+          "fast-fade-up type-primary text-text delay-200",
           isVisible && "visible",
         )}
       >

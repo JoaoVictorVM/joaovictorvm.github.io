@@ -28,8 +28,8 @@ export function LinkCard({ item }: LinkCardProps) {
         <Icon className="size-5" aria-hidden />
       </span>
       <span className="flex flex-col gap-0.5 text-left">
-        <span className="text-text font-medium">{item.title[language]}</span>
-        <span className="text-detail text-sm">
+        <span className="type-primary text-text">{item.title[language]}</span>
+        <span className="text-detail type-decoration">
           {item.description[language]}
         </span>
       </span>

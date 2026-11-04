@@ -38,7 +38,7 @@ function HighlightsColumn({
         isVisible && "visible",
       )}
     >
-      <h2 className="text-detail text-sm font-normal">{title}</h2>
+      <h2 className="text-detail type-decoration">{title}</h2>
 
       {children}
 

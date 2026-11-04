@@ -49,7 +49,7 @@ export function ContributionGraph({
               className={cn(weekClassName(index), "relative h-4 w-2.5")}
             >
               {month && (
-                <span className="text-detail absolute left-0 text-xs whitespace-nowrap">
+                <span className="type-decoration text-detail absolute left-0 whitespace-nowrap">
                   {formatDate(month, language, "month").replace(".", "")}
                 </span>
               )}

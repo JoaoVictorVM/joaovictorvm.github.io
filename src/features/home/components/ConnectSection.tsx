@@ -28,14 +28,14 @@ export function ConnectSection() {
       className={cn("section-fade pb-16", isVisible && "visible")}
     >
       <Container className="text-text">
-        <h2 className="mb-6 text-lg">{connect.sectionTitle}</h2>
+        <h2 className="type-primary mb-6">{connect.sectionTitle}</h2>
         {groups.map((group) => (
           <div key={group.id}>
             <div className="group-line" />
             <div className="md:grid-certificate md:grid">
               <h3
                 id={`home-${group.id}`}
-                className="text-detail px-2 pt-4 pb-3 text-sm md:px-0 md:py-4"
+                className="text-detail type-decoration px-2 pt-4 pb-3 md:px-0 md:py-4"
               >
                 {group.title}
               </h3>
@@ -66,7 +66,7 @@ export function ConnectSection() {
                           href={link.href}
                           target={isExternal ? "_blank" : undefined}
                           rel={isExternal ? "noreferrer" : undefined}
-                          className="contact-link relative block text-sm"
+                          className="contact-link type-primary relative block"
                         >
                           <span className={rowClassName}>{content}</span>
                           <span

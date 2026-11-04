@@ -22,9 +22,7 @@ export function WritingHighlights({ isVisible }: WritingHighlightsProps) {
         isVisible && "visible",
       )}
     >
-      <h2 className="text-detail text-sm font-normal">
-        {blog.highlightsTitle}
-      </h2>
+      <h2 className="text-detail type-decoration">{blog.highlightsTitle}</h2>
 
       <div className="space-y-6">
         {featuredPosts.map((post) => (
@@ -40,7 +38,7 @@ export function WritingHighlights({ isVisible }: WritingHighlightsProps) {
               </Link>
               <PostDate date={post.date} />
             </div>
-            <p className="text-detail text-sm">{post.summary}</p>
+            <p className="text-detail type-decoration">{post.summary}</p>
           </article>
         ))}
       </div>

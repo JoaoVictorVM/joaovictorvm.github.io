@@ -42,7 +42,7 @@ export function CertificateHighlights() {
       <CertificatePreview image={highlightedImage} />
       {featuredCertificates.map((certificate) => (
         <article key={certificate.id} className="space-y-1.5">
-          <h3 className="text-text font-normal">
+          <h3 className="type-primary text-text">
             <span
               {...highlightTriggerProps(rowHighlight(certificate.id))}
               className="decoration-text/30 hover:decoration-text underline decoration-dotted underline-offset-4 transition-colors hover:decoration-solid"
@@ -50,7 +50,7 @@ export function CertificateHighlights() {
               {certificate.title[language]}
             </span>
           </h3>
-          <p className="text-detail text-sm">
+          <p className="text-detail type-decoration">
             {highlightSummary(
               certificate.institution,
               formatCertificateDate(certificate.issuedAt, language),

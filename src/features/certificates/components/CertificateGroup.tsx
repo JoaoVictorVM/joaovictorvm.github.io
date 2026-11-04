@@ -39,7 +39,7 @@ export function CertificateGroup({
       <div className="md:grid-certificate md:grid">
         <Accordion.Header asChild>
           <h2 className="md:self-start">
-            <Accordion.Trigger className="text-detail hover:text-text flex cursor-pointer items-center px-2 pb-3 text-sm transition-colors md:px-0 md:py-4">
+            <Accordion.Trigger className="text-detail type-decoration hover:text-text flex cursor-pointer items-center px-2 pb-3 transition-colors md:px-0 md:py-4">
               <span className="project-institution inline-flex items-center gap-1">
                 {institution}
                 <ChevronDown

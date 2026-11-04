@@ -10,7 +10,7 @@ interface ActivityEntryProps {
 export function ActivityEntry({ label, children }: ActivityEntryProps) {
   return (
     <div className="space-y-1">
-      <dt className="text-detail text-sm">{label}</dt>
+      <dt className="text-detail type-decoration">{label}</dt>
       {children}
     </div>
   );

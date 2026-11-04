@@ -15,7 +15,7 @@ export function IdentityHeading({ isVisible }: IdentityHeadingProps) {
     <hgroup className="mb-10">
       <h1
         className={cn(
-          "fast-fade-up text-text text-lg delay-200",
+          "fast-fade-up text-text type-primary delay-200",
           isVisible && "visible",
         )}
       >
@@ -23,7 +23,7 @@ export function IdentityHeading({ isVisible }: IdentityHeadingProps) {
       </h1>
       <p
         className={cn(
-          "fast-fade-up text-detail text-sm delay-250",
+          "fast-fade-up text-detail type-decoration delay-250",
           isVisible && "visible",
         )}
         // A primeira role começa a ser digitada depois que esta linha aparece.

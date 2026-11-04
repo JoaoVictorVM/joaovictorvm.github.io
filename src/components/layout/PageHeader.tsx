@@ -17,7 +17,7 @@ export function PageHeader({ title, subtitle, action }: PageHeaderProps) {
       <div>
         <h1
           className={cn(
-            "fast-fade-up text-text text-lg delay-200",
+            "fast-fade-up text-text type-primary delay-200",
             isVisible && "visible",
           )}
         >
@@ -25,7 +25,7 @@ export function PageHeader({ title, subtitle, action }: PageHeaderProps) {
         </h1>
         <p
           className={cn(
-            "fast-fade-up text-detail text-sm delay-250",
+            "fast-fade-up text-detail type-decoration delay-250",
             isVisible && "visible",
           )}
         >

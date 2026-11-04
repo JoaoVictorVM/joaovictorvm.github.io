@@ -30,13 +30,13 @@ export function CertificateRow({
     >
       <span
         className={cn(
-          "project-title text-sm font-normal transition-colors duration-150",
+          "project-title type-primary transition-colors duration-150",
           isDimmed ? "text-detail" : "text-text",
         )}
       >
         {title}
       </span>
-      <span className="project-date text-detail hidden text-right text-sm sm:block">
+      <span className="project-date text-detail type-decoration hidden text-right sm:block">
         {date}
       </span>
     </div>

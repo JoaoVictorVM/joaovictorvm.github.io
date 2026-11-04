@@ -128,7 +128,7 @@ export function ProjectCard({
 
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-between gap-4">
-          <h2 className="text-text font-normal">
+          <h2 className="type-primary text-text">
             <Link
               to="/projects/$slug"
               params={{ slug: project.id }}
@@ -154,7 +154,9 @@ export function ProjectCard({
             )}
           </div>
         </div>
-        <p className="text-detail text-sm">{project.summary[language]}</p>
+        <p className="text-detail type-decoration">
+          {project.summary[language]}
+        </p>
       </div>
     </article>
   );

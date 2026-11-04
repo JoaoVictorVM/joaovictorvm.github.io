@@ -13,7 +13,7 @@ import { useReveal } from "@/shared/hooks/useReveal";
 import { cn } from "@/shared/lib/cn";
 
 const featuredProjects = projects.filter((project) =>
-  ["jotta", "code-whispers"].includes(project.id),
+  ["jotta", "lastro", "code-whispers"].includes(project.id),
 );
 
 interface HighlightsColumnProps {

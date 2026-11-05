@@ -207,6 +207,7 @@ const pt = {
     title: "Sobre mim",
     subtitle: "Um pouco além do currículo",
     photoAlt: "Retrato de João Victor Ventura Martins",
+    iconAlt: "Ícone ilustrado de João Victor Ventura Martins",
     intro: [
       "Sou João Victor Ventura Martins, um cara apaixonado por videogame desde pequeno, que entrou no mundo da programação por um sonho de um dia criar um jogo.",
       "Durante a faculdade de Ciência da Computação, fiquei apaixonado por programação e o sonho de lançar um jogo virou o sonho de ser um desenvolvedor.",
@@ -560,6 +561,7 @@ const en: Dictionary = {
     title: "About me",
     subtitle: "A bit beyond the resume",
     photoAlt: "Portrait of João Victor Ventura Martins",
+    iconAlt: "Illustrated icon of João Victor Ventura Martins",
     intro: [
       "I'm João Victor Ventura Martins, a guy who has loved video games since he was a kid and got into programming chasing the dream of one day creating a game.",
       "During my Computer Science degree, I fell in love with programming, and the dream of releasing a game turned into the dream of becoming a developer.",

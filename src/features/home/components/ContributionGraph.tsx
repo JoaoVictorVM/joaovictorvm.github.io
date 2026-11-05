@@ -67,7 +67,16 @@ export function ContributionGraph({
             <div
               key={firstDay?.date ?? index}
               className={cn(weekClassName(index), "graph-column")}
-              style={{ "--column": index } as CSSProperties}
+              style={
+                {
+                  "--column": index,
+                  "--palette-column": index,
+                  "--palette-mobile-column": Math.max(
+                    0,
+                    index - Math.max(0, firstMobileWeek),
+                  ),
+                } as CSSProperties
+              }
             >
               {Array.from({ length: offset }, (_, slot) => (
                 <span key={slot} className="size-2.5" />

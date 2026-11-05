@@ -8,6 +8,8 @@ export const CLICKABLE_SELECTOR =
 /** Se o alvo de um evento está dentro de algo clicável. */
 export function isClickableTarget(target: EventTarget | null): boolean {
   return (
-    target instanceof Element && target.closest(CLICKABLE_SELECTOR) !== null
+    target instanceof Element &&
+    target.closest('[data-cursor="default"]') === null &&
+    target.closest(CLICKABLE_SELECTOR) !== null
   );
 }

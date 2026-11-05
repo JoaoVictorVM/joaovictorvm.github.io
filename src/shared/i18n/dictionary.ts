@@ -2,6 +2,9 @@ import type { Language } from "@/types/preferences";
 
 const pt = {
   skipToContent: "Pular para o conteúdo",
+  easterEggs: {
+    found: "Você encontrou um easter egg",
+  },
   nav: {
     menuLabel: "Navegação",
     logoLabel: "João Victor Ventura Martins — início",
@@ -207,6 +210,7 @@ const pt = {
     title: "Sobre mim",
     subtitle: "Um pouco além do currículo",
     photoAlt: "Retrato de João Victor Ventura Martins",
+    iconAlt: "Ícone ilustrado de João Victor Ventura Martins",
     intro: [
       "Sou João Victor Ventura Martins, um cara apaixonado por videogame desde pequeno, que entrou no mundo da programação por um sonho de um dia criar um jogo.",
       "Durante a faculdade de Ciência da Computação, fiquei apaixonado por programação e o sonho de lançar um jogo virou o sonho de ser um desenvolvedor.",
@@ -340,6 +344,7 @@ const pt = {
         `${count} contribuições no GitHub nos últimos 12 meses`,
       legendLess: "Menos",
       legendMore: "Mais",
+      paletteLabel: "Cores do GitHub",
       studying: "Estudando",
       reading: "Lendo",
       latestRepository: "Último repositório",
@@ -356,6 +361,9 @@ export type Dictionary = typeof pt;
 
 const en: Dictionary = {
   skipToContent: "Skip to content",
+  easterEggs: {
+    found: "You found an easter egg",
+  },
   nav: {
     menuLabel: "Navigation",
     logoLabel: "João Victor Ventura Martins — home",
@@ -560,6 +568,7 @@ const en: Dictionary = {
     title: "About me",
     subtitle: "A bit beyond the resume",
     photoAlt: "Portrait of João Victor Ventura Martins",
+    iconAlt: "Illustrated icon of João Victor Ventura Martins",
     intro: [
       "I'm João Victor Ventura Martins, a guy who has loved video games since he was a kid and got into programming chasing the dream of one day creating a game.",
       "During my Computer Science degree, I fell in love with programming, and the dream of releasing a game turned into the dream of becoming a developer.",
@@ -688,6 +697,7 @@ const en: Dictionary = {
         `${count} GitHub contributions in the last 12 months`,
       legendLess: "Less",
       legendMore: "More",
+      paletteLabel: "GitHub colors",
       studying: "Studying",
       reading: "Reading",
       latestRepository: "Latest repository",

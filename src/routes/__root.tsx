@@ -9,6 +9,8 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { PreferenceProvider } from "@/context/PreferenceProvider";
 import { ConsentProvider } from "@/context/ConsentProvider";
+import { EasterEggProvider } from "@/context/EasterEggProvider";
+import { EasterEggCounter } from "@/components/layout/EasterEggCounter";
 import { ConsentAnalytics } from "@/components/layout/ConsentAnalytics";
 import { ConsentBanner } from "@/components/layout/ConsentBanner";
 import { ConsentTrigger } from "@/components/layout/ConsentTrigger";
@@ -75,7 +77,10 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
             {/* No começo do DOM para teclado e leitor de tela o encontrarem logo. */}
             <ConsentBanner />
             <ConsentAnalytics />
-            {children}
+            <EasterEggProvider>
+              {children}
+              <EasterEggCounter />
+            </EasterEggProvider>
             <ConsentTrigger />
           </ConsentProvider>
           <DotBackground />

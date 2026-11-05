@@ -24,6 +24,7 @@ export function ConnectSection() {
 
   return (
     <section
+      id="contato"
       ref={ref}
       className={cn("section-fade pb-16", isVisible && "visible")}
     >

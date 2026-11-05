@@ -4,6 +4,7 @@ import { HighlightsSection } from "@/features/home/components/HighlightsSection"
 import { NowSection } from "@/features/home/components/NowSection";
 import { ActivitySection } from "@/features/home/components/ActivitySection";
 import { ConnectSection } from "@/features/home/components/ConnectSection";
+import { HomeSectionMap } from "@/features/home/components/HomeSectionMap";
 import { siteConfig } from "@/shared/config/site";
 import { pageHead } from "@/shared/lib/seo";
 
@@ -20,6 +21,7 @@ function HomePage() {
       <NowSection />
       <ActivitySection />
       <ConnectSection />
+      <HomeSectionMap />
     </>
   );
 }

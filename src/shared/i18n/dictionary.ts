@@ -277,6 +277,19 @@ const pt = {
     privacy: "Privacidade e cookies",
   },
   home: {
+    sectionMap: {
+      label: "Seções da página inicial",
+      sections: {
+        inicio: "Início",
+        formacao: "Formação",
+        projetos: "Projetos",
+        certificados: "Certificados",
+        blog: "Blog",
+        agora: "Agora",
+        atividade: "Atividade",
+        contato: "Contato",
+      },
+    },
     intro: {
       name: "João Victor Ventura Martins",
       roles: [
@@ -637,6 +650,19 @@ const en: Dictionary = {
     privacy: "Privacy and cookies",
   },
   home: {
+    sectionMap: {
+      label: "Home page sections",
+      sections: {
+        inicio: "Intro",
+        formacao: "Education",
+        projetos: "Projects",
+        certificados: "Certificates",
+        blog: "Writing",
+        agora: "Now",
+        atividade: "Activity",
+        contato: "Contact",
+      },
+    },
     intro: {
       name: "João Victor Ventura Martins",
       roles: ["AI Engineer", "Software Engineer", "Cybersecurity Student"],

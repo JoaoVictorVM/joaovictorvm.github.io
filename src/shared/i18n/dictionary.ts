@@ -310,8 +310,10 @@ const pt = {
     highlights: {
       certificatesTitle: "Certificados",
       projectsTitle: "Projetos",
-      certificatesCta: "Todos os Certificados",
+      certificatesCta: "Todos os certificados",
       projectsCta: "Demais Projetos",
+      projectsCount: (count: number) => `${String(count)}+ Projetos`,
+      certificatesCount: (count: number) => `${String(count)}+ Certificados`,
       projects: [
         {
           title: "Focuzen",
@@ -664,8 +666,10 @@ const en: Dictionary = {
     highlights: {
       certificatesTitle: "Certificates",
       projectsTitle: "Projects",
-      certificatesCta: "All Certificates",
+      certificatesCta: "All certificates",
       projectsCta: "Other Projects",
+      projectsCount: (count: number) => `${String(count)}+ Projects`,
+      certificatesCount: (count: number) => `${String(count)}+ Certificates`,
       projects: [
         {
           title: "Focuzen",

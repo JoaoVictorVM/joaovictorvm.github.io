@@ -139,6 +139,32 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "comporta",
+    title: { pt: "Comporta", en: "Comporta" },
+    summary: {
+      pt: "LLM Gateway open-source em Desenvolvimento",
+      en: "Open-source LLM Gateway in Development",
+    },
+    details: {
+      pt: "LLM Gateway open-source em Desenvolvimento",
+      en: "Open-source LLM Gateway in Development",
+    },
+    technologies: [],
+    cover: {
+      src: "media/projects/comporta/comporta.webp",
+      alt: { pt: "Apresentação do Comporta", en: "Comporta overview" },
+      width: 1672,
+      height: 941,
+    },
+    links: [
+      {
+        kind: "repository",
+        label: { pt: "Repositório", en: "Repository" },
+        url: "https://github.com/JoaoVictorVM/comporta",
+      },
+    ],
+  },
+  {
     id: "code-whispers",
     title: { pt: "Code Whispers", en: "Code Whispers" },
     summary: {

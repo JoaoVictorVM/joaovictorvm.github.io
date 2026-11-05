@@ -90,8 +90,9 @@ Deployed to **Cloudflare Workers Static Assets** at
 the site and publishes `dist/client` on every push to `main` and once a day, using
 the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets.
 
-The same workflow still publishes to **GitHub Pages** at
-`joaovictorvm.github.io` during the migration.
+The same workflow publishes `dist/github-pages` to **GitHub Pages**, so
+`joaovictorvm.github.io` only redirects each page to the custom domain. Keep this
+repository's name, or those redirects stop working.
 
 ## Contact
 

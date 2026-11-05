@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://joaovictorvm.github.io/"><strong>Live site »</strong></a>
+  <a href="https://joaovictorvm.com/"><strong>Live site »</strong></a>
 </p>
 
 <p align="center">
@@ -85,16 +85,17 @@ src/
 
 ## Deployment
 
-Deployed to **GitHub Pages** as a user site at the root domain. A GitHub Actions
-workflow builds the site and publishes `dist/client` on every push to `main`.
+Deployed to **Cloudflare Workers Static Assets** at
+[joaovictorvm.com](https://joaovictorvm.com/). A GitHub Actions workflow builds
+the site and publishes `dist/client` on every push to `main` and once a day, using
+the `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets.
 
-The base path is configured via Vite (`base: "/"`) and resolved throughout with
-`import.meta.env.BASE_URL`, so the repository must be named
-`joaovictorvm.github.io` with Pages set to the **GitHub Actions** source.
+The same workflow still publishes to **GitHub Pages** at
+`joaovictorvm.github.io` during the migration.
 
 ## Contact
 
-- **Website** — [joaovictorvm.github.io](https://joaovictorvm.github.io/)
+- **Website** — [joaovictorvm.com](https://joaovictorvm.com/)
 - **LinkedIn** — [in/jvvmartins](https://www.linkedin.com/in/jvvmartins/)
 - **GitHub** — [@JoaoVictorVM](https://github.com/JoaoVictorVM)
 - **Email** — jvmartinscv@gmail.com

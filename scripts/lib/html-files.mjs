@@ -1,7 +1,7 @@
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 
-/** Saída estática do build (o que vai para o GitHub Pages). */
+/** Saída estática do build (o que vai para a Cloudflare). */
 export const OUTPUT_DIR = "dist/client";
 
 /**

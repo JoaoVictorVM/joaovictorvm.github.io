@@ -26,7 +26,7 @@ export const siteConfig = {
   ],
   pages: {
     home: {
-      title: `${NAME}${TITLE_SEPARATOR}Software Engineer`,
+      title: `${NAME}${TITLE_SEPARATOR}AI Engineer`,
       description:
         "Software Engineer com foco em Frontend. Conheça meus projetos, certificados e os jogos que crio por paixão.",
     },

@@ -14,9 +14,9 @@ export default defineConfig({
     tsConfigPaths(),
     tailwindcss(),
     tanstackStart({
-      // Pré-renderiza a rota catch-all como 404.html, servido pelo GitHub Pages
-      // em qualquer URL inexistente. O estado desidratado gerado aqui casa com
-      // o que o cliente calcula nessas URLs, evitando erro de hidratação.
+      // Pré-renderiza a rota catch-all como 404.html, servido pelo host em
+      // qualquer URL inexistente. O router faz o estado desidratado casar com
+      // essas URLs para evitar erro de hidratação (ver `src/router.tsx`).
       pages: [
         {
           path: "/__not-found",

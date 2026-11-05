@@ -5,6 +5,10 @@ import { Container } from "@/components/layout/Container";
 import { inlineLinkClass } from "@/components/ui/inlineLink";
 import { WritingHighlights } from "@/features/blog/components/WritingHighlights";
 import { CertificateHighlights } from "@/features/certificates/components/CertificateHighlights";
+import {
+  certificates,
+  getFeaturedCertificates,
+} from "@/features/certificates/data/certificates";
 import { EducationBlock } from "@/features/home/components/EducationBlock";
 import { ProjectGrid } from "@/features/projects/components/ProjectGrid";
 import { projects } from "@/features/projects/data/projects";
@@ -19,6 +23,7 @@ const featuredProjects = projects.filter((project) =>
 interface HighlightsColumnProps {
   title: string;
   ctaLabel: string;
+  countLabel: string;
   ctaTo: "/certificates" | "/projects";
   isVisible: boolean;
   children: ReactNode;
@@ -27,6 +32,7 @@ interface HighlightsColumnProps {
 function HighlightsColumn({
   title,
   ctaLabel,
+  countLabel,
   ctaTo,
   isVisible,
   children,
@@ -42,10 +48,13 @@ function HighlightsColumn({
 
       {children}
 
-      <Link to={ctaTo} className={inlineLinkClass}>
-        <span>{ctaLabel}</span>
-        <ArrowUpRight size={14} aria-hidden className="text-detail" />
-      </Link>
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <Link to={ctaTo} className={inlineLinkClass}>
+          <span>{ctaLabel}</span>
+          <ArrowUpRight size={14} aria-hidden className="text-detail" />
+        </Link>
+        <span className="text-detail type-decoration">{countLabel}</span>
+      </div>
     </div>
   );
 }
@@ -66,6 +75,9 @@ export function HighlightsSection() {
         <HighlightsColumn
           title={highlights.projectsTitle}
           ctaLabel={highlights.projectsCta}
+          countLabel={highlights.projectsCount(
+            projects.length - featuredProjects.length,
+          )}
           ctaTo="/projects"
           isVisible={isVisible}
         >
@@ -78,6 +90,9 @@ export function HighlightsSection() {
         <HighlightsColumn
           title={highlights.certificatesTitle}
           ctaLabel={highlights.certificatesCta}
+          countLabel={highlights.certificatesCount(
+            certificates.length - getFeaturedCertificates().length,
+          )}
           ctaTo="/certificates"
           isVisible={isVisible}
         >

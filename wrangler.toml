@@ -8,4 +8,4 @@ routes = [{ pattern = "joaovictorvm.com", custom_domain = true }]
 [assets]
 directory = "./dist/client"
 not_found_handling = "404-page"
-html_handling = "auto-trailing-slash"
+html_handling = "drop-trailing-slash"

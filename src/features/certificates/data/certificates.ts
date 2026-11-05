@@ -80,6 +80,21 @@ export const certificates: Certificate[] = [
     },
   },
   {
+    id: "openai-applied-ai-foundations",
+    institutionId: "openai",
+    institution: "OpenAI",
+    title: { pt: "Applied AI Foundations", en: "Applied AI Foundations" },
+    issuedAt: "2026-11-04",
+    areas: ["ai"],
+    importance: 2,
+    image: {
+      src: "images/certificates/openai-applied-ai-foundations.webp",
+      width: 400,
+      height: 400,
+      kind: "badge",
+    },
+  },
+  {
     id: "openai-ai-foundations",
     institutionId: "openai",
     institution: "OpenAI",

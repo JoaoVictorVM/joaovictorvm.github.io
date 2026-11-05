@@ -2,6 +2,12 @@
 @import "./tokens.css";
 @import "./animations.css";
 
+::selection {
+  background-color: var(--opposite-bg-color);
+  color: var(--opposite-text-color);
+  text-shadow: none;
+}
+
 @utility type-primary {
   font-family: var(--font-primary);
   font-size: 1.0625rem;

@@ -37,9 +37,10 @@ jobs:
           # Lê a atividade pública do GitHub (scripts/fetch-github-activity.mjs).
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # O GitHub Pages só redireciona para o domínio oficial.
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/client
+          path: dist/github-pages
 
       - uses: actions/upload-artifact@v4
         with:

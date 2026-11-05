@@ -2,6 +2,9 @@ import type { Language } from "@/types/preferences";
 
 const pt = {
   skipToContent: "Pular para o conteúdo",
+  easterEggs: {
+    found: "Você encontrou um easter egg",
+  },
   nav: {
     menuLabel: "Navegação",
     logoLabel: "João Victor Ventura Martins — início",
@@ -358,6 +361,9 @@ export type Dictionary = typeof pt;
 
 const en: Dictionary = {
   skipToContent: "Skip to content",
+  easterEggs: {
+    found: "You found an easter egg",
+  },
   nav: {
     menuLabel: "Navigation",
     logoLabel: "João Victor Ventura Martins — home",

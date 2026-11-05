@@ -14,6 +14,7 @@ export function NowSection() {
 
   return (
     <section
+      id="agora"
       ref={ref}
       className={cn("section-fade py-20", isVisible && "visible")}
     >

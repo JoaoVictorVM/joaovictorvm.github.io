@@ -11,8 +11,9 @@ export function EducationBlock({ isVisible }: EducationBlockProps) {
 
   return (
     <div
+      id="formacao"
       className={cn(
-        "text-appear flex flex-col gap-6 delay-200",
+        "text-appear flex scroll-mt-24 flex-col gap-6 delay-200",
         isVisible && "visible",
       )}
     >

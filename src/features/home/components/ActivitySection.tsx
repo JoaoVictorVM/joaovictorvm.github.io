@@ -32,6 +32,7 @@ export function ActivitySection() {
 
   return (
     <section
+      id="atividade"
       ref={ref}
       className={cn("section-fade pb-20", isVisible && "visible")}
     >

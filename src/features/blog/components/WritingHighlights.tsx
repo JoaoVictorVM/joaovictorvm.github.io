@@ -17,8 +17,9 @@ export function WritingHighlights({ isVisible }: WritingHighlightsProps) {
 
   return (
     <div
+      id="blog"
       className={cn(
-        "text-appear flex flex-col gap-6 delay-300",
+        "text-appear flex scroll-mt-24 flex-col gap-6 delay-300",
         isVisible && "visible",
       )}
     >

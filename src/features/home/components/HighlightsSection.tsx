@@ -21,6 +21,7 @@ const featuredProjects = projects.filter((project) =>
 );
 
 interface HighlightsColumnProps {
+  id: string;
   title: string;
   ctaLabel: string;
   countLabel: string;
@@ -30,6 +31,7 @@ interface HighlightsColumnProps {
 }
 
 function HighlightsColumn({
+  id,
   title,
   ctaLabel,
   countLabel,
@@ -39,8 +41,9 @@ function HighlightsColumn({
 }: HighlightsColumnProps) {
   return (
     <div
+      id={id}
       className={cn(
-        "text-appear flex flex-col gap-6 delay-250",
+        "text-appear flex scroll-mt-24 flex-col gap-6 delay-250",
         isVisible && "visible",
       )}
     >
@@ -73,6 +76,7 @@ export function HighlightsSection() {
         <EducationBlock isVisible={isVisible} />
 
         <HighlightsColumn
+          id="projetos"
           title={highlights.projectsTitle}
           ctaLabel={highlights.projectsCta}
           countLabel={highlights.projectsCount(
@@ -88,6 +92,7 @@ export function HighlightsSection() {
         </HighlightsColumn>
 
         <HighlightsColumn
+          id="certificados"
           title={highlights.certificatesTitle}
           ctaLabel={highlights.certificatesCta}
           countLabel={highlights.certificatesCount(

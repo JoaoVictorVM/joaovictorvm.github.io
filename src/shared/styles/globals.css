@@ -175,6 +175,13 @@ html.has-custom-cursor * {
   }
 }
 
+/* Ao explorar o mapa, mostra só o rótulo do item sob o mouse ou teclado. */
+.home-section-map:has(a:hover, a:focus-visible)
+  a:not(:hover, :focus-visible)
+  .home-section-map-label {
+  opacity: 0;
+}
+
 /* Paleta revelada pelo easter egg da legenda, adaptada aos dois temas. */
 .contribution-calendar .graph-column > span,
 .contribution-legend > span {

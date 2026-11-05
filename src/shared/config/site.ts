@@ -9,7 +9,7 @@ export function pageTitle(page: string): string {
 }
 
 export const siteConfig = {
-  url: "https://joaovictorvm.github.io",
+  url: "https://joaovictorvm.com",
   name: NAME,
   shortName: "João Victor",
   jobTitle: "Software Engineer",

@@ -1,18 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://joaovictorvm.github.io/</loc>
+    <loc>https://joaovictorvm.com/</loc>
   </url>
   <url>
-    <loc>https://joaovictorvm.github.io/certificates</loc>
+    <loc>https://joaovictorvm.com/about</loc>
   </url>
   <url>
-    <loc>https://joaovictorvm.github.io/projects</loc>
+    <loc>https://joaovictorvm.com/certificates</loc>
   </url>
   <url>
-    <loc>https://joaovictorvm.github.io/gamedev</loc>
+    <loc>https://joaovictorvm.com/projects</loc>
   </url>
   <url>
-    <loc>https://joaovictorvm.github.io/links</loc>
+    <loc>https://joaovictorvm.com/projects/autobattle</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/projects/code-whispers</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/projects/comporta</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/projects/focuzen</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/projects/gofetch</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/projects/jotta</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/projects/lastro</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/projects/leaks-n-promo</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/projects/lp-expedition33</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/projects/scheduling-api</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/blog</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/blog/nestjs-observe</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/blog/npm-terreno-perigoso</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/blog/programar-por-diversao</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/blog/typescript-em-go</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/gamedev</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/links</loc>
+  </url>
+  <url>
+    <loc>https://joaovictorvm.com/privacy</loc>
   </url>
 </urlset>

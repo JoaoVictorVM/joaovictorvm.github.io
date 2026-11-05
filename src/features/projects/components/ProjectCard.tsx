@@ -63,7 +63,7 @@ export function ProjectCard({
   const live = getProjectLink(project, "live");
   const { cover, previewVideo } = project;
   const coverClassName = cn(
-    "aspect-video w-full rounded-2xl border transition-colors",
+    "pointer-events-none relative z-30 aspect-video w-full rounded-2xl border transition-colors",
     emphasis === "focused" ? "border-text" : "border-line",
   );
 
@@ -90,7 +90,7 @@ export function ProjectCard({
         }
       }}
       className={cn(
-        "relative flex flex-col gap-4 transition-opacity duration-200 motion-reduce:transition-none",
+        "project-card relative isolate -m-3 flex flex-col gap-4 rounded-2xl p-3 transition-opacity duration-200 motion-reduce:transition-none",
         emphasis === "dimmed" && "opacity-40",
       )}
     >
@@ -125,6 +125,33 @@ export function ProjectCard({
           {title}
         </div>
       )}
+
+      <div
+        aria-hidden
+        className="project-card-fill absolute inset-0 z-20 flex flex-col gap-4 rounded-2xl p-3"
+      >
+        <div className="aspect-video w-full shrink-0" />
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center justify-between gap-4">
+            <span className="type-primary text-text">{title}</span>
+            <div className="flex shrink-0 items-center gap-2">
+              {repository && (
+                <span className={iconButtonClassName}>
+                  <GithubIcon className="size-4" />
+                </span>
+              )}
+              {live && (
+                <span className={iconButtonClassName}>
+                  <ArrowUpRight size={16} />
+                </span>
+              )}
+            </div>
+          </div>
+          <p className="text-detail type-decoration">
+            {project.summary[language]}
+          </p>
+        </div>
+      </div>
 
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-between gap-4">

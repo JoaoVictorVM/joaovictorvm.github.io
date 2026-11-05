@@ -144,6 +144,31 @@ html.has-custom-cursor * {
   }
 }
 
+/* A capa fica acima do preenchimento; só a interface troca de tema. */
+.project-card-fill {
+  --bg-color: var(--opposite-bg-color);
+  --text-color: var(--opposite-text-color);
+  --detail-color: var(--opposite-detail-color);
+  --line-color: var(--detail-color);
+  background: var(--bg-color);
+  clip-path: polygon(0 0, 0 0, 0 0);
+  transition: clip-path 650ms var(--ease-reveal);
+  pointer-events: none;
+}
+.project-card:focus-within .project-card-fill {
+  clip-path: polygon(0 0, 200% 0, 0 200%);
+}
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .project-card-fill {
+    clip-path: polygon(0 0, 200% 0, 0 200%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-card-fill {
+    transition: none;
+  }
+}
+
 /* Tipografia do corpo dos posts: as mesmas classes usadas no restante do site,
    declaradas uma vez para que o conteúdo seja escrito em HTML semântico puro. */
 .post-body {

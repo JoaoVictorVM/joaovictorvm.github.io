@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { inlineLinkClass } from "@/components/ui/inlineLink";
@@ -7,6 +8,7 @@ import { ContributionLegend } from "@/features/home/components/ContributionLegen
 import { reading, studying } from "@/features/home/data/activity";
 import { githubActivity } from "@/features/home/data/githubActivity";
 import { useI18n } from "@/shared/hooks/useI18n";
+import { useEasterEggs } from "@/shared/hooks/useEasterEggs";
 import { usePreference } from "@/shared/hooks/usePreference";
 import { useReveal } from "@/shared/hooks/useReveal";
 import { cn } from "@/shared/lib/cn";
@@ -18,6 +20,8 @@ import { formatNumber } from "@/shared/lib/number";
  * do build, a seção sai só com estudo e leitura.
  */
 export function ActivitySection() {
+  const [isGitHubPalette, setIsGitHubPalette] = useState(false);
+  const { discover } = useEasterEggs();
   const { activity } = useI18n().home;
   const { language } = usePreference();
   const { ref, isVisible } = useReveal<HTMLElement>();
@@ -35,7 +39,10 @@ export function ActivitySection() {
         <h2 className="type-primary">{activity.title}</h2>
 
         {githubActivity && total && (
-          <div className="space-y-3">
+          <div
+            className="contribution-calendar space-y-3"
+            data-github-colors={isGitHubPalette ? "true" : undefined}
+          >
             <ContributionGraph
               weeks={githubActivity.weeks}
               label={total}
@@ -52,6 +59,12 @@ export function ActivitySection() {
               <ContributionLegend
                 less={activity.legendLess}
                 more={activity.legendMore}
+                paletteLabel={activity.paletteLabel}
+                isGitHubPalette={isGitHubPalette}
+                onTogglePalette={() => {
+                  discover("github-colors");
+                  setIsGitHubPalette((current) => !current);
+                }}
               />
             </div>
           </div>

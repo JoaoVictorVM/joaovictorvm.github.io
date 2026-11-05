@@ -175,6 +175,54 @@ html.has-custom-cursor * {
   }
 }
 
+/* Paleta revelada pelo easter egg da legenda, adaptada aos dois temas. */
+.contribution-calendar .graph-column > span,
+.contribution-legend > span {
+  transition: background-color 350ms var(--ease-reveal);
+  transition-delay: calc(var(--palette-column, 0) * 12ms);
+}
+@media (width < 40rem) {
+  .contribution-calendar .graph-column > span {
+    transition-delay: calc(var(--palette-mobile-column, 0) * 12ms);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contribution-calendar .graph-column > span,
+  .contribution-legend > span {
+    transition: none;
+  }
+}
+
+.contribution-calendar[data-github-colors] {
+  --contribution-0: #161b22;
+  --contribution-1: #0e4429;
+  --contribution-2: #006d32;
+  --contribution-3: #26a641;
+  --contribution-4: #39d353;
+}
+:root[data-theme="light"] .contribution-calendar[data-github-colors] {
+  --contribution-0: #ebedf0;
+  --contribution-1: #9be9a8;
+  --contribution-2: #40c463;
+  --contribution-3: #30a14e;
+  --contribution-4: #216e39;
+}
+.contribution-calendar[data-github-colors] .contribution-level-0 {
+  background-color: var(--contribution-0);
+}
+.contribution-calendar[data-github-colors] .contribution-level-1 {
+  background-color: var(--contribution-1);
+}
+.contribution-calendar[data-github-colors] .contribution-level-2 {
+  background-color: var(--contribution-2);
+}
+.contribution-calendar[data-github-colors] .contribution-level-3 {
+  background-color: var(--contribution-3);
+}
+.contribution-calendar[data-github-colors] .contribution-level-4 {
+  background-color: var(--contribution-4);
+}
+
 /* Tipografia do corpo dos posts: as mesmas classes usadas no restante do site,
    declaradas uma vez para que o conteúdo seja escrito em HTML semântico puro. */
 .post-body {

@@ -66,32 +66,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: "gazua",
-    title: { pt: "Gazua", en: "Gazua" },
-    summary: {
-      pt: "Suíte open-source de ataques a agentes em desenvolvimento.",
-      en: "Open-source Agent attack suite in development",
-    },
-    details: {
-      pt: "Suíte open-source de ataques a agentes em desenvolvimento.",
-      en: "Open-source Agent attack suite in development",
-    },
-    technologies: [],
-    cover: {
-      src: "media/projects/gazua/gazua.webp",
-      alt: { pt: "Apresentação do Gazua", en: "Gazua overview" },
-      width: 1672,
-      height: 941,
-    },
-    links: [
-      {
-        kind: "repository",
-        label: { pt: "Repositório", en: "Repository" },
-        url: "https://github.com/JoaoVictorVM/gazua",
-      },
-    ],
-  },
-  {
     id: "jotta",
     title: { pt: "Jotta", en: "Jotta" },
     summary: {
@@ -188,6 +162,32 @@ export const projects: Project[] = [
         kind: "repository",
         label: { pt: "Repositório", en: "Repository" },
         url: "https://github.com/JoaoVictorVM/comporta",
+      },
+    ],
+  },
+  {
+    id: "gazua",
+    title: { pt: "Gazua", en: "Gazua" },
+    summary: {
+      pt: "Suíte open-source de ataques a agentes em desenvolvimento.",
+      en: "Open-source Agent attack suite in development",
+    },
+    details: {
+      pt: "Suíte open-source de ataques a agentes em desenvolvimento.",
+      en: "Open-source Agent attack suite in development",
+    },
+    technologies: [],
+    cover: {
+      src: "media/projects/gazua/gazua.webp",
+      alt: { pt: "Apresentação do Gazua", en: "Gazua overview" },
+      width: 1672,
+      height: 941,
+    },
+    links: [
+      {
+        kind: "repository",
+        label: { pt: "Repositório", en: "Repository" },
+        url: "https://github.com/JoaoVictorVM/gazua",
       },
     ],
   },

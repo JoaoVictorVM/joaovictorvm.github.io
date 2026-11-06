@@ -142,20 +142,21 @@ export const projects: Project[] = [
     id: "comporta",
     title: { pt: "Comporta", en: "Comporta" },
     summary: {
-      pt: "LLM Gateway open-source em Desenvolvimento",
-      en: "Open-source LLM Gateway in Development",
+      pt: "Gateway open-source para LLMs em Go, em desenvolvimento, com validação de configuração, resolução de segredos e recarga sem reinício.",
+      en: "Open-source LLM gateway in Go, in development, with configuration validation, secret resolution and reloads without restarting.",
     },
     details: {
-      pt: "LLM Gateway open-source em Desenvolvimento",
-      en: "Open-source LLM Gateway in Development",
+      pt: "Gateway open-source para LLMs em desenvolvimento, construído em Go. A versão atual entrega a base de configuração: uma CLI para validar arquivos YAML, verificar referências e resolver segredos a partir de variáveis de ambiente, arquivos .env ou arquivos de segredos. Publica um JSON Schema para autocompletar e validar a configuração em editores. O comando serve mantém a configuração ativa e aplica alterações válidas sem reiniciar; edições inválidas são rejeitadas por inteiro, preservando a última configuração válida. Segredos são ocultados em logs, status e eventos de alteração. Nesta etapa, o projeto ainda não abre portas de rede nem encaminha requisições. Proxy, autenticação, limites, políticas, medição de uso, alertas, telemetria e painel administrativo ainda não foram implementados.",
+      en: "Open-source LLM gateway in development, built in Go. The current version delivers the configuration foundation: a CLI to validate YAML files, check references and resolve secrets from environment variables, .env files or secret files. Publishes a JSON Schema for editor autocomplete and configuration validation. The serve command keeps the configuration active and applies valid changes without restarting; invalid edits are rejected as a whole, preserving the last valid configuration. Secrets are redacted in logs, status and change events. At this stage, the project does not yet open network ports or forward requests. The proxy, authentication, limits, policies, usage metering, alerts, telemetry and admin panel have not been implemented yet.",
     },
-    technologies: [],
+    technologies: ["go"],
     cover: {
       src: "media/projects/comporta/comporta.webp",
       alt: { pt: "Apresentação do Comporta", en: "Comporta overview" },
       width: 1672,
       height: 941,
     },
+    stack: ["Go", "YAML", "JSON Schema", "Task"],
     links: [
       {
         kind: "repository",
